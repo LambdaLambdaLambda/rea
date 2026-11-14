@@ -9,7 +9,11 @@ import {
 } from "../domain/analysisErrorBase.js";
 import { analysisErrorWithCleanupFailure } from "../domain/analysisErrorCleanup.js";
 import { analysisErrorWithCancellation } from "../domain/analysisErrorCancellation.js";
-import { cancelledBy, isAborted } from "../domain/analysisErrorCore.js";
+import {
+  AnalysisCancelledError,
+  cancelledBy,
+  isAborted,
+} from "../domain/analysisErrorCore.js";
 import { ProviderAdapterError } from "../domain/providerAdapterError.js";
 import { ProviderCleanupError } from "../domain/providerCleanupError.js";
 import type { JsonValue } from "../domain/jsonValue.js";
@@ -143,21 +147,28 @@ export const runOwned = async <Value>(
     };
   }
   let committed = false;
-  if (primary.ok && options.commit !== undefined && !isAborted(options.signal))
+  const commit = async (
+    value: Value,
+  ): Promise<Result<Value, AnalysisError>> => {
     try {
-      await options.commit(primary.value);
+      await options.commit!(value);
       committed = true;
+      return { ok: true, value };
     } catch (cause) {
-      primary = {
+      return {
         ok: false,
         error:
           cause instanceof AnalysisError
-            ? cause
+            ? cause.retainPartialObservation(options.partial(value))
             : new ProviderAdapterError(options.providerId, options.operation, {
                 cause,
+                partialObservation: options.partial(value),
               }),
       };
     }
+  };
+  if (primary.ok && options.commit !== undefined && !isAborted(options.signal))
+    primary = await commit(primary.value);
   options.inspectPrimary?.(primary);
   const hadIncompleteCleanup = !primary.ok && primary.error.cleanupIncomplete;
   let cleanup: CleanupOutcome = { kind: "released" };
@@ -199,7 +210,23 @@ export const runOwned = async <Value>(
           : { diagnostics: recovered.cancellationDiagnostics }),
       };
   }
-  let cancelled = false;
+  if (
+    outcome.ok &&
+    !primary.ok &&
+    options.commit !== undefined &&
+    !isAborted(signal)
+  ) {
+    const publication = await commit(outcome.value);
+    if (!publication.ok) outcome = publication;
+  }
+  if (
+    cleanup.kind === "released" &&
+    !outcome.ok &&
+    outcome.error.cleanupIncomplete
+  )
+    cleanup = { kind: "retained", failure: outcome.error };
+  let cancelled =
+    !outcome.ok && outcome.error instanceof AnalysisCancelledError;
   if (outcome.ok && isAborted(signal)) {
     if (committed && cleanup.kind === "released")
       return {
@@ -231,11 +258,14 @@ export const runOwned = async <Value>(
       };
     return {
       kind: cancelled ? "cancelled" : "failed",
-      error: analysisErrorWithCleanupFailure(
-        outcome.error,
-        cleanup.failure,
-        options.operation,
-      ).bindCleanupDependencies([outcome.error, cleanup.failure]),
+      error:
+        cleanup.failure === outcome.error
+          ? outcome.error
+          : analysisErrorWithCleanupFailure(
+              outcome.error,
+              cleanup.failure,
+              options.operation,
+            ).bindCleanupDependencies([outcome.error, cleanup.failure]),
       cleanup,
     };
   }
