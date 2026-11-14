@@ -3,7 +3,7 @@
     "src/adb/AdbCommand.ts": 2,
     "src/adb/AdbConfiguration.ts": 2,
     "src/adb/AdbInputSnapshot.ts": 1,
-    "src/adb/AdbProvider.ts": 12,
+    "src/adb/AdbProvider.ts": 9,
     "src/android/AndroidMappingFile.ts": 1,
     "src/android/JadxConfiguration.ts": 2,
     "src/android/JadxFailure.ts": 3,
@@ -205,7 +205,6 @@
     "src/wasm/WabtFailures.ts": 2
   },
   "completed-abort-reclassification": {
-    "src/adb/AdbProvider.ts": 1,
     "src/application/EvidenceBundleCommands.ts": 2,
     "src/application/EvidenceInputResolver.ts": 1,
     "src/application/binary/BinarySession.ts": 1,
