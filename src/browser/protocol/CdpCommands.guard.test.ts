@@ -12,7 +12,9 @@ const root = fileURLToPath(new URL("../../../", import.meta.url));
  * Literal names of CDP commands that have no result schema yet, per source
  * file. A command registered in CdpCommands.ts no longer counts. This list may
  * only shrink: migrate a file's commands, then lower or delete its entry.
- * Dynamic names such as `${domain}.enable` are not counted.
+ * Names built at run time such as `${domain}.enable` are not matched here;
+ * their domains are typed `CdpDomainWith<verb>`, so an unregistered name fails
+ * to compile instead.
  */
 const UNTYPED_CDP_COMMAND_BASELINE: Readonly<Record<string, number>> = {
   "src/browser/CdpCaptureStorage.ts": 4,
@@ -22,8 +24,6 @@ const UNTYPED_CDP_COMMAND_BASELINE: Readonly<Record<string, number>> = {
   "src/browser/CdpEndpoint.ts": 2,
   "src/browser/CdpPageCapture.ts": 4,
   "src/browser/CdpPageCaptureWorkers.ts": 1,
-  "src/browser/CdpScreenshot.ts": 2,
-  "src/browser/CdpWebMcpDiscovery.ts": 1,
   "src/browser/PlaywrightScenarioServiceWorkers.ts": 1,
   "src/browser/PlaywrightScenarioStorage.ts": 1,
 };
