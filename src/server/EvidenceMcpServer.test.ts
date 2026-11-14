@@ -12,10 +12,13 @@ import {
 import { serveStdio } from "@modelcontextprotocol/server/stdio";
 import { z } from "zod";
 
+import { CallerAbort } from "../domain/analysisErrorCore.js";
 import { InvestigationRecords } from "../application/investigation/InvestigationRecords.js";
 import { OFFICIAL_TOOL_CONTRACTS } from "../contracts/officialToolContracts.js";
 import { EvidenceMcpServer } from "./EvidenceMcpServer.js";
 import { forgetPendingMcpRequest } from "./EvidenceMcpServerCore.js";
+import { currentMcpToolRequest } from "./McpToolRequest.js";
+import { createDeferred } from "../../tests/fixtures/binarySession.js";
 import { createToolResultDelivery } from "./toolResult.js";
 
 const firstText = (result: {
@@ -102,17 +105,72 @@ describe("MCP request bookkeeping", () => {
     const pendingToolLists = new Set([7]);
     const pendingCompletions = new Map([[7, completion]]);
 
+    const cancellation = new CallerAbort("request-cancelled", "user stopped");
+
     forgetPendingMcpRequest(
       pendingTools,
       pendingToolLists,
       pendingCompletions,
       7,
+      cancellation,
     );
 
     expect(pendingTools.has(7)).toBe(false);
     expect(pendingToolLists.has(7)).toBe(false);
-    expect(completion.signal.aborted).toBe(true);
+    expect(completion.signal.reason).toBe(cancellation);
     expect(pendingCompletions.has(7)).toBe(false);
+  });
+});
+
+describe("MCP request cancellation", () => {
+  it("aborts a running tool with a caller abort that keeps the client's reason", async () => {
+    const records = new InvestigationRecords();
+    const server = new EvidenceMcpServer(
+      { name: "caller-abort-test", version: "1" },
+      { capabilities: {} },
+      (evidence) => records.recordEvidence(evidence),
+      createToolResultDelivery(4096),
+    );
+    const entered = createDeferred<void>();
+    const observed = createDeferred<unknown>();
+    server.registerTool("held", { inputSchema: z.strictObject({}) }, () => {
+      const signal = currentMcpToolRequest()?.cancellation.signal;
+      if (signal === undefined) throw new Error("No MCP tool request");
+      signal.addEventListener("abort", () => observed.resolve(signal.reason), {
+        once: true,
+      });
+      entered.resolve(undefined);
+      return new Promise(() => undefined);
+    });
+    const client = new Client(
+      { name: "caller-abort-client", version: "1" },
+      { versionNegotiation: { mode: { pin: "2026-07-28" } } },
+    );
+    const [clientTransport, serverTransport] =
+      InMemoryTransport.createLinkedPair();
+    const serving = serveStdio(() => server, { transport: serverTransport });
+    try {
+      await client.connect(clientTransport);
+      const controller = new AbortController();
+      const pending = client.callTool(
+        { name: "held", arguments: {} },
+        { signal: controller.signal },
+      );
+      const rejected = expect(pending).rejects.toBeDefined();
+      await entered.promise;
+      controller.abort("user stopped");
+      await rejected;
+
+      const reason = await observed.promise;
+      expect(reason).toBeInstanceOf(CallerAbort);
+      expect(reason).toMatchObject({
+        kind: "request-cancelled",
+        clientReason: "user stopped",
+        name: "AbortError",
+      });
+    } finally {
+      await Promise.all([client.close(), serving.close()]);
+    }
   });
 });
 

@@ -217,6 +217,17 @@ checkCounted(
   ["src/domain/analysisErrorCore.ts"],
 );
 
+// An abort reason names who ended the work: a typed `CallerAbort` at the CLI,
+// MCP and HTTP adapters, or an `OwnerCancellation` when REA closes an owner.
+// A bare `.abort()` leaves an anonymous platform AbortError as the cause.
+checkCounted(
+  "AbortController.abort() without a reason (pass a CallerAbort or OwnerCancellation from src/domain/analysisErrorCore)",
+  "abort-without-reason",
+  files,
+  /\.abort\(\s*\)/gu,
+  [],
+);
+
 if (baselinesShrunk) {
   const sorted = Object.fromEntries(
     Object.entries(baselines).map(([key, counts]) => [
