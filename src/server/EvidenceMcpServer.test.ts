@@ -18,6 +18,7 @@ import { OFFICIAL_TOOL_CONTRACTS } from "../contracts/officialToolContracts.js";
 import { EvidenceMcpServer } from "./EvidenceMcpServer.js";
 import { forgetPendingMcpRequest } from "./EvidenceMcpServerCore.js";
 import { createDeferred } from "../../tests/fixtures/binarySession.js";
+import { awaitAcknowledgement } from "../../tests/fixtures/lifecycleAcknowledgement.js";
 import { createToolResultDelivery } from "./toolResult.js";
 
 const firstText = (result: {
@@ -161,7 +162,11 @@ it("passes the owned cancellation signal to a tool without an input schema", asy
     const pending = client
       .callTool({ name: "held" }, { signal: controller.signal })
       .catch(() => undefined);
-    await entered.promise;
+    await awaitAcknowledgement(
+      entered.promise,
+      pending,
+      "held tool handler entry",
+    );
     controller.abort("stop no-input tool");
     await pending;
     expect(await observed.promise).toMatchObject({
@@ -221,7 +226,11 @@ it("aborts a running tool with a caller abort that keeps the client's reason", a
       { signal: controller.signal },
     );
     const rejected = expect(pending).rejects.toBeDefined();
-    await entered.promise;
+    await awaitAcknowledgement(
+      entered.promise,
+      pending,
+      "held tool handler entry",
+    );
     controller.abort("user stopped");
     await rejected;
 
@@ -283,7 +292,11 @@ it("reports owner shutdown to the handler when transport close invokes onclose",
     const pending = client
       .callTool({ name: "held", arguments: {} })
       .catch(() => undefined);
-    await entered.promise;
+    await awaitAcknowledgement(
+      entered.promise,
+      pending,
+      "held tool handler entry",
+    );
     await server.close();
     expect(await observed.promise).toBe(OwnerCancellation.ownerClosed);
     await pending;
