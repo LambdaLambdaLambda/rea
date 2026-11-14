@@ -17,12 +17,8 @@ const root = fileURLToPath(new URL("../../../", import.meta.url));
  * to compile instead.
  */
 const UNTYPED_CDP_COMMAND_BASELINE: Readonly<Record<string, number>> = {
-  "src/browser/CdpCaptureStorage.ts": 4,
-  "src/browser/CdpCaptureStorageFingerprints.ts": 5,
-  "src/browser/CdpElectronInspection.ts": 1,
   "src/browser/CdpElectronWorkers.ts": 1,
   "src/browser/CdpEndpoint.ts": 2,
-  "src/browser/CdpPageCapture.ts": 4,
   "src/browser/CdpPageCaptureWorkers.ts": 1,
   "src/browser/PlaywrightScenarioServiceWorkers.ts": 1,
   "src/browser/PlaywrightScenarioStorage.ts": 1,
