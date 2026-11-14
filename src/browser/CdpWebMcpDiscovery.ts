@@ -28,6 +28,7 @@ import {
 import {
   classifyCdpFrameUrl,
   observeCdpFrameUrl,
+  type CdpFrameUrlObservation,
 } from "./CdpCaptureDocuments.js";
 import {
   observedFrameUrl,
@@ -191,7 +192,7 @@ const ingestInitialFrameTree = (
       invalidateFrameFacts(facts, state);
       continue;
     }
-    handleFrameUpdate(facts, state, true);
+    handleFrameUpdate(facts, state, true, node.url);
   }
 };
 
@@ -235,6 +236,7 @@ const handleFrameUpdate = (
   sourceFacts: CdpFrameFacts,
   state: FrameScopeState,
   documentCommitted: boolean,
+  observation: CdpFrameUrlObservation = observeCdpFrameUrl(sourceFacts.source),
 ): boolean => {
   const frameId = sourceFacts.frameId;
   if (
@@ -246,7 +248,6 @@ const handleFrameUpdate = (
     invalidateFrameFacts(sourceFacts, state);
     return true;
   }
-  const observation = observeCdpFrameUrl(sourceFacts.source);
   const facts = classifyCdpFrameUrl(observation, state.origins);
   if (observation.kind !== "observed") {
     removeFrameTools(frameId, state.tools);
