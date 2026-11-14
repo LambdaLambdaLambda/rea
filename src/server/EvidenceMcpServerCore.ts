@@ -16,6 +16,7 @@ import {
   type McpServerOptions,
   type RegisteredTool,
   type RegisteredPrompt,
+  type ServerContext,
   type PromptCallback,
   type RequestId,
   type ScopeChallengeHandler,
@@ -476,9 +477,31 @@ export class EvidenceMcpServerCore extends RequestTrackingMcpServer {
       const request = currentMcpToolRequest();
       request?.beginHandler();
       try {
+        const normalized = (original: ServerContext): ServerContext =>
+          request === undefined
+            ? original
+            : {
+                ...original,
+                mcpReq: {
+                  ...original.mcpReq,
+                  signal: AbortSignal.any([
+                    request.cancellation.signal,
+                    original.mcpReq.signal,
+                  ]),
+                },
+              };
+        const invoke = () =>
+          config.inputSchema === undefined
+            ? (callback as ToolCallback<undefined>)(
+                normalized(input as ServerContext),
+              )
+            : (callback as ToolCallback<StandardSchemaWithJSON>)(
+                input,
+                normalized(context as ServerContext),
+              );
         return await (this.analysisSettings === undefined
-          ? callback(input, context)
-          : this.analysisSettings.run(() => callback(input, context)));
+          ? invoke()
+          : this.analysisSettings.run(invoke));
       } finally {
         request?.finishHandler();
       }
@@ -547,6 +570,7 @@ class ErrorEvidenceTransport implements Transport {
   private readonly pendingValidation = new Map<RequestId, McpToolRequest>();
   private readonly pendingToolLists = new Set<RequestId>();
   private readonly pendingCompletions = new Map<RequestId, AbortController>();
+  private closing = false;
 
   private get recordEvidence(): EvidenceWriter["recordEvidence"] | undefined {
     return this.currentEvidenceWriter();
@@ -649,7 +673,9 @@ class ErrorEvidenceTransport implements Transport {
     };
     transport.onerror = (error) => this.onerror?.(error);
     transport.onclose = () => {
-      const disconnected = new CallerAbort("client-disconnected");
+      const disconnected = this.closing
+        ? OwnerCancellation.ownerClosed
+        : new CallerAbort("client-disconnected");
       this.pendingTools.clear();
       for (const validation of this.pendingValidation.values())
         validation.cancel(disconnected);
@@ -674,6 +700,7 @@ class ErrorEvidenceTransport implements Transport {
   }
 
   async close(): Promise<void> {
+    this.closing = true;
     try {
       await this.transport.close();
     } finally {
