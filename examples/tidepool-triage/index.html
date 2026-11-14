@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#092b3c">
+    <meta name="description" content="A tiny ocean sorting game about nature and litter.">
+    <title>Tidepool Triage</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <div class="ocean-glow ocean-glow--one" aria-hidden="true"></div>
+    <div class="ocean-glow ocean-glow--two" aria-hidden="true"></div>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Tidepool Triage home">
+          <span class="brand-mark" aria-hidden="true">~</span>
+          <span>TIDEPOOL <strong>TRIAGE</strong></span>
+        </a>
+        <span class="offline-tag"><span aria-hidden="true"></span> LOCAL GAME</span>
+      </header>
+
+      <main>
+        <section class="intro" id="intro">
+          <div class="intro-copy">
+            <p class="eyebrow"><span aria-hidden="true">✦</span> A small mission for a big blue world</p>
+            <h1>Give the ocean<br><span>room to breathe.</span></h1>
+            <p class="intro-description">
+              Meet the tidepool neighbors. Can you tell the natural treasures
+              from the things people leave behind?
+            </p>
+            <button class="primary-button" id="start-button" type="button">
+              Start the sort <span aria-hidden="true">→</span>
+            </button>
+            <p class="keyboard-hint">Playing with a keyboard? Press <kbd>1</kbd> or <kbd>2</kbd> to sort.</p>
+          </div>
+          <div class="reef-art" aria-label="Illustration of ocean life">
+            <span class="sun-disc" aria-hidden="true"></span>
+            <span class="art-bubble art-bubble--one" aria-hidden="true"></span>
+            <span class="art-bubble art-bubble--two" aria-hidden="true"></span>
+            <span class="art-fish art-fish--one" aria-hidden="true">🐠</span>
+            <span class="art-fish art-fish--two" aria-hidden="true">🐟</span>
+            <span class="art-turtle" aria-hidden="true">🐢</span>
+            <span class="reef-rock reef-rock--one" aria-hidden="true"></span>
+            <span class="reef-rock reef-rock--two" aria-hidden="true"></span>
+            <span class="reef-plant reef-plant--one" aria-hidden="true"></span>
+            <span class="reef-plant reef-plant--two" aria-hidden="true"></span>
+            <span class="reef-plant reef-plant--three" aria-hidden="true"></span>
+            <p class="art-caption">A little care goes a long way.</p>
+          </div>
+        </section>
+
+        <section class="game-panel" id="game" hidden aria-labelledby="game-title">
+          <div class="game-heading">
+            <div>
+              <p class="eyebrow">THE TIDEPOOL FIELD GUIDE</p>
+              <h1 id="game-title">What belongs here?</h1>
+            </div>
+            <div class="score-card" aria-label="Current score">
+              <span class="score-star" aria-hidden="true">✦</span>
+              <span><strong id="score">0</strong><small>POINTS</small></span>
+            </div>
+          </div>
+
+          <div class="progress-row">
+            <span id="round-label">ITEM 1 OF 10</span>
+            <span class="progress-track" role="progressbar" aria-label="Game progress" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
+              <span class="progress-fill" id="progress-fill"></span>
+            </span>
+          </div>
+
+          <article class="item-card" aria-labelledby="item-name">
+            <div class="item-art" id="item-art" aria-hidden="true"></div>
+            <div class="item-copy">
+              <p class="item-kicker">TIDEPOOL FIND</p>
+              <h2 id="item-name"></h2>
+              <p id="item-prompt">Is it part of nature, or human-made litter?</p>
+            </div>
+          </article>
+
+          <div class="choice-label">Choose a home for this find</div>
+          <div class="choices" id="choices">
+            <button class="choice-button choice-button--nature" type="button" data-choice="nature">
+              <span class="choice-icon" aria-hidden="true">✿</span>
+              <span><strong>Nature</strong><small>Grows or lives in the sea</small></span>
+              <kbd>1</kbd>
+            </button>
+            <button class="choice-button choice-button--litter" type="button" data-choice="litter">
+              <span class="choice-icon" aria-hidden="true">↗</span>
+              <span><strong>Litter</strong><small>Made or left by people</small></span>
+              <kbd>2</kbd>
+            </button>
+          </div>
+
+          <div class="feedback" id="feedback" aria-live="polite" aria-atomic="true" hidden>
+            <span class="feedback-mark" id="feedback-mark" aria-hidden="true"></span>
+            <div>
+              <strong id="feedback-title"></strong>
+              <p id="feedback-copy"></p>
+            </div>
+            <button class="next-button" id="next-button" type="button">Next find <span aria-hidden="true">→</span></button>
+          </div>
+
+          <div class="finish-card" id="finish" hidden aria-live="polite">
+            <span class="finish-sparkle" aria-hidden="true">✦</span>
+            <p class="eyebrow">MISSION COMPLETE</p>
+            <h2 id="finish-title">The tidepool is looking brighter.</h2>
+            <p id="finish-copy"></p>
+            <button class="primary-button" id="replay-button" type="button">Sort again <span aria-hidden="true">↻</span></button>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>Curiosity makes waves.</span>
+        <span>Made for a kinder ocean <span aria-hidden="true">♡</span></span>
+      </footer>
+    </div>
+  </body>
+</html>
