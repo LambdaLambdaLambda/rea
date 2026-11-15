@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ocean Sort is an offline ocean-wildlife sorting game. Sort wildlife and litter correctly to protect marine life."
+    />
+    <title>Ocean Sort</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="preview-root">
+      <header class="preview-header">
+        <div class="preview-header__brand" aria-label="Ocean Sort brand">
+          <span class="preview-header__logo">OS</span>
+          <span>Ocean Sort</span>
+        </div>
+        <div class="preview-header__actions">
+          <span class="preview-header__action">Offline game · no account needed</span>
+        </div>
+      </header>
+
+      <nav class="preview-nav" aria-label="Main navigation">
+        <a class="preview-nav__link preview-nav__link--active" href="#game">Game</a>
+        <a class="preview-nav__link" href="#results">Round Results</a>
+      </nav>
+
+      <main class="preview-main">
+        <section id="game-view" class="view is-active" aria-live="polite"></section>
+        <section id="results-view" class="view" aria-live="polite"></section>
+      </main>
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
