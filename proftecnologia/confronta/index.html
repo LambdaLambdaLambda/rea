@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="it">
+<head><script id="pf-tema-early">(function(){try{var s=localStorage,t=s.getItem("pf-tema");if(!t){t=s.getItem("ailit-tema");var d=s.getItem("dc-tema");if(!t&&d)try{t=JSON.parse(d)}catch(e){}if(t)s.setItem("pf-tema",t)}if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}})()</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Confronta i framework · ProfTecnologIA Framework</title>
+<meta name="description" content="I framework sull'IA a confronto: tabella per destinatari, struttura, livelli e licenza, e collegamenti tra le competenze di AILit, UNESCO e DigComp 3.0.">
+<!-- OG --><meta property="og:type" content="website"><meta property="og:site_name" content="ProfTecnologIA Framework"><meta property="og:locale" content="it_IT"><meta property="og:title" content="Confronta i framework · ProfTecnologIA Framework"><meta property="og:description" content="I framework sull&#x27;IA a confronto: tabella per destinatari, struttura, livelli e licenza, e collegamenti tra le competenze di AILit, UNESCO e DigComp 3.0."><meta property="og:url" content="https://framework.proftecnologia.it/confronta/"><meta property="og:image" content="https://framework.proftecnologia.it/asset/og/confronta.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Confronta i framework · ProfTecnologIA Framework"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://framework.proftecnologia.it/confronta/"><!-- /OG -->
+<!-- ICONE --><link rel="icon" href="../favicon.ico" sizes="any"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="manifest" href="../site.webmanifest"><meta name="theme-color" content="#14213D"><!-- /ICONE -->
+<link rel="icon" href="../asset/logo_proftecnologia_framework.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Portale: testata blu notte con griglia a tessere (richiamo del logo); schede framework come tessere; tabella di confronto. */
+:root{color-scheme:light;
+  --bg:#F4F4F1;--surface:#FFFFFF;--surface-2:#ECECE7;--line:#D9D9D2;--fg:#14213D;--muted:#596079;
+  --night:#14213D;--amber:#FCA311;--amber-on:#1B1405;--sky:#4CC9F0;--link:#0A6C8C;
+  --ailit:#3B2E8F;--unesco:#0F3D5E;--digcomp:#1F6F50;--ai4k12:#7C2D12;
+  --f-d:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;--f-b:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#0C1220;--surface:#141C2E;--surface-2:#1B2539;--line:#2A3650;--fg:#E8ECF4;--muted:#A3ACC2;--link:#7FD6F2;
+  --ailit:#A99CF5;--unesco:#8FD3E8;--digcomp:#7FD3AE;--ai4k12:#FFB27A}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#0C1220;--surface:#141C2E;--surface-2:#1B2539;--line:#2A3650;--fg:#E8ECF4;--muted:#A3ACC2;--link:#7FD6F2;
+  --ailit:#A99CF5;--unesco:#8FD3E8;--digcomp:#7FD3AE;--ai4k12:#FFB27A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 var(--f-b)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--night);z-index:30}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-d);margin:0;line-height:1.1;text-wrap:balance}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.hero{background:var(--night);color:#fff;position:relative;overflow:hidden}
+.hero .wrap{padding-block:22px 54px;position:relative;z-index:1}
+.nav{position:relative;z-index:2;display:flex;align-items:center;gap:12px;margin-bottom:44px}
+.nav img{width:40px;height:40px}
+.nav b{font-family:var(--f-d);font-size:1.15rem;margin-right:auto}
+.themes{display:flex;gap:2px;background:rgba(255,255,255,.12);border-radius:999px;padding:3px}
+.themes button{border:0;background:transparent;color:#fff;width:30px;height:26px;border-radius:999px;cursor:pointer;display:grid;place-items:center;opacity:.75}
+.themes svg{width:15px;height:15px}
+.themes button[aria-pressed="true"]{background:var(--amber);color:var(--amber-on);opacity:1}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;max-width:15ch;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero p{max-width:62ch;color:#C9D2E6;font-size:1.1rem;margin:18px 0 0}
+.tiles{position:absolute;right:-40px;top:100px;display:grid;grid-template-columns:repeat(2,120px);gap:14px;transform:rotate(-8deg);opacity:.9}
+.tiles i{width:120px;height:120px;border-radius:22px}
+.tiles i:nth-child(1){background:var(--amber)}.tiles i:nth-child(2){background:#E5E5E5;opacity:.2}.tiles i:nth-child(3){background:#E5E5E5;opacity:.2}.tiles i:nth-child(4){background:var(--sky)}
+main{padding-block:0 60px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:18px;margin-top:-30px;position:relative;z-index:2}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px;border-top:6px solid var(--c)}
+.card .k{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--c)}
+.badge{font-size:.72rem;padding:3px 9px;border-radius:999px;background:var(--c);color:var(--surface);letter-spacing:.04em}
+.badge.soon{background:var(--surface-2);color:var(--muted)}
+.card h2{font-size:1.55rem}
+.card p{margin:0;color:var(--muted)}
+.facts{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0}
+.facts span{font-size:.82rem;background:var(--surface-2);border-radius:6px;padding:3px 8px;font-weight:600}
+.acts{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px;padding-top:6px}
+.btn{display:inline-block;border-radius:10px;padding:9px 14px;font-weight:700;text-decoration:none;border:1px solid var(--line);color:var(--fg);background:var(--surface)}
+.btn.p{background:var(--c);border-color:var(--c);color:var(--surface)}
+.btn:hover{border-color:var(--c)}
+.card.off{opacity:.85}
+.c-ailit{--c:var(--ailit)}.c-cat{--c:#B5700A}.c-unesco{--c:var(--unesco)}.c-digcomp{--c:var(--digcomp)}.c-ai4k12{--c:var(--ai4k12)}.c-fvg{--c:#7A1F3D}.c-edeh{--c:#A8361B}.c-gl{--c:#0A6C8C}
+h2.sec{font-size:1.7rem;margin:50px 0 6px}
+.lead{color:var(--muted);max-width:75ch;margin:0 0 16px}
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:860px}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:.94rem}
+thead th{font-family:var(--f-d);font-size:1rem;background:var(--surface-2)}
+tbody th{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);width:150px}
+tr:last-child>*{border-bottom:0}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.how div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.how b{font-family:var(--f-d);font-size:1.1rem;display:block;margin-bottom:4px}
+.how p{margin:0;color:var(--muted);font-size:.95rem}
+footer{border-top:1px solid var(--line);padding-block:22px;font-size:.85rem;color:var(--muted)}
+footer p{margin:0 0 6px;max-width:110ch}
+@media (max-width:760px){.tiles{opacity:.25;right:-120px}}
+/* PORTALE-F1 */
+.hero .wrap{padding-block:22px 76px}
+.nav{margin-bottom:34px}
+.needs{position:relative;z-index:2;margin-top:-52px}
+.needs>h2{font-size:1.05rem;font-family:var(--f-b);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin:0 0 10px}
+.need-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.need{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 10px 30px -18px rgba(10,20,40,.45)}
+.need-h{display:flex;align-items:center;gap:10px}
+.need-i{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--nb);color:var(--nc)}
+.need-i svg{width:24px;height:24px}
+.need h3{font-size:1.2rem}
+.need p{margin:0;color:var(--muted);font-size:.95rem}
+.need-l{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.need-l span{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-right:2px}
+.need-l a{font-weight:600;font-size:.86rem;text-decoration:none;color:var(--nc);background:var(--nb);border-radius:999px;padding:3px 10px}
+.need-l a:hover{text-decoration:underline}
+.need-a{margin-top:auto;padding-top:4px;display:flex}
+.need-a .btn{--c:var(--nc);flex:1 1 100%;text-align:center}
+.hero h1{font-size:clamp(2rem,4.4vw,3.1rem);max-width:21ch}
+.n-lez{--nc:#9A5B00;--nb:#FFF1D6}.n-per{--nc:#3B2E8F;--nb:#ECE9FB}.n-for{--nc:#A8361B;--nb:#FDE7E0}.n-aut{--nc:#1F6F50;--nb:#E0F2E9}
+:root[data-theme="dark"] .n-lez{--nc:#FCA311;--nb:#3A2C10}:root[data-theme="dark"] .n-per{--nc:#B9AEFF;--nb:#25204A}:root[data-theme="dark"] .n-for{--nc:#FF9C80;--nb:#3B1A12}:root[data-theme="dark"] .n-aut{--nc:#8FE0BB;--nb:#14301F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .n-lez{--nc:#FCA311;--nb:#3A2C10}:root:not([data-theme="light"]) .n-per{--nc:#B9AEFF;--nb:#25204A}:root:not([data-theme="light"]) .n-for{--nc:#FF9C80;--nb:#3B1A12}:root:not([data-theme="light"]) .n-aut{--nc:#8FE0BB;--nb:#14301F}}
+:root[data-theme="dark"] .need-a .btn.p,:root[data-theme="dark"] .need-a .btn.p{color:#0C1220}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .need-a .btn.p{color:#0C1220}}
+.flow{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;position:relative;counter-reset:st}
+.flow::before{content:"";position:absolute;left:10%;right:10%;top:26px;height:3px;background:linear-gradient(90deg,var(--amber),var(--sky));border-radius:3px}
+.flow li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px}
+.st-i{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--night);color:#fff;border:3px solid var(--bg);box-shadow:0 0 0 2px var(--amber);position:relative;z-index:1}
+.flow li:nth-child(n+3) .st-i{box-shadow:0 0 0 2px var(--sky)}
+.st-i svg{width:24px;height:24px}
+.flow b{font-family:var(--f-d);font-size:1.05rem;display:flex;gap:6px;align-items:baseline}
+.st-n{font-family:var(--f-b);font-size:.8rem;color:var(--muted)}
+.flow p{margin:0;font-size:.9rem;color:var(--muted);max-width:28ch}
+.flow-n{font-size:.88rem;color:var(--muted);margin:14px 0 0}
+.cards{margin-top:6px}
+@media (max-width:860px){
+  .flow{grid-template-columns:1fr;gap:0}
+  .flow::before{left:26px;right:auto;top:20px;bottom:20px;width:3px;height:auto;background:linear-gradient(180deg,var(--amber),var(--sky))}
+  .flow li{display:grid;grid-template-columns:54px 1fr;column-gap:14px;text-align:left;align-items:start;padding-bottom:14px}
+  .st-i{grid-row:1/3}
+  .flow p{max-width:none}
+}
+@media (max-width:640px){.hero .wrap{padding-block:18px 64px}.nav{margin-bottom:22px}.needs{margin-top:-44px}}
+/* PRESENTAZIONI-F1 */
+.pr-f{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.pr-f button{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:6px 13px;font:600 .9rem var(--f-b);cursor:pointer}
+.pr-f button[aria-pressed="true"]{background:var(--fg);color:var(--surface);border-color:var(--fg)}
+.pr-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:14px}
+.pr{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;border-top:4px solid var(--pc)}
+.pr[hidden]{display:none}
+.pr-im{position:relative;display:block;aspect-ratio:16/9;background:var(--surface-2)}
+.pr-im img{width:100%;height:100%;object-fit:cover;display:block}
+.pr-im span{position:absolute;right:8px;bottom:8px;background:rgba(11,27,43,.82);color:#fff;font-size:.75rem;font-weight:700;border-radius:6px;padding:2px 7px}
+.pr-im:hover img{opacity:.9}
+.pr-b{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pr-k{font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.pr-k b{color:var(--pc)}
+:root[data-theme="dark"] .pr-k b{color:var(--fg)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pr-k b{color:var(--fg)}}
+.pr h3{font-size:1.02rem;line-height:1.2}
+.pr p{margin:0;font-size:.88rem;color:var(--muted)}
+.pr-a{margin-top:auto;padding-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+.pr-a .btn{--c:var(--pc);padding:6px 10px;font-size:.85rem;border-radius:8px}
+:root[data-theme="dark"] .pr-a .btn.p{--c:#FCA311;color:#1B1405}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pr-a .btn.p{--c:#FCA311;color:#1B1405}}
+@media (max-width:640px){.pr p{display:none}.pr-g{gap:10px}}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@600;700&display=swap">
+<style id="pfnav-css">/* PFNAV: barra comune del sito, identica in tutte le pagine, con la ricerca */
+.pfnav{background:#0B1B2B;color:#C9D6E3;font:600 13.5px/1.2 "Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;letter-spacing:0;border-bottom:1px solid rgba(255,255,255,.08);position:relative;z-index:25}
+.pfnav *{box-sizing:border-box}
+.pfnav .pfnav-in{max-width:1280px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:8px;min-height:40px}
+.pfnav .pfnav-l{display:flex;align-items:center;gap:4px;min-width:0;flex:1 1 auto}
+.pfnav a{color:#E6EDF5;text-decoration:none;padding:7px 7px;border-radius:7px;white-space:nowrap;flex:none;border-bottom:0}
+.pfnav a:hover{background:rgba(255,255,255,.09);color:#fff}
+.pfnav a:focus-visible,.pfnav button:focus-visible{outline:2px solid #FCA311;outline-offset:1px}
+.pfnav a[aria-current="page"]{color:#0B1B2B;background:#FCA311}
+.pfnav .pfnav-home{display:flex;align-items:center;gap:8px;font-weight:700;color:#fff;padding-left:0}
+.pfnav .pfnav-home i{display:grid;grid-template-columns:repeat(2,6px);gap:2px}
+.pfnav .pfnav-home i b{width:6px;height:6px;border-radius:2px;background:#E5E5E5;opacity:.35}
+.pfnav .pfnav-home i b:first-child{background:#FCA311;opacity:1}.pfnav .pfnav-home i b:last-child{background:#4CC9F0;opacity:1}
+.pfnav .pfnav-home[aria-current="page"]{background:transparent;color:#FCA311}
+.pfnav .pfnav-sep{width:1px;height:18px;background:rgba(255,255,255,.22);margin:0 6px;flex:none}
+.pfnav .pfnav-p{flex:none;position:relative;display:flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.22);border-radius:8px;padding:5px 9px;min-height:30px}
+.pfnav .pfnav-p svg{width:15px;height:15px}
+.pfnav .pfnav-p b{background:#FCA311;color:#0B1B2B;border-radius:999px;font-size:11px;line-height:1;padding:3px 6px;min-width:18px;text-align:center}
+.pfnav .pfnav-p b:empty{display:none}
+.pfnav .pfnav-p[aria-current="page"] b{background:#0B1B2B;color:#FCA311}
+.pfnav .pfnav-s{flex:none;display:flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#E6EDF5;border-radius:8px;padding:5px 9px;font:inherit;cursor:pointer;min-height:30px}
+.pfnav .pfnav-s:hover{background:rgba(255,255,255,.14);color:#fff}
+.pfnav .pfnav-s svg{width:15px;height:15px}
+.pfnav .pfnav-s kbd{font:600 11px/1 "Source Sans 3",system-ui,sans-serif;border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:2px 5px;color:#C9D6E3}
+.pfnav .pfnav-b{flex:none;display:flex;align-items:center;gap:5px;border:0;background:transparent;color:#E6EDF5;font:inherit;padding:7px 8px;border-radius:7px;cursor:pointer}
+.pfnav .pfnav-b:hover{background:rgba(255,255,255,.09);color:#fff}
+.pfnav .pfnav-b svg{width:14px;height:14px;transition:transform .15s}
+.pfnav .pfnav-b[aria-expanded="true"]{background:rgba(255,255,255,.14);color:#fff}
+.pfnav .pfnav-b[aria-expanded="true"] svg.ch{transform:rotate(180deg)}
+.pfnav .pfnav-b.cur{color:#0B1B2B;background:#FCA311}
+.pfnav .pfnav-mb{display:none}
+.pfnav .pfnav-pan{position:absolute;left:max(16px,calc((100% - 1280px)/2 + 16px));top:calc(100% + 4px);width:min(760px,calc(100% - 32px));background:#0F2236;border:1px solid rgba(255,255,255,.14);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.45);padding:10px;z-index:40}
+.pfnav .pfnav-pan[hidden]{display:none}
+.pfnav .pfnav-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+.pfnav .pfnav-pan a{display:flex;gap:10px;align-items:flex-start;white-space:normal;padding:9px 10px;border-radius:10px;color:#E6EDF5}
+.pfnav .pfnav-pan a:hover{background:rgba(255,255,255,.08)}
+.pfnav .pfnav-pan a i{flex:none;width:10px;height:10px;border-radius:3px;margin-top:5px;background:var(--fc)}
+.pfnav .pfnav-pan a b{display:block;font-size:14.5px;color:#fff}
+.pfnav .pfnav-pan a small{display:block;font:400 13px/1.35 "Source Sans 3",system-ui,sans-serif;color:#AFC0D2;margin-top:2px}
+.pfnav .pfnav-pan a[aria-current="page"],.pfnav .pfnav-pan a.cur{background:rgba(252,163,17,.16);color:#fff;box-shadow:inset 3px 0 0 #FCA311}
+.pfnav .pfnav-pan a[aria-current="page"] b,.pfnav .pfnav-pan a.cur b{color:#FCA311}
+.pfnav .pfnav-cf{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);margin-top:4px;padding-top:4px}
+.pfnav .pfnav-mo{display:none}
+.pfnav .pf-skip{position:absolute;left:12px;top:-60px;z-index:60;background:#FCA311;color:#0B1B2B;font-weight:700;padding:10px 16px;border-radius:0 0 10px 10px;text-decoration:none}
+.pfnav .pf-skip:focus{top:0;outline:3px solid #fff;outline-offset:2px}
+header.pfhead nav.tabs.more-r{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 44px),transparent)}
+header.pfhead nav.tabs.more-l{-webkit-mask-image:linear-gradient(to left,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(to left,#000 calc(100% - 44px),transparent)}
+header.pfhead nav.tabs.more-l.more-r{-webkit-mask-image:linear-gradient(to right,transparent,#000 44px,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(to right,transparent,#000 44px,#000 calc(100% - 44px),transparent)}
+/* TESTO: dimensione del testo e carattere ad alta leggibilità (pulsante «Aa»), preferenza salvata nel browser */
+.pfnav .pfnav-a{flex:none;display:flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#E6EDF5;border-radius:8px;padding:5px 9px;font:inherit;cursor:pointer;min-height:30px}
+.pfnav .pfnav-a:hover,.pfnav .pfnav-a[aria-expanded="true"]{background:rgba(255,255,255,.14);color:#fff}
+.pfnav .pfnav-a b{font:700 14px/1 "Source Sans 3",system-ui,sans-serif;letter-spacing:-.02em}
+.pfnav .pfnav-tx{position:absolute;right:max(16px,calc((100% - 1280px)/2 + 16px));top:calc(100% + 4px);width:min(320px,calc(100% - 32px));background:#0F2236;border:1px solid rgba(255,255,255,.14);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.45);padding:14px;z-index:41;color:#E6EDF5;font:400 14.5px/1.4 "Source Sans 3",system-ui,sans-serif}
+.pfnav .pfnav-tx[hidden]{display:none}
+.pfnav .pfnav-tx fieldset{border:0;margin:0 0 12px;padding:0}
+.pfnav .pfnav-tx legend{font:700 11px/1 "Source Sans 3",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#8FA3B8;padding:0 0 8px}
+.pfnav .pfnav-tx .sz{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.pfnav .pfnav-tx .sz label{display:grid;place-items:center;gap:2px;border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:8px 4px;cursor:pointer;text-align:center;font-size:13px}
+.pfnav .pfnav-tx .sz label span{font-weight:700;line-height:1}
+.pfnav .pfnav-tx .sz input{position:absolute;opacity:0;pointer-events:none}
+.pfnav .pfnav-tx .sz label:has(input:checked){background:#FCA311;color:#0B1B2B;border-color:#FCA311}
+.pfnav .pfnav-tx .sz label:has(input:focus-visible){outline:2px solid #FCA311;outline-offset:2px}
+.pfnav .pfnav-tx .fn{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.pfnav .pfnav-tx .fn input{width:18px;height:18px;margin:2px 0 0;accent-color:#FCA311;flex:none}
+.pfnav .pfnav-tx .fn small{display:block;color:#AFC0D2;font-size:13px}
+.pfnav .pfnav-tx p{margin:10px 0 0;font-size:12.5px;color:#AFC0D2}
+:root.pf-t1 body>*:not(dialog):not(.pfnav){zoom:1.12}:root.pf-t1 dialog:not(.lz)>*{zoom:1.12}
+:root.pf-t2 body>*:not(dialog):not(.pfnav){zoom:1.25}:root.pf-t2 dialog:not(.lz)>*{zoom:1.2}
+:root.pf-t1 .pfnav{zoom:1.06}:root.pf-t2 .pfnav{zoom:1.12}
+:root.pf-font body,:root.pf-font body *:not(svg):not(svg *):not(code):not(kbd):not(pre):not(samp){font-family:"Atkinson Hyperlegible","Verdana",system-ui,sans-serif!important;letter-spacing:.01em}
+@media (max-width:760px){.pfnav .pfnav-l>a:not(.pfnav-home),.pfnav .pfnav-l>.pfnav-sep,.pfnav .pfnav-l>.pfnav-fw{display:none}.pfnav .pfnav-mb{display:flex;margin-left:auto;border:1px solid rgba(255,255,255,.22);min-height:34px}.pfnav .pfnav-pan{position:absolute;left:0;right:0;top:100%;width:auto;max-height:calc(100dvh - 42px);overflow-y:auto;border-radius:0 0 14px 14px;border-left:0;border-right:0}.pfnav .pfnav-g{grid-template-columns:1fr}.pfnav .pfnav-mo{display:block}.pfnav .pfnav-h{font:700 11px/1 "Source Sans 3",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#8FA3B8;padding:10px 10px 4px}}
+@media (max-width:640px){.pfnav{font-size:13px}.pfnav .pfnav-home span,.pfnav .pfnav-s span,.pfnav .pfnav-s kbd,.pfnav .pfnav-a span,.pfnav .pfnav-p span{display:none}.pfnav .pfnav-p{padding:6px 8px;min-height:34px}.pfnav .pfnav-in{min-height:42px;gap:6px}.pfnav .pfnav-s,.pfnav .pfnav-a{padding:6px 8px;min-height:34px}.pfnav .pfnav-tx{right:8px;width:calc(100% - 16px)}}
+@media print{.pfnav,.pfs{display:none!important}}
+.pf-prh{display:none}
+@media print{.pf-prh{display:flex;align-items:center;gap:3mm;margin:0 0 4mm;padding:0 0 2.5mm;border-bottom:.5mm solid #14213D;font:400 9pt/1.2 "Source Sans 3","Segoe UI",system-ui,sans-serif;color:#14213D}
+ .pf-prh img{width:9mm;height:9mm;flex:none}.pf-prh b{font-weight:700}.pf-prh .pf-prh-t{flex:1;color:#333}.pf-prh .pf-prh-u{color:#555;font-size:8pt}
+ body:has(dialog[open]) .pf-prh{display:none!important}}
+/* finestra di ricerca */
+.pfs{--s-bg:#FFFFFF;--s-bg2:#F2F3EF;--s-line:#D9D9D2;--s-fg:#14213D;--s-mu:#596079;--s-acc:#0A6C8C;--s-mk:#FFE3A3;
+  border:0;padding:0;margin:6vh auto auto;width:min(760px,calc(100% - 24px));max-height:min(80vh,760px);border-radius:16px;background:var(--s-bg);color:var(--s-fg);box-shadow:0 24px 70px rgba(5,10,25,.45);font:16px/1.45 "Source Sans 3","Segoe UI",system-ui,sans-serif;overflow:hidden;flex-direction:column}
+.pfs[open]{display:flex}
+.pfs::backdrop{background:rgba(8,14,28,.55)}
+:root[data-theme="dark"] .pfs{--s-bg:#141C2E;--s-bg2:#1B2539;--s-line:#2A3650;--s-fg:#E8ECF4;--s-mu:#A3ACC2;--s-acc:#7FD6F2;--s-mk:#5A4310}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pfs{--s-bg:#141C2E;--s-bg2:#1B2539;--s-line:#2A3650;--s-fg:#E8ECF4;--s-mu:#A3ACC2;--s-acc:#7FD6F2;--s-mk:#5A4310}}
+.pfs *{box-sizing:border-box}
+.pfs-h,.pfs-f,.pfs-ft{flex:none}
+.pfs-h{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--s-line)}
+.pfs-h svg{width:20px;height:20px;flex:none;color:var(--s-mu)}
+.pfs-h input{flex:1;min-width:0;border:0;background:transparent;color:var(--s-fg);font:inherit;font-size:1.1rem;outline:none;padding:6px 0}
+.pfs-h button{border:1px solid var(--s-line);background:var(--s-bg2);color:var(--s-fg);border-radius:8px;padding:5px 10px;font:600 .85rem "Source Sans 3",system-ui,sans-serif;cursor:pointer}
+.pfs-f{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid var(--s-line);overflow-x:auto;scrollbar-width:none}
+.pfs-f::-webkit-scrollbar{display:none}
+.pfs-f button{flex:none;border:1px solid var(--s-line);background:var(--s-bg);color:var(--s-fg);border-radius:999px;padding:4px 11px;font:600 .84rem "Source Sans 3",system-ui,sans-serif;cursor:pointer}
+.pfs-f button[aria-pressed="true"]{background:var(--s-fg);color:var(--s-bg);border-color:var(--s-fg)}
+.pfs-f button small{opacity:.7;font-weight:400}
+.pfs-r{overflow-y:auto;padding:6px 8px 10px;flex:1;overscroll-behavior:contain}
+.pfs-g{margin:8px 6px 4px;font:700 .72rem "Source Sans 3",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--s-mu);display:flex;justify-content:space-between;align-items:center}
+.pfs-g button{border:0;background:none;color:var(--s-acc);font:inherit;text-transform:none;letter-spacing:0;cursor:pointer;text-decoration:underline}
+.pfs-i{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;padding:8px 10px;border-radius:10px;color:var(--s-fg);text-decoration:none;border:1px solid transparent}
+.pfs-i:hover,.pfs-i[aria-selected="true"]{background:var(--s-bg2);border-color:var(--s-line)}
+.pfs-i .b{grid-row:1/3;align-self:start;margin-top:2px;font:700 .68rem "Source Sans 3",system-ui,sans-serif;letter-spacing:.03em;color:#fff;background:var(--fc,#596079);border-radius:6px;padding:3px 6px;white-space:nowrap;min-width:64px;text-align:center}
+.pfs-i .t{font-weight:700;line-height:1.3}
+.pfs-i .s{font-size:.85rem;color:var(--s-mu);line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pfs mark{background:var(--s-mk);color:inherit;border-radius:3px;padding:0 1px}
+.pfs-e{padding:26px 16px;color:var(--s-mu);text-align:center}
+.pfs-e p{margin:0 0 10px}
+.pfs-e .sug{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.pfs-e .sug button{border:1px solid var(--s-line);background:var(--s-bg);color:var(--s-fg);border-radius:999px;padding:4px 11px;font:600 .85rem "Source Sans 3",system-ui,sans-serif;cursor:pointer}
+.pfs-ft{display:flex;justify-content:space-between;gap:10px;padding:8px 14px;border-top:1px solid var(--s-line);font-size:.78rem;color:var(--s-mu)}
+@media (max-width:640px){.pfs{margin:0;inset:0;width:100%;max-width:100%;height:100%;max-height:none;border-radius:0}.pfs-ft span:last-child{display:none}.pfs-i .b{min-width:54px}}
+</style>
+<script id="pf-testo-init">try{(function(){var r=document.documentElement,t=localStorage.getItem("pf-testo"),f=localStorage.getItem("pf-font")==="1";if(t==="1"||t==="2")r.classList.add("pf-t"+t);if(f){r.classList.add("pf-font");var l=document.createElement("link");l.rel="stylesheet";l.id="pf-font-css";l.href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap";document.head.appendChild(l)}})()}catch(e){}</script>
+<style id="dce-css">.c-dce{--c:#1D4E9E}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .c-dce{--c:#9DBBF5}}:root[data-theme="dark"] .c-dce{--c:#9DBBF5}</style>
+<style id="home-icone">/* HOME-ICONE */.card .acts{align-items:stretch;flex-wrap:nowrap}.card .acts .btn.ic{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;flex:0 0 auto;min-width:64px;min-height:48px;padding:5px 8px;border-radius:12px;font-size:.72rem;font-weight:700;line-height:1;color:var(--c);border-color:color-mix(in srgb,var(--c) 35%,var(--line))}.card .acts .btn.ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.card .acts .btn.ic:hover{background:color-mix(in srgb,var(--c) 10%,var(--surface))}.card .acts .btn.ic:focus-visible{outline:3px solid var(--c);outline-offset:2px}.card .acts .btn.p{flex:1 1 0;min-width:0;min-height:48px;display:inline-flex;align-items:center;justify-content:center;text-align:center;line-height:1.2}</style><style id="confronta-css">/* CONFRONTA */header.pfhead{background:#0B1B2B}.cf-lead{margin-top:26px}main.wrap>h2.sec:first-of-type{margin-top:28px}</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&display=swap">
+<style id="pfhead-css">/* PFHEAD: testata comune delle sezioni (stessa struttura, colore di fondo proprio del framework) */
+header.pfhead{color:#fff;border-bottom:0;box-shadow:inset 0 -3px 0 var(--ph-acc)}
+header.pfhead .wrap{max-width:1280px}
+header.pfhead .hd{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding-block:14px 0;min-width:0}
+header.pfhead .brand{order:1;flex:1 1 320px;display:flex;align-items:center;gap:12px;margin-right:auto;min-width:0}
+header.pfhead .brand>img,header.pfhead .brand>.logo{width:40px;height:40px;object-fit:contain;flex:none;border-radius:10px}
+header.pfhead .brand>.bars{width:40px;flex:none;gap:4px}
+header.pfhead .brand>.bars i{height:6px}
+header.pfhead .brand h1{font:800 1.35rem/1.12 "Bricolage Grotesque","Segoe UI",system-ui,sans-serif;letter-spacing:-.01em;color:#fff;margin:0}
+header.pfhead .brand small{display:block;font:400 .82rem/1.35 "Source Sans 3","Segoe UI",system-ui,sans-serif;color:#fff;opacity:.78;margin-top:2px;letter-spacing:0}
+header.pfhead .hd>.seg{order:2}
+header.pfhead .hd>.theme,header.pfhead .hd>.themes,header.pfhead .hd>.hd-tools{order:3;margin-left:0}
+header.pfhead .theme,header.pfhead .themes{display:flex;gap:2px;background:rgba(255,255,255,.12);border-radius:999px;padding:3px}
+header.pfhead .theme button,header.pfhead .themes button{border:0;background:transparent;color:#fff;width:30px;height:26px;border-radius:999px;cursor:pointer;display:grid;place-items:center;opacity:.78}
+header.pfhead .theme button:hover,header.pfhead .themes button:hover{opacity:1}
+header.pfhead .theme button[aria-pressed="true"],header.pfhead .themes button[aria-pressed="true"]{background:var(--ph-acc);color:var(--ph-on);opacity:1}
+header.pfhead .theme svg,header.pfhead .themes svg{width:15px;height:15px}
+header.pfhead nav.tabs{order:4;flex:1 1 100%;display:flex;flex-wrap:nowrap;gap:2px;overflow-x:auto;scrollbar-width:none;margin:4px 0 7px;padding:0;min-width:0;max-width:100%}
+header.pfhead nav.tabs::-webkit-scrollbar{display:none}
+header.pfhead nav.tabs>button,header.pfhead nav.tabs>a{flex:none;white-space:nowrap;border:0;background:transparent;color:#fff;opacity:.8;font:600 .95rem/1.2 "Source Sans 3","Segoe UI",system-ui,sans-serif;padding:9px 12px 12px;border-radius:8px 8px 0 0;box-shadow:none;text-decoration:none;cursor:pointer}
+header.pfhead nav.tabs>button:hover,header.pfhead nav.tabs>a:hover{opacity:1;background:rgba(255,255,255,.08)}
+header.pfhead nav.tabs>button[aria-selected="true"],header.pfhead nav.tabs>a[aria-current="page"]{opacity:1;background:transparent;color:#fff;font-weight:700;box-shadow:inset 0 -3px 0 var(--ph-acc)}
+header.pfhead nav.tabs>[hidden]{display:none}
+header.pfhead :focus-visible{outline:2px solid var(--ph-acc);outline-offset:2px}
+header.pfhead .wrap>nav.tabs{margin:2px 0 0;padding-bottom:7px}
+header.pfhead .wrap>.hd:last-child:not(:has(nav.tabs)){padding-bottom:16px}
+@media (max-width:640px){
+  header.pfhead .hd{padding-block:10px 2px;gap:6px 10px}
+  header.pfhead .brand>img,header.pfhead .brand>.logo{width:34px;height:34px}
+  header.pfhead .brand h1{font-size:1.12rem}
+  header.pfhead .brand small{display:none}
+  header.pfhead .hd>.seg{order:4;flex:0 0 auto;margin-right:auto}
+  header.pfhead .hd>.seg button{padding:5px 14px}
+  header.pfhead nav.tabs{order:5}
+  header.pfhead nav.tabs>button,header.pfhead nav.tabs>a{font-size:.9rem;padding:8px 10px 11px}
+  header.pfhead .wrap>.hd:last-child:not(:has(nav.tabs)){padding-bottom:12px}
+  header.pfhead nav.tabs{margin-bottom:5px}
+  header.pfhead .wrap>nav.tabs{margin-bottom:0;padding-bottom:5px}
+  header.pfhead .brand{flex:1 1 55%}
+}
+@media print{header.pfhead{box-shadow:none}}
+</style>
+<style id="contrasti-css">/* CONTRASTI */:root[data-theme="dark"] th[style*="#A8361B"]{color:#FF9B7A!important}:root[data-theme="dark"] th[style*="#1D4E9E"]{color:#9CC7FF!important}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) th[style*="#A8361B"]{color:#FF9B7A!important}:root:not([data-theme="light"]) th[style*="#1D4E9E"]{color:#9CC7FF!important}}</style><style id="pfnav-art-css">/* ARTEFATTI: gruppo «Risorse» nel pannello Framework su computer */.pfnav .pfnav-dk{border-top:1px solid rgba(255,255,255,.12);margin-top:6px;padding-top:2px}.pfnav .pfnav-dk .pfnav-h{font:700 11px/1 "Source Sans 3",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#8FA3B8;padding:10px 10px 4px}@media (max-width:760px){.pfnav .pfnav-dk{display:none}}</style>
+<!-- PF-STATS --><!-- PF-STATS-R --><!-- PF-LEAD-T --><style id="pf-stats-css">.pf-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 4px;padding:0;list-style:none}.pf-stats>div,.pf-stats>button,.pf-stats>a{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;min-width:0;color:var(--fg);text-align:left;text-decoration:none}.pf-stats>button{font:inherit;cursor:pointer}.pf-stats>button:hover,.pf-stats>a:hover{border-color:#9A5B00}.pf-stats b{font-family:var(--f-d,var(--f-display));font-weight:800;font-size:1.4rem;line-height:1.1;display:block;color:#9A5B00;font-variant-numeric:tabular-nums}.pf-stats span{font-size:.82rem;color:var(--muted);display:block}:root[data-theme="dark"] .pf-stats b{color:#FCA311}:root[data-theme="dark"] .pf-stats>button:hover,:root[data-theme="dark"] .pf-stats>a:hover{border-color:#FCA311}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pf-stats b{color:#FCA311}:root:not([data-theme="light"]) .pf-stats>button:hover,:root:not([data-theme="light"]) .pf-stats>a:hover{border-color:#FCA311}}@media (max-width:640px){.pf-stats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px;scroll-snap-type:x proximity}.pf-stats::-webkit-scrollbar{display:none}.pf-stats>div,.pf-stats>button,.pf-stats>a{flex:none;padding:6px 12px;scroll-snap-align:start}.pf-stats b{font-size:1.25rem}}/* PF-STATS-R */.pf-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0}.pf-grid.pf-g3{grid-template-columns:repeat(3,minmax(0,1fr))}.pf-lead{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:14px 24px;align-items:center;margin:0 0 18px}.pf-lead>p{margin:0}.pf-r2{align-items:start}.pf-r2>.pf-stats{grid-column:2;grid-row:1}.pf-r2>.pf-stats+*{grid-column:2;grid-row:2}.pf-r2>:first-child{grid-row:1/3}@media (max-width:960px){.pf-lead{grid-template-columns:1fr}.pf-r2>.pf-stats,.pf-r2>.pf-stats+*,.pf-r2>:first-child{grid-column:auto;grid-row:auto}.pf-grid,.pf-grid.pf-g3{grid-template-columns:repeat(3,minmax(0,1fr))}}@media (max-width:640px){.pf-grid,.pf-grid.pf-g3{display:flex}.pf-grid.pf-g3{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-inline:0;padding-inline:0}}/* PF-LEAD-T */.pf-lead-t{background:color-mix(in srgb,var(--pf-acc) 12%,var(--surface));border:1px solid color-mix(in srgb,var(--pf-acc) 45%,var(--line));border-left:5px solid var(--pf-acc);border-radius:12px;padding:14px 18px;min-width:0}.pf-lead-t>:first-child{margin-top:0}.pf-lead-t>:last-child{margin-bottom:0}p.pf-lead-t{margin:0}.pf-flat{background:transparent!important;border:0!important;padding:0!important;box-shadow:none!important}:root[data-theme="dark"] .pf-lead-t{background:color-mix(in srgb,var(--pf-acc) 14%,var(--surface))}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pf-lead-t{background:color-mix(in srgb,var(--pf-acc) 14%,var(--surface))}}@media (max-width:640px){.pf-lead-t{padding:12px 14px}}.pf-lead-t{--pf-acc:#FCA311}</style><script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script><script defer src="/_vercel/insights/script.js"></script></head>
+<body>
+<nav class="pfnav" aria-label="Sezioni del sito ProfTecnologIA Framework"><a class="pf-skip" href="#contenuto">Salta al contenuto</a><div class="pfnav-in"><div class="pfnav-l"><a class="pfnav-home" href="../" title="ProfTecnologIA Framework"><i aria-hidden="true"><b></b><b></b><b></b><b></b></i><span>ProfTecnologIA Framework</span></a><span class="pfnav-sep" aria-hidden="true"></span><button type="button" class="pfnav-b pfnav-fw cur" data-pan aria-expanded="false" aria-controls="pfnav-pan">Framework<svg class="ch" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button><a href="../catalogo/">Attività</a><a href="../attrezzi/">Strumenti</a><a href="../materiali/">Materiali</a><a href="../normativa/">Normativa</a><a href="../glossario/">Glossario</a><button type="button" class="pfnav-b pfnav-mb" data-pan aria-expanded="false" aria-controls="pfnav-pan" aria-label="Apri il menu"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button></div><a class="pfnav-p" href="../percorso/" title="Il mio percorso"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span>Il mio percorso</span><b></b></a><button type="button" class="pfnav-a" aria-expanded="false" aria-controls="pfnav-tx" title="Dimensione del testo e carattere"><b aria-hidden="true">Aa</b><span>Testo</span></button><div class="pfnav-tx" id="pfnav-tx" hidden role="group" aria-label="Dimensione del testo e carattere"><fieldset><legend>Dimensione del testo</legend><div class="sz"><label><input type="radio" name="pf-sz" value="0"><span style="font-size:14px">A</span>Normale</label><label><input type="radio" name="pf-sz" value="1"><span style="font-size:17px">A</span>Grande</label><label><input type="radio" name="pf-sz" value="2"><span style="font-size:20px">A</span>Molto grande</label></div></fieldset><label class="fn"><input type="checkbox" name="pf-fn"><span>Carattere ad alta leggibilità<small>Atkinson Hyperlegible, pensato per chi legge con difficoltà o ha una vista ridotta</small></span></label><p>La scelta vale per tutte le pagine del sito e resta in questo browser.</p></div><button type="button" class="pfnav-s" aria-label="Cerca nel sito" title="Cerca nel sito (tasto /)"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><span>Cerca</span><kbd>/</kbd></button></div><div class="pfnav-pan" id="pfnav-pan" hidden><div class="pfnav-h pfnav-mo">Framework</div><div class="pfnav-g"><a href="../ailit/" style="--fc:#5B4BC4"><i aria-hidden="true"></i><span><b>AILit</b><small>Alfabetizzazione all'IA degli studenti · OCSE e Commissione europea, 2026</small></span></a><a href="../unesco/" style="--fc:#2A7DB3"><i aria-hidden="true"></i><span><b>UNESCO</b><small>Competenze sull'IA per gli studenti e per i docenti · 2024</small></span></a><a href="../digcomp/" style="--fc:#2E9D6E"><i aria-hidden="true"></i><span><b>DigComp 3.0</b><small>Competenze digitali dei cittadini, IA compresa · Unione europea, 2025</small></span></a><a href="../digcompedu/" style="--fc:#3B73D1"><i aria-hidden="true"></i><span><b>DigCompEdu</b><small>Competenze digitali dei docenti · Unione europea e CNR-ITD</small></span></a><a href="../ai4k12/" style="--fc:#C2552B"><i aria-hidden="true"></i><span><b>AI4K12</b><small>Le cinque grandi idee sull'IA, dall'infanzia alle superiori</small></span></a><a href="../fvg/" style="--fc:#B8325E"><i aria-hidden="true"></i><span><b>Rete FVG</b><small>«Costruire il futuro»: le linee guida sull'IA di 55 scuole</small></span></a><a href="../edeh/" style="--fc:#D2552E"><i aria-hidden="true"></i><span><b>EDEH</b><small>Insegnare per, con e sull'IA: i sette rapporti europei</small></span></a><a href="../edeh/xai/" style="--fc:#2FB5AA"><i aria-hidden="true"></i><span><b>EDEH · IA spiegabile</b><small>L'XAI a scuola: concetti, cinque scenari, competenze dei docenti (2025)</small></span></a><a class="pfnav-cf" href="./" aria-current="page" style="--fc:#FCA311"><i aria-hidden="true"></i><span><b>Confronta i framework</b><small>Tabella di confronto e collegamenti tra le competenze dei diversi quadri</small></span></a></div><div class="pfnav-dk"><div class="pfnav-h">Risorse</div><div class="pfnav-g"><a href="../artefatti/" style="--fc:#C6E35A"><i aria-hidden="true"></i><span><b>Artefatti</b><small>Giochi e strumenti interattivi dalle attività del Catalogo</small></span></a></div></div><div class="pfnav-mo"><div class="pfnav-h">Risorse</div><div class="pfnav-g"><a href="../catalogo/" style="--fc:#C9D6E3"><i aria-hidden="true"></i><span><b>Attività</b><small>Le 180 attività con piano di lezione</small></span></a><a href="../artefatti/" style="--fc:#C6E35A"><i aria-hidden="true"></i><span><b>Artefatti</b><small>Giochi e strumenti interattivi dalle attività del Catalogo</small></span></a><a href="../attrezzi/" style="--fc:#C9D6E3"><i aria-hidden="true"></i><span><b>Strumenti</b><small>Gli strumenti per l'IA sulla ruota AILit × Bloom e UNESCO</small></span></a><a href="../materiali/" style="--fc:#C9D6E3"><i aria-hidden="true"></i><span><b>Materiali</b><small>Presentazioni, dispense, documenti originali</small></span></a><a href="../normativa/" style="--fc:#C9D6E3"><i aria-hidden="true"></i><span><b>Normativa</b><small>Norme, linee guida e documenti sull'IA a scuola, per ruolo</small></span></a><a href="../glossario/" style="--fc:#C9D6E3"><i aria-hidden="true"></i><span><b>Glossario</b><small>I termini di tutti i framework</small></span></a><a href="../percorso/" style="--fc:#C9D6E3"><i aria-hidden="true"></i><span><b>Il mio percorso</b><small>Attività salvate, autovalutazioni, salvataggio dei dati</small></span></a></div></div></div></nav><script id="pfnav-js">(function(){
+/* «Salta al contenuto»: porta il fuoco al contenuto senza cambiare l'indirizzo (molte sezioni usano l'hash per le viste) */
+document.querySelectorAll(".pf-skip").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var m=document.querySelector("main");if(!m)return;if(!m.hasAttribute("tabindex"))m.setAttribute("tabindex","-1");m.focus({preventScroll:true});m.scrollIntoView()})});
+/* schede interne delle sezioni: sfumatura quando ce ne sono altre fuori schermo, scheda corrente visibile */
+function pfTabs(){document.querySelectorAll("header.pfhead nav.tabs").forEach(function(t){function u(){var m=t.scrollWidth-t.clientWidth;t.classList.toggle("more-r",t.scrollLeft<m-4);t.classList.toggle("more-l",t.scrollLeft>4)}
+ t.addEventListener("scroll",u,{passive:true});addEventListener("resize",u);function c(){var a=t.querySelector('[aria-current="page"],[aria-selected="true"]');if(a&&t.scrollWidth>t.clientWidth){var r=a.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.right>q.right-30||r.left<q.left)t.scrollLeft+=r.left-q.left-24}u()}
+ c();setTimeout(c,300);new MutationObserver(c).observe(t,{attributes:true,subtree:true,attributeFilter:["aria-current","aria-selected"]})})}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",pfTabs);else pfTabs();
+/* testata delle stampe: titolo della pagina e data */
+(function(){function f(){var t=document.querySelector(".pf-prh-t");if(t){var n=document.title.replace(/ · ProfTecnologIA Framework$/,"");t.textContent=(n==="ProfTecnologIA Framework"?"":n+" · ")+"stampato il "+new Date().toLocaleDateString("it-IT",{day:"numeric",month:"long",year:"numeric"})}}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",f);else f();addEventListener("beforeprint",f)})();
+/* TESTO: pulsante «Aa» con dimensione del testo e carattere ad alta leggibilità */
+(function(){var b=document.querySelector(".pfnav-a"),p=document.getElementById("pfnav-tx");if(!b||!p)return;var r=document.documentElement;
+function get(k){try{return localStorage.getItem(k)}catch(e){return null}}function put(k,v){try{if(v)localStorage.setItem(k,v);else localStorage.removeItem(k)}catch(e){}}
+function sync(){var t=get("pf-testo")||"0";p.querySelectorAll('[name="pf-sz"]').forEach(function(i){i.checked=i.value===t});p.querySelector('[name="pf-fn"]').checked=get("pf-font")==="1"}
+function apply(){var t=get("pf-testo")||"0";r.classList.remove("pf-t1","pf-t2");if(t!=="0")r.classList.add("pf-t"+t);var f=get("pf-font")==="1";r.classList.toggle("pf-font",f);
+ if(f&&!document.getElementById("pf-font-css")){var l=document.createElement("link");l.rel="stylesheet";l.id="pf-font-css";l.href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap";document.head.appendChild(l)}
+ try{window.dispatchEvent(new Event("resize"))}catch(e){}}
+function set(o){p.hidden=!o;b.setAttribute("aria-expanded",o?"true":"false");if(o){sync();var c=p.querySelector("input:checked")||p.querySelector("input");if(c)c.focus()}}
+b.addEventListener("click",function(e){e.stopPropagation();set(p.hidden)});
+p.addEventListener("change",function(e){var i=e.target;if(i.name==="pf-sz")put("pf-testo",i.value==="0"?"":i.value);if(i.name==="pf-fn")put("pf-font",i.checked?"1":"");apply()});
+document.addEventListener("click",function(e){if(!p.hidden&&!e.target.closest("#pfnav-tx")&&!e.target.closest(".pfnav-a"))set(false)});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!p.hidden){set(false);b.focus()}});
+addEventListener("storage",function(e){if(e.key==="pf-testo"||e.key==="pf-font"){apply();sync()}})})();
+/* pannello «Framework» (computer) e «Menu» (telefono) */
+var pan=document.getElementById("pfnav-pan"),tg=[].slice.call(document.querySelectorAll(".pfnav [data-pan]"));
+function setP(o,b){if(!pan)return;pan.hidden=!o;tg.forEach(function(x){x.setAttribute("aria-expanded",o&&x===b?"true":"false")});if(o){var f=pan.querySelector("a");if(f&&b&&b.dataset.kb)f.focus()}}
+tg.forEach(function(b){b.addEventListener("click",function(e){var o=pan.hidden||b.getAttribute("aria-expanded")!=="true";b.dataset.kb=e.detail===0?"1":"";setP(o,b)})});
+document.addEventListener("click",function(e){if(pan&&!pan.hidden&&!e.target.closest(".pfnav-pan")&&!e.target.closest("[data-pan]"))setP(false)});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&pan&&!pan.hidden){var b=tg.filter(function(x){return x.getAttribute("aria-expanded")==="true"})[0];setP(false);if(b)b.focus()}});
+addEventListener("resize",function(){if(pan&&!pan.hidden)setP(false)});
+var home=document.querySelector(".pfnav-home"),B=home?home.getAttribute("href"):"./",IDX=null,LOAD=null,dlg,inp,res,flt,ft,sel=0,K="",items=[];
+var SYN={bias:["pregiudiz","distorsion"],pregiudizi:["bias"],privacy:["riservatezz","dati personali"],fake:["disinformazion","notizie false"],disinformazione:["fake"],chatbot:["conversazional","chat"],dataset:["insiemi di dati","set di dati","dati di addestramento"],deepfake:["contenuti sintetici","sintetic"],prompt:["istruzion","richiest"],"machine":["apprendimento automatico"],copyright:["diritto d autore","proprieta intellettuale"],ai:["ia"]};
+var KIND={c:"Competenze e concetti",a:"Attività",g:"Glossario",m:"Materiali",p:"Pagine e strumenti",d:"Approfondimenti"},ORD=["c","a","g","m","d","p"];
+var FW={ailit:["AILit","#3B2E8F"],unesco:["UNESCO","#0F3D5E"],digcomp:["DigComp","#1F6F50"],digcompedu:["DigCompEdu","#1D4E9E"],ai4k12:["AI4K12","#7C2D12"],fvg:["Rete FVG","#7A1F3D"],edeh:["EDEH","#A8361B"],xai:["EDEH · XAI","#0B6B66"],catalogo:["Catalogo","#8A5300"],attrezzi:["Strumenti","#7A2E6E"],glossario:["Glossario","#0A6C8C"],artefatti:["Artefatti","#3D5A12"],normativa:["Normativa","#23395B"],sito:["Sito","#33415C"]};
+var norm=function(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[’']/g," ")};
+var esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(m){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]})};
+function load(){if(LOAD)return LOAD;LOAD=fetch(B+"cerca/indice.json").then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){IDX=j.i.map(function(x){return{k:x[0],f:x[1],t:x[2],s:x[3],u:x[4],x:x[5]||"",nt:norm(x[2]),ns:norm(x[3]),n:norm(x[2]+" "+x[3]+" "+(x[5]||""))}});return IDX}).catch(function(){LOAD=null;throw 0});return LOAD}
+function build(){dlg=document.createElement("dialog");dlg.className="pfs";dlg.setAttribute("aria-label","Cerca nel sito");
+dlg.innerHTML='<div class="pfs-h">ICON<input type="search" placeholder="Cerca competenze, attività, termini, materiali…" aria-label="Cerca nel sito" autocomplete="off" spellcheck="false"><button type="button" data-x>Chiudi</button></div><div class="pfs-f" role="group" aria-label="Filtra i risultati"></div><div class="pfs-r" role="listbox" aria-label="Risultati"></div><div class="pfs-ft"><span></span><span>↑ ↓ per scegliere · Invio per aprire · Esc per chiudere</span></div>'.replace("ICON",'<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"6.5\"/><path d=\"M20 20l-4.2-4.2\"/></svg>');
+document.body.appendChild(dlg);inp=dlg.querySelector("input");res=dlg.querySelector(".pfs-r");flt=dlg.querySelector(".pfs-f");ft=dlg.querySelector(".pfs-ft span");
+dlg.querySelector("[data-x]").onclick=function(){dlg.close()};
+dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close();var b=e.target.closest("[data-k]");if(b){K=b.dataset.k;run()}var m=e.target.closest("[data-more]");if(m){K=m.dataset.more;run()}var q=e.target.closest("[data-q]");if(q){inp.value=q.dataset.q;run();inp.focus()}});
+inp.addEventListener("input",function(){K="";run()});
+inp.addEventListener("keydown",function(e){var L=res.querySelectorAll(".pfs-i");if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();if(!L.length)return;sel=(sel+(e.key==="ArrowDown"?1:-1)+L.length)%L.length;mark(L)}else if(e.key==="Enter"){if(L[sel]){e.preventDefault();go(L[sel])}}});
+res.addEventListener("click",function(e){var a=e.target.closest(".pfs-i");if(a){e.preventDefault();go(a)}});
+}
+function mark(L){L.forEach(function(x,i){x.setAttribute("aria-selected",i===sel)});if(L[sel])L[sel].scrollIntoView({block:"nearest"})}
+function go(a){var u=a.getAttribute("href");dlg.close();var here=location.pathname.replace(/index\.html$/,""),t=new URL(u,location.href);if(t.pathname.replace(/index\.html$/,"")===here&&t.hash&&t.search===location.search){if(location.hash===t.hash)window.dispatchEvent(new HashChangeEvent("hashchange"));else location.hash=t.hash}else location.href=u}
+function hl(s,toks){s=esc(s);toks.forEach(function(t){if(t.length<2)return;var re=new RegExp("("+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").split("").map(function(ch){return ch+"[\\u0300-\\u036f]?"}).join("")+")","i");s=s.replace(re,"<mark>$1</mark>")});return s}
+function snip(x,q){if(!x)return"";var nx=norm(x),i=nx.indexOf(q[0]||"");if(i<0)return x.slice(0,140);var a=Math.max(0,i-50);return(a?"…":"")+x.slice(a,a+160)+(a+160<x.length?"…":"")}
+function score(it,q,toks){var s=0;if(it.nt===q)s+=200;if(it.nt.indexOf(q)===0)s+=80;if(it.ns.indexOf(q)>=0)s+=40;toks.forEach(function(t){if(new RegExp("(^|[^a-z0-9])"+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).test(it.nt))s+=30;else if(it.nt.indexOf(t)>=0)s+=12});return s}
+function run(){sel=0;var q=norm(inp.value).trim().replace(/\s+/g," ");
+if(!IDX){res.innerHTML='<div class="pfs-e">Caricamento dell\'indice…</div>';load().then(run,function(){res.innerHTML='<div class="pfs-e">L\'indice di ricerca non è raggiungibile. Riprova tra poco.</div>'});return}
+if(q.length<2){flt.innerHTML="";ft.textContent=IDX.length+" voci nell'indice";res.innerHTML='<div class="pfs-e"><p>Cerca in tutto il sito: competenze dei framework, attività del catalogo, termini del glossario, presentazioni e dispense.</p><div class="sug">'+["bias","dataset","privacy","IA generativa","debate","autovalutazione","AI Act","prompt"].map(function(s){return'<button type="button" data-q="'+s+'">'+s+'</button>'}).join("")+"</div></div>";return}
+var toks=q.split(" "),alts=toks.map(function(t){var a=[t];Object.keys(SYN).forEach(function(k){if(t===k||(t.length>3&&k.indexOf(t)===0))a=a.concat(SYN[k])});return a}),R=[];IDX.forEach(function(it){for(var i=0;i<alts.length;i++){var ok=false;for(var j=0;j<alts[i].length;j++)if(it.n.indexOf(alts[i][j])>=0){ok=true;break}if(!ok)return}R.push([score(it,q,toks),it])});
+R.sort(function(a,b){return b[0]-a[0]});var G={},GS={};R.forEach(function(r){(G[r[1].k]=G[r[1].k]||[]).push(r[1]);if(GS[r[1].k]==null)GS[r[1].k]=r[0]});var OR=ORD.filter(function(k){return G[k]}).sort(function(a,b){return GS[b]-GS[a]||ORD.indexOf(a)-ORD.indexOf(b)});
+flt.innerHTML='<button type="button" data-k="" aria-pressed="'+(K==="")+'">Tutto <small>'+R.length+"</small></button>"+OR.map(function(k){return'<button type="button" data-k="'+k+'" aria-pressed="'+(K===k)+'">'+KIND[k]+" <small>"+G[k].length+"</small></button>"}).join("");
+ft.textContent=R.length?R.length+(R.length===1?" risultato":" risultati"):"Nessun risultato";
+if(!R.length){res.innerHTML='<div class="pfs-e"><p>Nessun risultato per «'+esc(inp.value)+'».</p><p>Prova con una parola sola o senza accenti.</p></div>';return}
+res.innerHTML=OR.filter(function(k){return !K||K===k}).map(function(k){var L=G[k],max=K?60:(k==="c"||k==="a"?6:4);
+return'<div class="pfs-g"><span>'+KIND[k]+" · "+L.length+"</span>"+(!K&&L.length>max?'<button type="button" data-more="'+k+'">Mostra tutti</button>':"")+"</div>"+L.slice(0,max).map(function(it){var f=FW[it.f]||FW.sito;
+return'<a class="pfs-i" role="option" href="'+B+esc(it.u)+'" style="--fc:'+f[1]+'"><span class="b">'+f[0]+'</span><span class="t">'+hl(it.t,toks)+'</span><span class="s">'+hl(it.s+(it.x?" · "+snip(it.x,toks):""),toks)+"</span></a>"}).join("")}).join("");
+mark(res.querySelectorAll(".pfs-i"))}
+function open(q){if(!dlg)build();if(!dlg.open)dlg.showModal();if(q!=null)inp.value=q;inp.focus();inp.select();run();load().catch(function(){})}
+window.pfCerca=open;
+/* raccolta personale «Il mio percorso»: più percorsi, uno corrente; dati solo in questo browser */
+var RK="pf-percorsi-v1";
+function rRead(){var o=null;try{o=JSON.parse(localStorage.getItem(RK)||"null")}catch(e){}if(!o||!o.P||typeof o.P!=="object")o={cur:"p1",P:{}};if(!o.P[o.cur])o.cur=Object.keys(o.P)[0]||"p1";if(!o.P[o.cur])o.P[o.cur]={nome:"Il mio percorso",items:[],upd:0};return o}
+function rWrite(o){try{localStorage.setItem(RK,JSON.stringify(o))}catch(e){}badge();try{window.dispatchEvent(new CustomEvent("pf-raccolta"))}catch(e){}}
+function badge(){var o=rRead(),n=o.P[o.cur].items.length;document.querySelectorAll(".pfnav-p b").forEach(function(b){b.textContent=n?n:""});document.querySelectorAll(".pfnav-p").forEach(function(a){a.title="Il mio percorso"+(n?": "+n+(n===1?" elemento":" elementi")+" in «"+o.P[o.cur].nome+"»":"")})}
+window.pfRaccolta={read:rRead,write:rWrite,
+ has:function(id){var o=rRead();return o.P[o.cur].items.some(function(x){return x.id===id})},
+ toggle:function(it){var o=rRead(),L=o.P[o.cur].items,i=L.findIndex(function(x){return x.id===it.id});if(i>=0)L.splice(i,1);else L.push(Object.assign({note:"",add:Date.now()},it));o.P[o.cur].upd=Date.now();rWrite(o);return i<0},
+ current:function(){var o=rRead();return o.P[o.cur].nome}};
+badge();addEventListener("storage",function(e){if(e.key===RK){badge();try{window.dispatchEvent(new CustomEvent("pf-raccolta"))}catch(_){}}});
+document.querySelectorAll(".pfnav-s").forEach(function(b){b.addEventListener("click",function(){open()})});
+document.addEventListener("keydown",function(e){var t=e.target,typing=t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"||t.tagName==="SELECT"||t.isContentEditable);
+if((e.key==="k"||e.key==="K")&&(e.ctrlKey||e.metaKey)){e.preventDefault();open()}else if(e.key==="/"&&!typing&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!(document.querySelector("dialog[open]"))){e.preventDefault();open()}});
+var m=location.search.match(/[?&]cerca=([^&]*)/);if(m)open(decodeURIComponent(m[1].replace(/\+/g," ")));
+})();</script><p class="pf-prh" aria-hidden="true"><img src="../asset/logo_proftecnologia_framework.svg" alt=""><b>ProfTecnologIA Framework</b><span class="pf-prh-t"></span><span class="pf-prh-u">framework.proftecnologia.it</span></p>
+<header data-fw="confronta" style="--ph-acc:#FCA311;--ph-on:#1B1405" class="pfhead cf-head"><div class="wrap"><div class="hd">
+  <div class="brand"><img src="../asset/logo_proftecnologia_framework.svg" alt=""><div><h1>Confronta i framework</h1><small>Gli stessi temi visti da quadri diversi: tabella di confronto e collegamenti tra le competenze</small></div></div>
+  <div class="themes" role="group" aria-label="Tema">
+        <button type="button" data-theme-set="light" aria-label="Tema chiaro"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.4 1.4M14.6 14.6L16 16M4 16l1.4-1.4M14.6 5.4L16 4"/></g></svg></button>
+        <button type="button" data-theme-set="auto" aria-label="Tema automatico"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 2.5a7.5 7.5 0 0 1 0 15z" fill="currentColor"/></svg></button>
+        <button type="button" data-theme-set="dark" aria-label="Tema scuro"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 12.8A7 7 0 0 1 7.2 4.5a7 7 0 1 0 8.3 8.3z" fill="currentColor"/></svg></button>
+      </div>
+</div></div></header>
+<main class="wrap"><!-- CONFRONTA -->
+  <div class="pf-lead"><p class="lead cf-lead pf-lead-t">Due strumenti per orientarsi tra i quadri: la <a href="#confronto">tabella di confronto</a> (destinatari, struttura, livelli, licenza) e i <a href="#collegamenti">collegamenti tra le competenze</a>, per passare da una competenza di un quadro a quelle vicine degli altri.</p><div class="pf-stats pf-grid" id="pf-stats"></div></div>
+  <h2 class="sec" id="confronto">A confronto</h2>
+  <p class="lead">Gli stessi temi visti da quadri diversi. Le corrispondenze puntuali tra UNESCO studenti e AILit sono indicate in ogni scheda UNESCO come proposta dell'autore.</p>
+  <div class="tbl"><!-- XAI-COL --><table>
+    <thead><tr><th></th><th style="color:var(--ailit)">AILit</th><th style="color:var(--unesco)">UNESCO studenti</th><th style="color:var(--unesco)">UNESCO docenti</th><th style="color:var(--digcomp)">DigComp 3.0</th><th style="color:var(--ai4k12)">AI4K12</th><th style="color:#A8361B">EDEH</th><th style="color:#1D4E9E">DigCompEdu</th><th style="color:#0B6B66">EDEH · IA spiegabile</th></tr></thead>
+    <tbody>
+      <tr><th>Autore</th><td>OCSE e Commissione europea</td><td>UNESCO</td><td>UNESCO</td><td>Commissione europea (JRC)</td><td>AI4K12 (AAAI e CSTA), Stati Uniti</td><td>Squadra EDEH sull'IA nell'istruzione (Commissione europea); versione italiana INDIRE</td><td>Commissione europea (JRC); versione italiana CNR-ITD</td><td>Squadra EDEH sull'IA spiegabile (EACEA, Commissione europea), 27 autori</td></tr>
+      <tr><th>Anno</th><td>2026</td><td>2024</td><td>2024</td><td>2025</td><td>2020–2022 (bozze di lavoro); poster v.2; attività 2022–2025</td><td>2023 (originali); 2024 (versione italiana)</td><td>2017 (originale); 2018 (versione italiana)</td><td>2025</td></tr>
+      <tr><th>Destinatari</th><td>Studenti di primaria e secondaria</td><td>Studenti</td><td>Docenti</td><td>Tutti i cittadini</td><td>Studenti dall'infanzia alle superiori (K-12)</td><td>Docenti, dirigenti e decisori</td><td>Docenti e formatori di ogni ordine e grado</td><td>Docenti, dirigenti, progettisti del curricolo, decisori, sviluppatori</td></tr>
+      <tr><th>Struttura</th><td>4 ambiti, 19 competenze, con conoscenze, abilità e attitudini</td><td>4 aspetti × 3 livelli (Comprendere, Applicare, Creare)</td><td>5 aspetti × 3 livelli (Acquisire, Approfondire, Creare)</td><td>5 aree, 21 competenze, 4 livelli (8 sottolivelli), 362 enunciati, 522 risultati di apprendimento</td><td>5 grandi idee, 44 concetti × 4 fasce (K-2, 3-5, 6-8, 9-12), con obiettivi e comprensioni durevoli</td><td>3 approcci (per, con, sull'IA), 7 rapporti; competenze dei docenti: 20 esempi DigComp 2.2, 43 indicatori in 6 aree DigCompEdu, 5 aree e 18 sottoaree; 10 scenari</td><td>6 aree in 3 ambiti, 22 competenze × 6 livelli (A1–C2), 228 dichiarazioni in prima persona</td><td>4 concetti in 2 dimensioni; 10 caratteristiche e 4 dimensioni delle spiegazioni; 5 scenari; 20 competenze dei docenti per livello ISCED (numerazione del curatore); attività per livello</td></tr>
+      <tr><th>Taglio sull'IA</th><td>Interamente dedicato all'IA</td><td>Interamente dedicato all'IA</td><td>IA nella professione docente</td><td>IA integrata nella competenza digitale generale</td><td>Interamente dedicato all'IA</td><td>Interamente dedicato all'IA nell'istruzione</td><td>Non tratta l'IA (2017); le competenze «con l'IA» dell'EDEH sono ordinate nelle sue sei aree</td><td>Spiegabilità, sorveglianza umana e responsabilità condivisa; AI Act e GDPR</td></tr>
+      <tr><th>Licenza</th><td>CC BY 4.0</td><td>CC BY-SA 3.0 IGO</td><td>CC BY-SA 3.0 IGO</td><td>CC BY 4.0 (traduzione italiana CC BY-SA 4.0)</td><td>CC BY-NC-SA 4.0 (uso non commerciale)</td><td>Non indicata nei PDF (sintesi del curatore)</td><td>Originale: riutilizzo autorizzato con citazione; traduzione italiana CC BY-SA 4.0</td><td>Testo CC BY-NC-SA 4.0 (autori); traduzione non ufficiale del curatore con la stessa licenza</td></tr>
+      <tr><th>In questo sito</th><td><a href="../ailit/">Bussola AILit</a></td><td><a href="../unesco/#studenti">Quadro studenti</a></td><td><a href="../unesco/#docenti">Quadro docenti</a></td><td><a href="../digcomp/">DigComp 3.0</a></td><td><a href="../ai4k12/">AI4K12</a></td><td><a href="../edeh/">EDEH</a></td><td><a href="../digcompedu/">DigCompEdu</a></td><td><a href="../edeh/xai/">IA spiegabile</a></td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 class="sec" id="collegamenti">Collegamenti tra i framework</h2>
+  <p class="lead">Per ogni competenza, le competenze degli altri quadri che trattano temi vicini. Scegli da quale quadro partire; ogni voce apre la scheda corrispondente. Le corrispondenze sono una proposta dell'autore, non equivalenze ufficiali; il bordo tratteggiato collega i blocchi UNESCO per studenti e per docenti con lo stesso aspetto e livello.</p>
+  <div id="xwt"></div>
+  
+</main>
+<footer><div class="wrap">
+  <p>A cura di Antonio Scaramuzzino · ProfTecnologIA. Le traduzioni dei quadri UNESCO non sono ufficiali; per il DigComp 3.0 è usata la traduzione italiana ufficiale di Repubblica Digitale; per AI4K12 il poster è nella traduzione italiana pubblicata da AI4K12, mentre tabelle di progressione e attività sono tradotte dal curatore (non ufficiali); le corrispondenze tra quadri sono proposte dell'autore. Ogni sezione riporta fonte e licenza del framework originale.</p>
+</div></footer>
+<script>
+/* ---------- collegamenti tra framework (ProfTecnologIA Framework) ----------
+   XW.init({data, base})          base: prefisso degli URL ("../" nelle sezioni, "./" nel portale, URL assoluto altrove)
+   XW.box(key, {title})           HTML del riquadro "Collegamenti" per un nodo (es. "A:INT-1", "S:4.1.1", "D:1.1", "C:1.2")
+   XW.table(host)                 tabella navigabile di tutti i collegamenti (portale) */
+const XW = (() => {
+  let D = null, B = "./";
+  const Q = { A: "AILit", S: "UNESCO studenti", D: "UNESCO docenti", C: "DigComp 3.0" }, ORD = ["A", "C", "S", "D"];
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]));
+  const css = `
+.xw{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surface)}
+.xw h4{margin:0 0 4px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.xw .xw-n{margin:0 0 8px;font-size:.8rem;color:var(--muted)}
+.xw-g{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;margin-top:6px}
+.xw-g>b{font-size:.8rem;min-width:118px;color:var(--xc)}
+.xw-c{display:inline-flex;gap:6px;align-items:baseline;padding:4px 10px;border-radius:999px;background:var(--xs);color:var(--fg);text-decoration:none;font-size:.86rem;line-height:1.3;border:1px solid transparent;max-width:100%}
+.xw-c:hover,.xw-c:focus-visible{border-color:var(--xc);outline:none}
+.xw-c span{font-weight:800;color:var(--xc);font-size:.78rem;white-space:nowrap}
+.xw-c i{font-style:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:300px}
+.xw-c.s{border-style:dashed;border-color:var(--xc)}
+.xw-A{--xc:#3B2E8F;--xs:#ECE9FB}.xw-S,.xw-D{--xc:#0F3D5E;--xs:#E3EEF4}.xw-C{--xc:#1F6F50;--xs:#E0F2E9}
+:root[data-theme="dark"] .xw-A{--xc:#B9AEFF;--xs:#25204A}:root[data-theme="dark"] .xw-S,:root[data-theme="dark"] .xw-D{--xc:#8FD3E8;--xs:#14303F}:root[data-theme="dark"] .xw-C{--xc:#8FE0BB;--xs:#14301F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .xw-A{--xc:#B9AEFF;--xs:#25204A}:root:not([data-theme="light"]) .xw-S,:root:not([data-theme="light"]) .xw-D{--xc:#8FD3E8;--xs:#14303F}:root:not([data-theme="light"]) .xw-C{--xc:#8FE0BB;--xs:#14301F}}
+.xwt-top{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.xwt-top button{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:6px 12px;font:inherit;font-weight:700;font-size:.88rem;cursor:pointer}
+.xwt-top button[aria-pressed="true"]{background:var(--fg);color:var(--surface);border-color:var(--fg)}
+.xwt{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.xwt table{border-collapse:collapse;width:100%;min-width:900px}
+.xwt th,.xwt td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:.9rem}
+.xwt thead th{background:var(--surface-2);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+.xwt td .xw-c{margin:0 4px 4px 0}
+.xwt td.src a{color:var(--fg);font-weight:700;text-decoration:none}.xwt td.src a:hover{text-decoration:underline}
+.xwt td.src span{display:block;font-size:.78rem;font-weight:800;color:var(--xc)}
+@media (max-width:640px){.xw-g>b{min-width:0;flex-basis:100%}.xw-c i{max-width:210px}}`;
+  function init(o) { D = o.data; B = o.base || "./"; const st = document.createElement("style"); st.textContent = css; document.head.appendChild(st); }
+  const chip = k => { const n = D.n[k], f = k[0]; return `<a class="xw-c xw-${f}" href="${B}${n.u}" title="${esc(Q[f] + " " + n.c + ": " + n.t)}"><span>${esc(n.c)}</span><i>${esc(n.t)}</i></a>`; };
+  function box(key, o = {}) {
+    if (!D || !D.l[key]) return "";
+    const L = D.l[key], f0 = key[0];
+    const groups = ORD.filter(f => f !== f0).map(f => [f, L.filter(([k]) => k[0] === f)]).filter(([, l]) => l.length);
+    if (!groups.length) return "";
+    return `<div class="xw"><h4>${esc(o.title || "Collegamenti con gli altri framework")}</h4><p class="xw-n">Corrispondenze tematiche proposte dall'autore, non equivalenze ufficiali: i livelli dei quadri non coincidono.${L.some(x => x[1] === "s") ? " Il bordo tratteggiato indica lo stesso aspetto e lo stesso livello nei due quadri UNESCO." : ""}</p>
+      ${groups.map(([f, l]) => `<div class="xw-g xw-${f}"><b>${Q[f]}</b>${l.map(([k, t]) => chip(k).replace('class="xw-c', `class="xw-c${t === "s" ? " s" : ""}`)).join("")}</div>`).join("")}</div>`;
+  }
+  let piv = "C";
+  function table(h) {
+    const draw = () => {
+      const rows = Object.keys(D.n).filter(k => k[0] === piv), cols = ORD.filter(f => f !== piv);
+      h.innerHTML = `<div class="xwt-top" role="group" aria-label="Parti da">${ORD.map(f => `<button type="button" data-p="${f}" aria-pressed="${f === piv}">Parti da ${Q[f]}</button>`).join("")}</div>
+        <div class="xwt"><table><thead><tr><th>${Q[piv]}</th>${cols.map(f => `<th>${Q[f]}</th>`).join("")}</tr></thead><tbody>${rows.map(k => {
+          const n = D.n[k], L = D.l[k] || [];
+          return `<tr><td class="src xw-${piv}"><span>${esc(n.c)}</span><a href="${B}${n.u}">${esc(n.t)}</a></td>${cols.map(f => `<td>${L.filter(([x]) => x[0] === f).map(([x, t]) => chip(x).replace('class="xw-c', `class="xw-c${t === "s" ? " s" : ""}`)).join("") || '<span style="color:var(--muted)">–</span>'}</td>`).join("")}</tr>`;
+        }).join("")}</tbody></table></div>`;
+      h.querySelectorAll("[data-p]").forEach(b => b.onclick = () => { piv = b.dataset.p; draw(); });
+    };
+    draw();
+  }
+  return { init, box, table };
+})();
+
+const XWD={"n":{"A:INT-1":{"t":"Riconoscere il ruolo e l'influenza dell'IA in diversi contesti.","u":"ailit/#INT-1","q":"AILit","c":"INT-1"},"A:INT-2":{"t":"Descrivere il modo in cui i sistemi IA svolgono le attività, utilizzando un linguaggio che analizzi e chiarisca le convinzioni errate più comuni.","u":"ailit/#INT-2","q":"AILit","c":"INT-2"},"A:INT-3":{"t":"Valutare se gli output dell'IA debbano essere accettati, modificati o rifiutati.","u":"ailit/#INT-3","q":"AILit","c":"INT-3"},"A:INT-4":{"t":"Analizzare in che modo i sistemi di IA predittiva forniscono raccomandazioni che possono orientare o limitare le prospettive.","u":"ailit/#INT-4","q":"AILit","c":"INT-4"},"A:INT-5":{"t":"Confrontare i modi in cui i sistemi IA consumano energia e risorse naturali.","u":"ailit/#INT-5","q":"AILit","c":"INT-5"},"A:INT-6":{"t":"Spiegare in che modo l'IA potrebbe essere utilizzata per amplificare i pregiudizi sociali.","u":"ailit/#INT-6","q":"AILit","c":"INT-6"},"A:INT-7":{"t":"Analizzare in che misura l'uso di un sistema IA è in linea con i principi etici e i valori umani.","u":"ailit/#INT-7","q":"AILit","c":"INT-7"},"A:CRE-1":{"t":"Utilizzare i sistemi IA per trovare nuovi punti di vista e approcci basati su idee originali.","u":"ailit/#CRE-1","q":"AILit","c":"CRE-1"},"A:CRE-2":{"t":"Visualizzare, creare prototipi e combinare idee utilizzando diversi tipi di sistemi IA.","u":"ailit/#CRE-2","q":"AILit","c":"CRE-2"},"A:CRE-3":{"t":"Indirizzare i sistemi di IA generativa per ottenere feedback, perfezionare i risultati e favorire la riflessione.","u":"ailit/#CRE-3","q":"AILit","c":"CRE-3"},"A:CRE-4":{"t":"Analizzare in che modo l'IA può salvaguardare o violare l'autenticità dei contenuti e la proprietà intellettuale.","u":"ailit/#CRE-4","q":"AILit","c":"CRE-4"},"A:GES-1":{"t":"Decidere se utilizzare i sistemi IA in base alla natura dell'attività.","u":"ailit/#GES-1","q":"AILit","c":"GES-1"},"A:GES-2":{"t":"Scegliere un approccio all'intelligenza artificiale appropriato per una determinata attività facendo un confronto tra il modo in cui funzionano i diversi sistemi IA e ciò per cui sono più adatti.","u":"ailit/#GES-2","q":"AILit","c":"GES-2"},"A:GES-3":{"t":"Scomporre un problema per determinare quando e in che modo i sistemi IA debbano essere utilizzati per automatizzare o potenziare lo svolgimento delle attività.","u":"ailit/#GES-3","q":"AILit","c":"GES-3"},"A:GES-4":{"t":"Monitorare e valutare l'uso dell'IA durante un processo di risoluzione dei problemi.","u":"ailit/#GES-4","q":"AILit","c":"GES-4"},"A:PLA-1":{"t":"Indagare sul modo in cui un sistema IA è destinato a funzionare, sugli utenti per cui è stato progettato e sui suoi limiti.","u":"ailit/#PLA-1","q":"AILit","c":"PLA-1"},"A:PLA-2":{"t":"Valutare i sistemi IA utilizzando criteri definiti, risultati attesi, casi prova e feedback degli utenti.","u":"ailit/#PLA-2","q":"AILit","c":"PLA-2"},"A:PLA-3":{"t":"Progettare sistemi IA prestando attenzione al modo in cui le fonti e la selezione di dati, nonché il flusso di informazioni, influenzano il comportamento e gli output.","u":"ailit/#PLA-3","q":"AILit","c":"PLA-3"},"A:PLA-4":{"t":"Migliorare i sistemi IA per affrontare e promuovere il benessere delle persone e i benefici per la società.","u":"ailit/#PLA-4","q":"AILit","c":"PLA-4"},"S:4.1.1":{"t":"Agentività umana","u":"unesco/#s-4.1.1","q":"UNESCO studenti","c":"4.1.1"},"S:4.1.2":{"t":"Etica interiorizzata","u":"unesco/#s-4.1.2","q":"UNESCO studenti","c":"4.1.2"},"S:4.1.3":{"t":"Fondamenti dell'IA","u":"unesco/#s-4.1.3","q":"UNESCO studenti","c":"4.1.3"},"S:4.1.4":{"t":"Definizione del problema","u":"unesco/#s-4.1.4","q":"UNESCO studenti","c":"4.1.4"},"S:4.2.1":{"t":"Responsabilità umana","u":"unesco/#s-4.2.1","q":"UNESCO studenti","c":"4.2.1"},"S:4.2.2":{"t":"Uso sicuro e responsabile","u":"unesco/#s-4.2.2","q":"UNESCO studenti","c":"4.2.2"},"S:4.2.3":{"t":"Competenze applicative","u":"unesco/#s-4.2.3","q":"UNESCO studenti","c":"4.2.3"},"S:4.2.4":{"t":"Progettazione dell'architettura","u":"unesco/#s-4.2.4","q":"UNESCO studenti","c":"4.2.4"},"S:4.3.1":{"t":"Cittadinanza nell'era dell'IA","u":"unesco/#s-4.3.1","q":"UNESCO studenti","c":"4.3.1"},"S:4.3.2":{"t":"Etica fin dalla progettazione","u":"unesco/#s-4.3.2","q":"UNESCO studenti","c":"4.3.2"},"S:4.3.3":{"t":"Creazione di strumenti di IA","u":"unesco/#s-4.3.3","q":"UNESCO studenti","c":"4.3.3"},"S:4.3.4":{"t":"Iterazione e cicli di feedback","u":"unesco/#s-4.3.4","q":"UNESCO studenti","c":"4.3.4"},"D:1.1":{"t":"Agentività umana","u":"unesco/#d-1.1","q":"UNESCO docenti","c":"1.1"},"D:2.1":{"t":"Principi etici","u":"unesco/#d-2.1","q":"UNESCO docenti","c":"2.1"},"D:3.1":{"t":"Tecniche e applicazioni di base dell'IA","u":"unesco/#d-3.1","q":"UNESCO docenti","c":"3.1"},"D:4.1":{"t":"Insegnamento assistito dall'IA","u":"unesco/#d-4.1","q":"UNESCO docenti","c":"4.1"},"D:5.1":{"t":"IA per l'apprendimento professionale permanente","u":"unesco/#d-5.1","q":"UNESCO docenti","c":"5.1"},"D:1.2":{"t":"Responsabilità umana","u":"unesco/#d-1.2","q":"UNESCO docenti","c":"1.2"},"D:2.2":{"t":"Uso sicuro e responsabile","u":"unesco/#d-2.2","q":"UNESCO docenti","c":"2.2"},"D:3.2":{"t":"Competenze applicative","u":"unesco/#d-3.2","q":"UNESCO docenti","c":"3.2"},"D:4.2":{"t":"Integrazione tra IA e pedagogia","u":"unesco/#d-4.2","q":"UNESCO docenti","c":"4.2"},"D:5.2":{"t":"IA per potenziare l'apprendimento organizzativo","u":"unesco/#d-5.2","q":"UNESCO docenti","c":"5.2"},"D:1.3":{"t":"Responsabilità sociale","u":"unesco/#d-1.3","q":"UNESCO docenti","c":"1.3"},"D:2.3":{"t":"Co-creazione di regole etiche","u":"unesco/#d-2.3","q":"UNESCO docenti","c":"2.3"},"D:3.3":{"t":"Creare con l'IA","u":"unesco/#d-3.3","q":"UNESCO docenti","c":"3.3"},"D:4.3":{"t":"Trasformazione pedagogica potenziata dall'IA","u":"unesco/#d-4.3","q":"UNESCO docenti","c":"4.3"},"D:5.3":{"t":"IA a supporto della trasformazione professionale","u":"unesco/#d-5.3","q":"UNESCO docenti","c":"5.3"},"C:1.1":{"t":"Navigare, ricercare e filtrare le informazioni","u":"digcomp/#c-1.1","q":"DigComp 3.0","c":"1.1"},"C:1.2":{"t":"Valutare le informazioni","u":"digcomp/#c-1.2","q":"DigComp 3.0","c":"1.2"},"C:1.3":{"t":"Gestire le informazioni","u":"digcomp/#c-1.3","q":"DigComp 3.0","c":"1.3"},"C:2.1":{"t":"Interagire attraverso e con le tecnologie digitali","u":"digcomp/#c-2.1","q":"DigComp 3.0","c":"2.1"},"C:2.2":{"t":"Condividere attraverso le tecnologie digitali","u":"digcomp/#c-2.2","q":"DigComp 3.0","c":"2.2"},"C:2.3":{"t":"Esercitare la cittadinanza attraverso le tecnologie digitali","u":"digcomp/#c-2.3","q":"DigComp 3.0","c":"2.3"},"C:2.4":{"t":"Collaborare attraverso le tecnologie digitali","u":"digcomp/#c-2.4","q":"DigComp 3.0","c":"2.4"},"C:2.5":{"t":"Comportamento digitale","u":"digcomp/#c-2.5","q":"DigComp 3.0","c":"2.5"},"C:2.6":{"t":"Gestire l'identità digitale","u":"digcomp/#c-2.6","q":"DigComp 3.0","c":"2.6"},"C:3.1":{"t":"Sviluppare contenuti digitali","u":"digcomp/#c-3.1","q":"DigComp 3.0","c":"3.1"},"C:3.2":{"t":"Integrare e rielaborare contenuti digitali","u":"digcomp/#c-3.2","q":"DigComp 3.0","c":"3.2"},"C:3.3":{"t":"Copyright e licenze","u":"digcomp/#c-3.3","q":"DigComp 3.0","c":"3.3"},"C:3.4":{"t":"Pensiero computazionale e programmazione","u":"digcomp/#c-3.4","q":"DigComp 3.0","c":"3.4"},"C:4.1":{"t":"Proteggere i dispositivi","u":"digcomp/#c-4.1","q":"DigComp 3.0","c":"4.1"},"C:4.2":{"t":"Proteggere i dati personali e la privacy","u":"digcomp/#c-4.2","q":"DigComp 3.0","c":"4.2"},"C:4.3":{"t":"Supportare il benessere","u":"digcomp/#c-4.3","q":"DigComp 3.0","c":"4.3"},"C:4.4":{"t":"Impatti ambientali delle tecnologie digitali","u":"digcomp/#c-4.4","q":"DigComp 3.0","c":"4.4"},"C:5.1":{"t":"Identificare e risolvere problemi tecnici","u":"digcomp/#c-5.1","q":"DigComp 3.0","c":"5.1"},"C:5.2":{"t":"Identificare bisogni e risposte tecnologiche digitali","u":"digcomp/#c-5.2","q":"DigComp 3.0","c":"5.2"},"C:5.3":{"t":"Identificare soluzioni creative utilizzando le tecnologie digitali","u":"digcomp/#c-5.3","q":"DigComp 3.0","c":"5.3"},"C:5.4":{"t":"Identificare e rispondere ai bisogni di competenza digitale","u":"digcomp/#c-5.4","q":"DigComp 3.0","c":"5.4"}},"l":{"A:INT-1":[["C:2.1","p"],["C:2.3","p"],["S:4.1.1","p"]],"C:2.1":[["A:INT-1","p"],["A:CRE-3","p"],["D:3.2","p"]],"C:2.3":[["A:INT-1","p"],["A:INT-4","p"],["A:INT-6","p"],["A:INT-7","p"],["A:PLA-4","p"],["S:4.1.1","p"],["S:4.1.2","p"],["S:4.2.1","p"],["S:4.3.1","p"],["D:1.1","p"],["D:1.2","p"],["D:1.3","p"],["D:2.3","p"]],"A:INT-2":[["C:3.4","p"],["C:1.2","p"],["S:4.1.1","p"],["S:4.1.3","p"]],"C:3.4":[["A:INT-2","p"],["A:GES-2","p"],["A:GES-3","p"],["A:PLA-1","p"],["A:PLA-3","p"],["S:4.1.3","p"],["S:4.1.4","p"],["S:4.2.3","p"],["S:4.2.4","p"],["S:4.3.3","p"],["D:3.1","p"]],"C:1.2":[["A:INT-2","p"],["A:INT-3","p"],["A:INT-4","p"],["A:INT-6","p"],["A:PLA-1","p"],["A:PLA-2","p"],["S:4.1.1","p"],["D:3.1","p"],["D:4.3","p"]],"A:INT-3":[["C:1.2","p"],["C:3.2","p"],["S:4.2.1","p"],["S:4.2.2","p"]],"C:3.2":[["A:INT-3","p"],["A:CRE-2","p"],["A:CRE-3","p"],["A:CRE-4","p"],["D:3.2","p"],["D:5.3","p"]],"A:INT-4":[["C:1.1","p"],["C:1.2","p"],["C:2.3","p"],["C:2.6","p"],["S:4.1.3","p"],["S:4.3.1","p"]],"C:1.1":[["A:INT-4","p"]],"C:2.6":[["A:INT-4","p"],["S:4.2.2","p"]],"A:INT-5":[["C:4.4","p"],["S:4.1.2","p"]],"C:4.4":[["A:INT-5","p"],["S:4.3.1","p"],["D:1.3","p"]],"A:INT-6":[["C:1.2","p"],["C:2.3","p"],["S:4.1.2","p"],["S:4.3.1","p"]],"A:INT-7":[["C:2.3","p"],["C:2.5","p"],["C:4.2","p"],["S:4.1.2","p"],["S:4.2.2","p"]],"C:2.5":[["A:INT-7","p"],["S:4.1.2","p"],["D:2.1","p"]],"C:4.2":[["A:INT-7","p"],["A:PLA-3","p"],["S:4.1.2","p"],["S:4.2.1","p"],["S:4.2.2","p"],["S:4.3.2","p"],["D:1.2","p"],["D:2.1","p"],["D:2.2","p"]],"A:CRE-1":[["C:5.3","p"],["C:3.1","p"],["S:4.2.3","p"]],"C:5.3":[["A:CRE-1","p"],["A:CRE-2","p"],["A:GES-3","p"],["A:PLA-4","p"],["S:4.2.4","p"],["S:4.3.2","p"],["S:4.3.4","p"],["D:3.3","p"],["D:4.2","p"],["D:4.3","p"]],"C:3.1":[["A:CRE-1","p"],["A:CRE-2","p"],["A:GES-1","p"],["S:4.3.3","p"],["D:3.3","p"],["D:4.1","p"]],"A:CRE-2":[["C:3.1","p"],["C:3.2","p"],["C:5.3","p"],["S:4.2.3","p"],["S:4.3.3","p"]],"A:CRE-3":[["C:2.1","p"],["C:3.2","p"],["S:4.2.3","p"]],"A:CRE-4":[["C:3.3","p"],["C:3.2","p"],["C:2.2","p"],["S:4.2.2","p"],["S:4.3.2","p"]],"C:3.3":[["A:CRE-4","p"],["D:2.2","p"]],"C:2.2":[["A:CRE-4","p"],["D:5.2","p"]],"A:GES-1":[["C:5.2","p"],["C:3.1","p"],["S:4.1.1","p"],["S:4.1.4","p"]],"C:5.2":[["A:GES-1","p"],["A:GES-2","p"],["A:PLA-2","p"],["S:4.1.4","p"],["D:3.2","p"],["D:4.1","p"]],"A:GES-2":[["C:5.2","p"],["C:3.4","p"],["S:4.1.3","p"],["S:4.2.3","p"]],"A:GES-3":[["C:3.4","p"],["C:5.3","p"],["S:4.1.4","p"],["S:4.2.4","p"]],"A:GES-4":[["C:5.1","p"],["C:5.4","p"],["C:2.4","p"],["S:4.2.1","p"],["S:4.3.4","p"]],"C:5.1":[["A:GES-4","p"],["S:4.3.4","p"]],"C:5.4":[["A:GES-4","p"],["D:5.1","p"],["D:5.2","p"],["D:5.3","p"]],"C:2.4":[["A:GES-4","p"],["D:2.3","p"],["D:4.2","p"],["D:5.2","p"]],"A:PLA-1":[["C:3.4","p"],["C:1.2","p"],["S:4.1.4","p"]],"A:PLA-2":[["C:1.2","p"],["C:5.2","p"],["S:4.3.4","p"]],"A:PLA-3":[["C:3.4","p"],["C:1.3","p"],["C:4.2","p"],["S:4.2.4","p"],["S:4.3.2","p"],["S:4.3.3","p"]],"C:1.3":[["A:PLA-3","p"],["S:4.1.3","p"],["S:4.2.3","p"]],"A:PLA-4":[["C:4.3","p"],["C:2.3","p"],["C:5.3","p"],["S:4.3.1","p"],["S:4.3.2","p"]],"C:4.3":[["A:PLA-4","p"],["S:4.2.2","p"]],"S:4.1.1":[["A:INT-1","p"],["A:INT-2","p"],["A:GES-1","p"],["C:2.3","p"],["C:1.2","p"],["D:1.1","s"]],"S:4.1.2":[["A:INT-6","p"],["A:INT-7","p"],["A:INT-5","p"],["C:2.3","p"],["C:2.5","p"],["C:4.2","p"],["D:2.1","s"]],"S:4.1.3":[["A:INT-2","p"],["A:INT-4","p"],["A:GES-2","p"],["C:3.4","p"],["C:1.3","p"],["D:3.1","s"]],"S:4.1.4":[["A:GES-1","p"],["A:GES-3","p"],["A:PLA-1","p"],["C:5.2","p"],["C:3.4","p"]],"S:4.2.1":[["A:INT-3","p"],["A:GES-4","p"],["C:2.3","p"],["C:4.2","p"],["D:1.2","s"]],"S:4.2.2":[["A:INT-3","p"],["A:CRE-4","p"],["A:INT-7","p"],["C:4.2","p"],["C:4.1","p"],["C:4.3","p"],["C:2.6","p"],["D:2.2","s"]],"S:4.2.3":[["A:CRE-1","p"],["A:CRE-2","p"],["A:CRE-3","p"],["A:GES-2","p"],["C:3.4","p"],["C:1.3","p"],["D:3.2","s"]],"S:4.2.4":[["A:PLA-3","p"],["A:GES-3","p"],["C:3.4","p"],["C:5.3","p"]],"S:4.3.1":[["A:INT-4","p"],["A:PLA-4","p"],["A:INT-6","p"],["C:2.3","p"],["C:4.4","p"],["D:1.3","s"]],"S:4.3.2":[["A:PLA-4","p"],["A:PLA-3","p"],["A:CRE-4","p"],["C:4.2","p"],["C:5.3","p"],["D:2.3","s"]],"S:4.3.3":[["A:PLA-3","p"],["A:CRE-2","p"],["C:3.4","p"],["C:3.1","p"],["D:3.3","s"]],"S:4.3.4":[["A:PLA-2","p"],["A:GES-4","p"],["C:5.1","p"],["C:5.3","p"]],"C:4.1":[["S:4.2.2","p"],["D:2.2","p"]],"D:1.1":[["C:2.3","p"],["S:4.1.1","s"]],"D:1.2":[["C:2.3","p"],["C:4.2","p"],["S:4.2.1","s"]],"D:1.3":[["C:2.3","p"],["C:4.4","p"],["S:4.3.1","s"]],"D:2.1":[["C:2.5","p"],["C:4.2","p"],["S:4.1.2","s"]],"D:2.2":[["C:4.2","p"],["C:4.1","p"],["C:3.3","p"],["S:4.2.2","s"]],"D:2.3":[["C:2.3","p"],["C:2.4","p"],["S:4.3.2","s"]],"D:3.1":[["C:3.4","p"],["C:1.2","p"],["S:4.1.3","s"]],"D:3.2":[["C:2.1","p"],["C:3.2","p"],["C:5.2","p"],["S:4.2.3","s"]],"D:3.3":[["C:3.1","p"],["C:5.3","p"],["S:4.3.3","s"]],"D:4.1":[["C:3.1","p"],["C:5.2","p"]],"D:4.2":[["C:2.4","p"],["C:5.3","p"]],"D:4.3":[["C:5.3","p"],["C:1.2","p"]],"D:5.1":[["C:5.4","p"]],"D:5.2":[["C:2.4","p"],["C:2.2","p"],["C:5.4","p"]],"D:5.3":[["C:5.4","p"],["C:3.2","p"]]}};
+
+XW.init({data:XWD,base:"../"});XW.table(document.getElementById("xwt"));
+const R=document.documentElement;
+function ap(t){if(t==="light"||t==="dark")R.setAttribute("data-theme",t);else R.removeAttribute("data-theme");document.querySelectorAll("[data-theme-set]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.themeSet===t))}
+let t="auto";try{t=localStorage.getItem("pf-tema")||"auto"}catch(e){}ap(t);
+document.querySelectorAll("[data-theme-set]").forEach(b=>b.onclick=()=>{t=b.dataset.themeSet;ap(t);try{localStorage.setItem("pf-tema",t)}catch(e){}});
+</script>
+<script id="pf-tema-sync">(function(){function ap(){var t="auto";try{t=localStorage.getItem("pf-tema")||"auto"}catch(e){}var R=document.documentElement;if(t==="light"||t==="dark")R.setAttribute("data-theme",t);else R.removeAttribute("data-theme");document.querySelectorAll("[data-theme-set]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.themeSet===t)})}addEventListener("storage",function(e){if(e.key==="pf-tema")ap()});addEventListener("pageshow",function(e){if(e.persisted)ap()})})()</script><!-- PORTALE-F1 -->
+<script>/* PRESENTAZIONI-F1 */(function(){var f=document.querySelector(".pr-f");if(!f)return;f.onclick=function(e){var b=e.target.closest("[data-f]");if(!b)return;var v=b.dataset.f;f.querySelectorAll("[data-f]").forEach(function(x){x.setAttribute("aria-pressed",x===b)});document.querySelectorAll(".pr").forEach(function(c){c.hidden=!!v&&c.dataset.a!==v})}})()</script>
+<!-- PRESENTAZIONI-F1 -->
+<!-- PORTALE-F2 -->
+<!-- PORTALE-F3 -->
+<script>(function(){var s=document.getElementById("pf-stats");if(!s)return;s.innerHTML=([[document.querySelectorAll(".tbl thead th").length-1,"quadri a confronto"],[Object.keys(XWD.n).length,"competenze collegate"],[Object.values(XWD.l).reduce(function(a,l){return a+l.length},0)/2,"collegamenti tra competenze"]]).map(function(x){return '<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join("")})();</script></body>
+</html>

@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="it">
+<head><script id="pf-tema-early">(function(){try{var s=localStorage,t=s.getItem("pf-tema");if(!t){t=s.getItem("ailit-tema");var d=s.getItem("dc-tema");if(!t&&d)try{t=JSON.parse(d)}catch(e){}if(t)s.setItem("pf-tema",t)}if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}})()</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ProfTecnologIA Framework</title>
+<meta name="description" content="I principali quadri di competenza su IA e competenze digitali per la scuola, in italiano e navigabili: AILit (OCSE–CE), UNESCO studenti e docenti, DigComp 3.0, e un catalogo di attività per la classe.">
+<!-- OG --><meta property="og:type" content="website"><meta property="og:site_name" content="ProfTecnologIA Framework"><meta property="og:locale" content="it_IT"><meta property="og:title" content="ProfTecnologIA Framework"><meta property="og:description" content="I principali quadri di competenza su IA e competenze digitali per la scuola, in italiano e navigabili: AILit (OCSE–CE), UNESCO studenti e docenti, DigComp 3.0, e un catalogo di attività per la classe."><meta property="og:url" content="https://framework.proftecnologia.it/"><meta property="og:image" content="https://framework.proftecnologia.it/asset/og/home.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="I quadri di competenza sull&#x27;IA per la scuola · ProfTecnologIA Framework"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://framework.proftecnologia.it/"><!-- /OG -->
+<!-- ICONE --><link rel="icon" href="favicon.ico" sizes="any"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#14213D"><!-- /ICONE -->
+<link rel="icon" href="asset/logo_proftecnologia_framework.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Portale: testata blu notte con griglia a tessere (richiamo del logo); schede framework come tessere; tabella di confronto. */
+:root{color-scheme:light;
+  --bg:#F4F4F1;--surface:#FFFFFF;--surface-2:#ECECE7;--line:#D9D9D2;--fg:#14213D;--muted:#596079;
+  --night:#14213D;--amber:#FCA311;--amber-on:#1B1405;--sky:#4CC9F0;--link:#0A6C8C;
+  --ailit:#3B2E8F;--unesco:#0F3D5E;--digcomp:#1F6F50;--ai4k12:#7C2D12;
+  --f-d:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;--f-b:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#0C1220;--surface:#141C2E;--surface-2:#1B2539;--line:#2A3650;--fg:#E8ECF4;--muted:#A3ACC2;--link:#7FD6F2;
+  --ailit:#A99CF5;--unesco:#8FD3E8;--digcomp:#7FD3AE;--ai4k12:#FFB27A}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#0C1220;--surface:#141C2E;--surface-2:#1B2539;--line:#2A3650;--fg:#E8ECF4;--muted:#A3ACC2;--link:#7FD6F2;
+  --ailit:#A99CF5;--unesco:#8FD3E8;--digcomp:#7FD3AE;--ai4k12:#FFB27A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 var(--f-b)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--night);z-index:30}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-d);margin:0;line-height:1.1;text-wrap:balance}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.hero{background:var(--night);color:#fff;position:relative;overflow:hidden}
+.hero .wrap{padding-block:22px 54px;position:relative;z-index:1}
+.nav{position:relative;z-index:2;display:flex;align-items:center;gap:12px;margin-bottom:44px}
+.nav img{width:40px;height:40px}
+.nav b{font-family:var(--f-d);font-size:1.15rem;margin-right:auto}
+.themes{display:flex;gap:2px;background:rgba(255,255,255,.12);border-radius:999px;padding:3px}
+.themes button{border:0;background:transparent;color:#fff;width:30px;height:26px;border-radius:999px;cursor:pointer;display:grid;place-items:center;opacity:.75}
+.themes svg{width:15px;height:15px}
+.themes button[aria-pressed="true"]{background:var(--amber);color:var(--amber-on);opacity:1}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;max-width:15ch;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero p{max-width:62ch;color:#C9D2E6;font-size:1.1rem;margin:18px 0 0}
+.tiles{position:absolute;right:-40px;top:100px;display:grid;grid-template-columns:repeat(2,120px);gap:14px;transform:rotate(-8deg);opacity:.9}
+.tiles i{width:120px;height:120px;border-radius:22px}
+.tiles i:nth-child(1){background:var(--amber)}.tiles i:nth-child(2){background:#E5E5E5;opacity:.2}.tiles i:nth-child(3){background:#E5E5E5;opacity:.2}.tiles i:nth-child(4){background:var(--sky)}
+main{padding-block:0 60px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:18px;margin-top:-30px;position:relative;z-index:2}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px;border-top:6px solid var(--c)}
+.card .k{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--c)}
+.badge{font-size:.72rem;padding:3px 9px;border-radius:999px;background:var(--c);color:var(--surface);letter-spacing:.04em}
+.badge.soon{background:var(--surface-2);color:var(--muted)}
+.card h2{font-size:1.55rem}
+.card p{margin:0;color:var(--muted)}
+.facts{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0}
+.facts span{font-size:.82rem;background:var(--surface-2);border-radius:6px;padding:3px 8px;font-weight:600}
+.acts{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px;padding-top:6px}
+.btn{display:inline-block;border-radius:10px;padding:9px 14px;font-weight:700;text-decoration:none;border:1px solid var(--line);color:var(--fg);background:var(--surface)}
+.btn.p{background:var(--c);border-color:var(--c);color:var(--surface)}
+.btn:hover{border-color:var(--c)}
+.card.off{opacity:.85}
+.c-ailit{--c:var(--ailit)}.c-cat{--c:#B5700A}.c-unesco{--c:var(--unesco)}.c-digcomp{--c:var(--digcomp)}.c-ai4k12{--c:var(--ai4k12)}.c-fvg{--c:#7A1F3D}.c-edeh{--c:#A8361B}.c-gl{--c:#0A6C8C}
+h2.sec{font-size:1.7rem;margin:50px 0 6px}
+.lead{color:var(--muted);max-width:75ch;margin:0 0 16px}
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:860px}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:.94rem}
+thead th{font-family:var(--f-d);font-size:1rem;background:var(--surface-2)}
+tbody th{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);width:150px}
+tr:last-child>*{border-bottom:0}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.how div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.how b{font-family:var(--f-d);font-size:1.1rem;display:block;margin-bottom:4px}
+.how p{margin:0;color:var(--muted);font-size:.95rem}
+footer{border-top:1px solid var(--line);padding-block:22px;font-size:.85rem;color:var(--muted)}
+footer p{margin:0 0 6px;max-width:110ch}
+@media (max-width:760px){.tiles{opacity:.25;right:-120px}}
+/* PORTALE-F1 */
+.hero .wrap{padding-block:22px 76px}
+.nav{margin-bottom:34px}
+.needs{position:relative;z-index:2;margin-top:-52px}
+.needs>h2{font-size:1.05rem;font-family:var(--f-b);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin:0 0 10px}
+.need-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.need{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 10px 30px -18px rgba(10,20,40,.45)}
+.need-h{display:flex;align-items:center;gap:10px}
+.need-i{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--nb);color:var(--nc)}
+.need-i svg{width:24px;height:24px}
+.need h3{font-size:1.2rem}
+.need p{margin:0;color:var(--muted);font-size:.95rem}
+.need-l{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.need-l span{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-right:2px}
+.need-l a{font-weight:600;font-size:.86rem;text-decoration:none;color:var(--nc);background:var(--nb);border-radius:999px;padding:3px 10px}
+.need-l a:hover{text-decoration:underline}
+.need-a{margin-top:auto;padding-top:4px;display:flex}
+.need-a .btn{--c:var(--nc);flex:1 1 100%;text-align:center}
+.hero h1{font-size:clamp(2rem,4.4vw,3.1rem);max-width:21ch}
+.n-lez{--nc:#9A5B00;--nb:#FFF1D6}.n-per{--nc:#3B2E8F;--nb:#ECE9FB}.n-for{--nc:#A8361B;--nb:#FDE7E0}.n-aut{--nc:#1F6F50;--nb:#E0F2E9}
+:root[data-theme="dark"] .n-lez{--nc:#FCA311;--nb:#3A2C10}:root[data-theme="dark"] .n-per{--nc:#B9AEFF;--nb:#25204A}:root[data-theme="dark"] .n-for{--nc:#FF9C80;--nb:#3B1A12}:root[data-theme="dark"] .n-aut{--nc:#8FE0BB;--nb:#14301F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .n-lez{--nc:#FCA311;--nb:#3A2C10}:root:not([data-theme="light"]) .n-per{--nc:#B9AEFF;--nb:#25204A}:root:not([data-theme="light"]) .n-for{--nc:#FF9C80;--nb:#3B1A12}:root:not([data-theme="light"]) .n-aut{--nc:#8FE0BB;--nb:#14301F}}
+:root[data-theme="dark"] .need-a .btn.p,:root[data-theme="dark"] .need-a .btn.p{color:#0C1220}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .need-a .btn.p{color:#0C1220}}
+.flow{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;position:relative;counter-reset:st}
+.flow::before{content:"";position:absolute;left:10%;right:10%;top:26px;height:3px;background:linear-gradient(90deg,var(--amber),var(--sky));border-radius:3px}
+.flow li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px}
+.st-i{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--night);color:#fff;border:3px solid var(--bg);box-shadow:0 0 0 2px var(--amber);position:relative;z-index:1}
+.flow li:nth-child(n+3) .st-i{box-shadow:0 0 0 2px var(--sky)}
+.st-i svg{width:24px;height:24px}
+.flow b{font-family:var(--f-d);font-size:1.05rem;display:flex;gap:6px;align-items:baseline}
+.st-n{font-family:var(--f-b);font-size:.8rem;color:var(--muted)}
+.flow p{margin:0;font-size:.9rem;color:var(--muted);max-width:28ch}
+.flow-n{font-size:.88rem;color:var(--muted);margin:14px 0 0}
+.cards{margin-top:6px}
+@media (max-width:860px){
+  .flow{grid-template-columns:1fr;gap:0}
+  .flow::before{left:26px;right:auto;top:20px;bottom:20px;width:3px;height:auto;background:linear-gradient(180deg,var(--amber),var(--sky))}
+  .flow li{display:grid;grid-template-columns:54px 1fr;column-gap:14px;text-align:left;align-items:start;padding-bottom:14px}
+  .st-i{grid-row:1/3}
+  .flow p{max-width:none}
+}
+@media (max-width:640px){.hero .wrap{padding-block:18px 64px}.nav{margin-bottom:22px}.needs{margin-top:-44px}}
+/* PRESENTAZIONI-F1 */
+.pr-f{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.pr-f button{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:6px 13px;font:600 .9rem var(--f-b);cursor:pointer}
+.pr-f button[aria-pressed="true"]{background:var(--fg);color:var(--surface);border-color:var(--fg)}
+.pr-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:14px}
+.pr{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;border-top:4px solid var(--pc)}
+.pr[hidden]{display:none}
+.pr-im{position:relative;display:block;aspect-ratio:16/9;background:var(--surface-2)}
+.pr-im img{width:100%;height:100%;object-fit:cover;display:block}
+.pr-im span{position:absolute;right:8px;bottom:8px;background:rgba(11,27,43,.82);color:#fff;font-size:.75rem;font-weight:700;border-radius:6px;padding:2px 7px}
+.pr-im:hover img{opacity:.9}
+.pr-b{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pr-k{font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.pr-k b{color:var(--pc)}
+:root[data-theme="dark"] .pr-k b{color:var(--fg)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pr-k b{color:var(--fg)}}
+.pr h3{font-size:1.02rem;line-height:1.2}
+.pr p{margin:0;font-size:.88rem;color:var(--muted)}
+.pr-a{margin-top:auto;padding-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+.pr-a .btn{--c:var(--pc);padding:6px 10px;font-size:.85rem;border-radius:8px}
+:root[data-theme="dark"] .pr-a .btn.p{--c:#FCA311;color:#1B1405}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pr-a .btn.p{--c:#FCA311;color:#1B1405}}
+@media (max-width:640px){.pr p{display:none}.pr-g{gap:10px}}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@600;700&display=swap">
+<style id="pfnav-css">/* PFNAV: barra comune del sito, identica in tutte le pagine, con la ricerca */
+.pfnav{background:#0B1B2B;color:#C9D6E3;font:600 13.5px/1.2 "Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;letter-spacing:0;border-bottom:1px solid rgba(255,255,255,.08);position:relative;z-index:25}
+.pfnav *{box-sizing:border-box}
+.pfnav .pfnav-in{max-width:1280px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:8px;min-height:40px}
+.pfnav .pfnav-l{display:flex;align-items:center;gap:4px;min-width:0;flex:1 1 auto}
+.pfnav a{color:#E6EDF5;text-decoration:none;padding:7px 7px;border-radius:7px;white-space:nowrap;flex:none;border-bottom:0}
+.pfnav a:hover{background:rgba(255,255,255,.09);color:#fff}
+.pfnav a:focus-visible,.pfnav button:focus-visible{outline:2px solid #FCA311;outline-offset:1px}
+.pfnav a[aria-current="page"]{color:#0B1B2B;background:#FCA311}
+.pfnav .pfnav-home{display:flex;align-items:center;gap:8px;font-weight:700;color:#fff;padding-left:0}
+.pfnav .pfnav-home i{display:grid;grid-template-columns:repeat(2,6px);gap:2px}
+.pfnav .pfnav-home i b{width:6px;height:6px;border-radius:2px;background:#E5E5E5;opacity:.35}
+.pfnav .pfnav-home i b:first-child{background:#FCA311;opacity:1}.pfnav .pfnav-home i b:last-child{background:#4CC9F0;opacity:1}
+.pfnav .pfnav-home[aria-current="page"]{background:transparent;color:#FCA311}
+.pfnav .pfnav-sep{width:1px;height:18px;background:rgba(255,255,255,.22);margin:0 6px;flex:none}
+.pfnav .pfnav-p{flex:none;position:relative;display:flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.22);border-radius:8px;padding:5px 9px;min-height:30px}
+.pfnav .pfnav-p svg{width:15px;height:15px}
+.pfnav .pfnav-p b{background:#FCA311;color:#0B1B2B;border-radius:999px;font-size:11px;line-height:1;padding:3px 6px;min-width:18px;text-align:center}
+.pfnav .pfnav-p b:empty{display:none}
+.pfnav .pfnav-p[aria-current="page"] b{background:#0B1B2B;color:#FCA311}
+.pfnav .pfnav-s{flex:none;display:flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#E6EDF5;border-radius:8px;padding:5px 9px;font:inherit;cursor:pointer;min-height:30px}
+.pfnav .pfnav-s:hover{background:rgba(255,255,255,.14);color:#fff}
+.pfnav .pfnav-s svg{width:15px;height:15px}
+.pfnav .pfnav-s kbd{font:600 11px/1 "Source Sans 3",system-ui,sans-serif;border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:2px 5px;color:#C9D6E3}
+.pfnav .pfnav-b{flex:none;display:flex;align-items:center;gap:5px;border:0;background:transparent;color:#E6EDF5;font:inherit;padding:7px 8px;border-radius:7px;cursor:pointer}
+.pfnav .pfnav-b:hover{background:rgba(255,255,255,.09);color:#fff}
+.pfnav .pfnav-b svg{width:14px;height:14px;transition:transform .15s}
+.pfnav .pfnav-b[aria-expanded="true"]{background:rgba(255,255,255,.14);color:#fff}
+.pfnav .pfnav-b[aria-expanded="true"] svg.ch{transform:rotate(180deg)}
+.pfnav .pfnav-b.cur{color:#0B1B2B;background:#FCA311}
+.pfnav .pfnav-mb{display:none}
+.pfnav .pfnav-pan{position:absolute;left:max(16px,calc((100% - 1280px)/2 + 16px));top:calc(100% + 4px);width:min(760px,calc(100% - 32px));background:#0F2236;border:1px solid rgba(255,255,255,.14);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.45);padding:10px;z-index:40}
+.pfnav .pfnav-pan[hidden]{display:none}
+.pfnav .pfnav-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+.pfnav .pfnav-pan a{display:flex;gap:10px;align-items:flex-start;white-space:normal;padding:9px 10px;border-radius:10px;color:#E6EDF5}
+.pfnav .pfnav-pan a:hover{background:rgba(255,255,255,.08)}
+.pfnav .pfnav-pan a i{flex:none;width:10px;height:10px;border-radius:3px;margin-top:5px;background:var(--fc)}
+.pfnav .pfnav-pan a b{display:block;font-size:14.5px;color:#fff}
+.pfnav .pfnav-pan a small{display:block;font:400 13px/1.35 "Source Sans 3",system-ui,sans-serif;color:#AFC0D2;margin-top:2px}
+.pfnav .pfnav-pan a[aria-current="page"],.pfnav .pfnav-pan a.cur{background:rgba(252,163,17,.16);color:#fff;box-shadow:inset 3px 0 0 #FCA311}
+.pfnav .pfnav-pan a[aria-current="page"] b,.pfnav .pfnav-pan a.cur b{color:#FCA311}
+.pfnav .pfnav-cf{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);margin-top:4px;padding-top:4px}
+.pfnav .pfnav-mo{display:none}
+.pfnav .pf-skip{position:absolute;left:12px;top:-60px;z-index:60;background:#FCA311;color:#0B1B2B;font-weight:700;padding:10px 16px;border-radius:0 0 10px 10px;text-decoration:none}
+.pfnav .pf-skip:focus{top:0;outline:3px solid #fff;outline-offset:2px}
+header.pfhead nav.tabs.more-r{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 44px),transparent)}
+header.pfhead nav.tabs.more-l{-webkit-mask-image:linear-gradient(to left,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(to left,#000 calc(100% - 44px),transparent)}
+header.pfhead nav.tabs.more-l.more-r{-webkit-mask-image:linear-gradient(to right,transparent,#000 44px,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(to right,transparent,#000 44px,#000 calc(100% - 44px),transparent)}
+/* TESTO: dimensione del testo e carattere ad alta leggibilità (pulsante «Aa»), preferenza salvata nel browser */
+.pfnav .pfnav-a{flex:none;display:flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#E6EDF5;border-radius:8px;padding:5px 9px;font:inherit;cursor:pointer;min-height:30px}
+.pfnav .pfnav-a:hover,.pfnav .pfnav-a[aria-expanded="true"]{background:rgba(255,255,255,.14);color:#fff}
+.pfnav .pfnav-a b{font:700 14px/1 "Source Sans 3",system-ui,sans-serif;letter-spacing:-.02em}
+.pfnav .pfnav-tx{position:absolute;right:max(16px,calc((100% - 1280px)/2 + 16px));top:calc(100% + 4px);width:min(320px,calc(100% - 32px));background:#0F2236;border:1px solid rgba(255,255,255,.14);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.45);padding:14px;z-index:41;color:#E6EDF5;font:400 14.5px/1.4 "Source Sans 3",system-ui,sans-serif}
+.pfnav .pfnav-tx[hidden]{display:none}
+.pfnav .pfnav-tx fieldset{border:0;margin:0 0 12px;padding:0}
+.pfnav .pfnav-tx legend{font:700 11px/1 "Source Sans 3",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#8FA3B8;padding:0 0 8px}
+.pfnav .pfnav-tx .sz{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.pfnav .pfnav-tx .sz label{display:grid;place-items:center;gap:2px;border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:8px 4px;cursor:pointer;text-align:center;font-size:13px}
+.pfnav .pfnav-tx .sz label span{font-weight:700;line-height:1}
+.pfnav .pfnav-tx .sz input{position:absolute;opacity:0;pointer-events:none}
+.pfnav .pfnav-tx .sz label:has(input:checked){background:#FCA311;color:#0B1B2B;border-color:#FCA311}
+.pfnav .pfnav-tx .sz label:has(input:focus-visible){outline:2px solid #FCA311;outline-offset:2px}
+.pfnav .pfnav-tx .fn{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.pfnav .pfnav-tx .fn input{width:18px;height:18px;margin:2px 0 0;accent-color:#FCA311;flex:none}
+.pfnav .pfnav-tx .fn small{display:block;color:#AFC0D2;font-size:13px}
+.pfnav .pfnav-tx p{margin:10px 0 0;font-size:12.5px;color:#AFC0D2}
+:root.pf-t1 body>*:not(dialog):not(.pfnav){zoom:1.12}:root.pf-t1 dialog:not(.lz)>*{zoom:1.12}
+:root.pf-t2 body>*:not(dialog):not(.pfnav){zoom:1.25}:root.pf-t2 dialog:not(.lz)>*{zoom:1.2}
+:root.pf-t1 .pfnav{zoom:1.06}:root.pf-t2 .pfnav{zoom:1.12}
+:root.pf-font body,:root.pf-font body *:not(svg):not(svg *):not(code):not(kbd):not(pre):not(samp){font-family:"Atkinson Hyperlegible","Verdana",system-ui,sans-serif!important;letter-spacing:.01em}
+@media (max-width:760px){.pfnav .pfnav-l>a:not(.pfnav-home),.pfnav .pfnav-l>.pfnav-sep,.pfnav .pfnav-l>.pfnav-fw{display:none}.pfnav .pfnav-mb{display:flex;margin-left:auto;border:1px solid rgba(255,255,255,.22);min-height:34px}.pfnav .pfnav-pan{position:absolute;left:0;right:0;top:100%;width:auto;max-height:calc(100dvh - 42px);overflow-y:auto;border-radius:0 0 14px 14px;border-left:0;border-right:0}.pfnav .pfnav-g{grid-template-columns:1fr}.pfnav .pfnav-mo{display:block}.pfnav .pfnav-h{font:700 11px/1 "Source Sans 3",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#8FA3B8;padding:10px 10px 4px}}
+@media (max-width:640px){.pfnav{font-size:13px}.pfnav .pfnav-home span,.pfnav .pfnav-s span,.pfnav .pfnav-s kbd,.pfnav .pfnav-a span,.pfnav .pfnav-p span{display:none}.pfnav .pfnav-p{padding:6px 8px;min-height:34px}.pfnav .pfnav-in{min-height:42px;gap:6px}.pfnav .pfnav-s,.pfnav .pfnav-a{padding:6px 8px;min-height:34px}.pfnav .pfnav-tx{right:8px;width:calc(100% - 16px)}}
+@media print{.pfnav,.pfs{display:none!important}}
+.pf-prh{display:none}
+@media print{.pf-prh{display:flex;align-items:center;gap:3mm;margin:0 0 4mm;padding:0 0 2.5mm;border-bottom:.5mm solid #14213D;font:400 9pt/1.2 "Source Sans 3","Segoe UI",system-ui,sans-serif;color:#14213D}
+ .pf-prh img{width:9mm;height:9mm;flex:none}.pf-prh b{font-weight:700}.pf-prh .pf-prh-t{flex:1;color:#333}.pf-prh .pf-prh-u{color:#555;font-size:8pt}
+ body:has(dialog[open]) .pf-prh{display:none!important}}
+/* finestra di ricerca */
+.pfs{--s-bg:#FFFFFF;--s-bg2:#F2F3EF;--s-line:#D9D9D2;--s-fg:#14213D;--s-mu:#596079;--s-acc:#0A6C8C;--s-mk:#FFE3A3;
+  border:0;padding:0;margin:6vh auto auto;width:min(760px,calc(100% - 24px));max-height:min(80vh,760px);border-radius:16px;background:var(--s-bg);color:var(--s-fg);box-shadow:0 24px 70px rgba(5,10,25,.45);font:16px/1.45 "Source Sans 3","Segoe UI",system-ui,sans-serif;overflow:hidden;flex-direction:column}
+.pfs[open]{display:flex}
+.pfs::backdrop{background:rgba(8,14,28,.55)}
+:root[data-theme="dark"] .pfs{--s-bg:#141C2E;--s-bg2:#1B2539;--s-line:#2A3650;--s-fg:#E8ECF4;--s-mu:#A3ACC2;--s-acc:#7FD6F2;--s-mk:#5A4310}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pfs{--s-bg:#141C2E;--s-bg2:#1B2539;--s-line:#2A3650;--s-fg:#E8ECF4;--s-mu:#A3ACC2;--s-acc:#7FD6F2;--s-mk:#5A4310}}
+.pfs *{box-sizing:border-box}
+.pfs-h,.pfs-f,.pfs-ft{flex:none}
+.pfs-h{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--s-line)}
+.pfs-h svg{width:20px;height:20px;flex:none;color:var(--s-mu)}
+.pfs-h input{flex:1;min-width:0;border:0;background:transparent;color:var(--s-fg);font:inherit;font-size:1.1rem;outline:none;padding:6px 0}
+.pfs-h button{border:1px solid var(--s-line);background:var(--s-bg2);color:var(--s-fg);border-radius:8px;padding:5px 10px;font:600 .85rem "Source Sans 3",system-ui,sans-serif;cursor:pointer}
+.pfs-f{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid var(--s-line);overflow-x:auto;scrollbar-width:none}
+.pfs-f::-webkit-scrollbar{display:none}
+.pfs-f button{flex:none;border:1px solid var(--s-line);background:var(--s-bg);color:var(--s-fg);border-radius:999px;padding:4px 11px;font:600 .84rem "Source Sans 3",system-ui,sans-serif;cursor:pointer}
+.pfs-f button[aria-pressed="true"]{background:var(--s-fg);color:var(--s-bg);border-color:var(--s-fg)}
+.pfs-f button small{opacity:.7;font-weight:400}
+.pfs-r{overflow-y:auto;padding:6px 8px 10px;flex:1;overscroll-behavior:contain}
+.pfs-g{margin:8px 6px 4px;font:700 .72rem "Source Sans 3",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--s-mu);display:flex;justify-content:space-between;align-items:center}
+.pfs-g button{border:0;background:none;color:var(--s-acc);font:inherit;text-transform:none;letter-spacing:0;cursor:pointer;text-decoration:underline}
+.pfs-i{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;padding:8px 10px;border-radius:10px;color:var(--s-fg);text-decoration:none;border:1px solid transparent}
+.pfs-i:hover,.pfs-i[aria-selected="true"]{background:var(--s-bg2);border-color:var(--s-line)}
+.pfs-i .b{grid-row:1/3;align-self:start;margin-top:2px;font:700 .68rem "Source Sans 3",system-ui,sans-serif;letter-spacing:.03em;color:#fff;background:var(--fc,#596079);border-radius:6px;padding:3px 6px;white-space:nowrap;min-width:64px;text-align:center}
+.pfs-i .t{font-weight:700;line-height:1.3}
+.pfs-i .s{font-size:.85rem;color:var(--s-mu);line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pfs mark{background:var(--s-mk);color:inherit;border-radius:3px;padding:0 1px}
+.pfs-e{padding:26px 16px;color:var(--s-mu);text-align:center}
+.pfs-e p{margin:0 0 10px}
+.pfs-e .sug{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.pfs-e .sug button{border:1px solid var(--s-line);background:var(--s-bg);color:var(--s-fg);border-radius:999px;padding:4px 11px;font:600 .85rem "Source Sans 3",system-ui,sans-serif;cursor:pointer}
+.pfs-ft{display:flex;justify-content:space-between;gap:10px;padding:8px 14px;border-top:1px solid var(--s-line);font-size:.78rem;color:var(--s-mu)}
+@media (max-width:640px){.pfs{margin:0;inset:0;width:100%;max-width:100%;height:100%;max-height:none;border-radius:0}.pfs-ft span:last-child{display:none}.pfs-i .b{min-width:54px}}
+</style>
+<script id="pf-testo-init">try{(function(){var r=document.documentElement,t=localStorage.getItem("pf-testo"),f=localStorage.getItem("pf-font")==="1";if(t==="1"||t==="2")r.classList.add("pf-t"+t);if(f){r.classList.add("pf-font");var l=document.createElement("link");l.rel="stylesheet";l.id="pf-font-css";l.href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap";document.head.appendChild(l)}})()}catch(e){}</script>
+<style id="dce-css">.c-dce{--c:#1D4E9E}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .c-dce{--c:#9DBBF5}}:root[data-theme="dark"] .c-dce{--c:#9DBBF5}</style>
+<style id="home-icone">/* HOME-ICONE */.card .acts{align-items:stretch;flex-wrap:nowrap}.card .acts .btn.ic{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;flex:0 0 auto;min-width:64px;min-height:48px;padding:5px 8px;border-radius:12px;font-size:.72rem;font-weight:700;line-height:1;color:var(--c);border-color:color-mix(in srgb,var(--c) 35%,var(--line))}.card .acts .btn.ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.card .acts .btn.ic:hover{background:color-mix(in srgb,var(--c) 10%,var(--surface))}.card .acts .btn.ic:focus-visible{outline:3px solid var(--c);outline-offset:2px}.card .acts .btn.p{flex:1 1 0;min-width:0;min-height:48px;display:inline-flex;align-items:center;justify-content:center;text-align:center;line-height:1.2}</style><style id="home-snella-css">/* HOME-SNELLA */.hm-s{display:flex;align-items:center;gap:8px;margin:22px 0 0;max-width:640px;background:#fff;border-radius:14px;padding:6px 6px 6px 14px;box-shadow:0 8px 30px rgba(0,0,0,.25)}.hm-s svg{width:20px;height:20px;color:#596079;flex:none}.hm-s input{flex:1;min-width:0;border:0;outline:none;font:inherit;font-size:1.05rem;color:#14213D;background:transparent;padding:8px 0}.hm-s button{border:0;border-radius:10px;background:var(--amber,#FCA311);color:#1B1405;font:700 1rem var(--f-b,inherit);padding:10px 18px;cursor:pointer;min-height:44px}.hm-s:focus-within{outline:3px solid var(--sky,#4CC9F0);outline-offset:2px}.hm-dp{margin-top:8px}.hm-dh{display:flex;justify-content:space-between;align-items:baseline;gap:6px 16px;flex-wrap:wrap}.hm-dh a{font-weight:700;color:var(--link)}.hm-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}.hm-a{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:14px;padding:14px;text-decoration:none;color:var(--fg)}.hm-a:hover{border-color:var(--c)}.hm-a .num{flex:none;width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--c);color:#fff;font-weight:800}.hm-b{display:flex;flex-direction:column;gap:6px;min-width:0}.hm-b b{font-size:1.05rem;line-height:1.25}.hm-p{font-size:.92rem;color:var(--muted);line-height:1.4}.hm-t{display:flex;flex-wrap:wrap;gap:5px}.hm-t i{font-style:normal;font-size:.8rem;font-weight:700;background:var(--surface-2);border-radius:6px;padding:3px 8px}.hm-t i.up{background:#DDF3E4;color:#14532D}:root[data-theme="dark"] .hm-t i.up{background:#173B26;color:#BDF0CD}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hm-t i.up{background:#173B26;color:#BDF0CD}}.cards .card .facts{display:none}.cards .card p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}.cards .card{padding:18px}.cards .card h2{font-size:1.3rem}.hm-pr{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px 22px 22px;margin-top:40px}.hm-pr .lead{margin-bottom:0}.hm-pr>a.btn.p{flex:none;--c:#FCA311;background:#FCA311;border-color:#FCA311;color:#1B1405;padding:12px 18px;border-radius:10px}@media (max-width:640px){.hm-s{padding:5px 5px 5px 12px}.hm-s button{padding:10px 14px}.hm-pr{padding:4px 16px 18px}}</style><style id="home-kit-css">.hm-t i.kit{background:#FDE9C8;color:#6B3E00}:root[data-theme="dark"] .hm-t i.kit{background:#4A3209;color:#FFD99A}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hm-t i.kit{background:#4A3209;color:#FFD99A}}</style><style id="contrasti-css">/* CONTRASTI */.c-cat{--c:#8A5300}:root[data-theme="dark"] .c-gl{--c:#7FD6F2}:root[data-theme="dark"] .c-fvg{--c:#F08CB0}:root[data-theme="dark"] .c-edeh{--c:#FF9B7A}:root[data-theme="dark"] .c-cat{--c:#F5B544}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .c-gl{--c:#7FD6F2}:root:not([data-theme="light"]) .c-fvg{--c:#F08CB0}:root:not([data-theme="light"]) .c-edeh{--c:#FF9B7A}:root:not([data-theme="light"]) .c-cat{--c:#F5B544}}</style><style id="inf-css">.hm-inf{margin:34px 0}.hm-inf .hm-ih{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;justify-content:space-between}.hm-inf .strip{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 12px;scroll-snap-type:x mandatory}.hm-inf .strip a{flex:none;width:150px;scroll-snap-align:start;text-decoration:none;color:inherit;font-size:.86rem;line-height:1.3}.hm-inf .strip img{width:150px;height:212px;object-fit:cover;object-position:top;border-radius:10px;border:1px solid rgba(127,140,160,.35);display:block;margin-bottom:6px;box-shadow:0 2px 10px rgba(20,33,61,.08)}.hm-inf .strip b{display:block}</style>
+<style id="pfnav-art-css">/* ARTEFATTI: gruppo «Risorse» nel pannello Framework su computer */.pfnav .pfnav-dk{border-top:1px solid rgba(255,255,255,.12);margin-top:6px;padding-top:2px}.pfnav .pfnav-dk .pfnav-h{font:700 11px/1 "Source Sans 3",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#8FA3B8;padding:10px 10px 4px}@media (max-width:760px){.pfnav .pfnav-dk{display:none}}</style>
+<style id="art-home-css">/* ART-HOME */.hm-t i.art{background:#E4F1C4;color:#2F4119}:root[data-theme="dark"] .hm-t i.art{background:#2B3A14;color:#D9F08F}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hm-t i.art{background:#2B3A14;color:#D9F08F}}.hm-ar{margin-top:22px}.hm-ar .sec3{font:700 1.2rem var(--f-d,inherit);margin:0}.hm-ar .lead{margin:6px 0 12px}.hm-gg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px}.hm-ga{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-top:5px solid #9BBF2E;border-radius:14px;overflow:hidden}.hm-ga img{width:100%;height:auto;aspect-ratio:480/252;object-fit:cover;display:block}.hm-ga>div{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px}.hm-ga .k{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}.hm-ga h3{margin:0;font-size:1.15rem}.hm-ga h3 a{color:var(--fg);text-decoration:none}.hm-ga h3 a:hover{text-decoration:underline}.hm-ga p{margin:0;font-size:.92rem;color:var(--muted)}.hm-ga .ac{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}.hm-ga .ac .btn{min-height:44px;display:inline-flex;align-items:center}.hm-ga .ac .btn.p{--c:#3D5A12;background:#3D5A12;border-color:#3D5A12;color:#fff}.hm-ga .ac .btn.p:hover{background:#2F4119}@media (max-width:640px){.hm-ga .ac .btn{flex:1 1 auto;justify-content:center}}</style><script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script><script defer src="/_vercel/insights/script.js"></script></head>
+<body>
+<nav class="pfnav" aria-label="Sezioni del sito ProfTecnologIA Framework"><a class="pf-skip" href="#contenuto">Salta al contenuto</a><div class="pfnav-in"><div class="pfnav-l"><a class="pfnav-home" href="./" aria-current="page" title="ProfTecnologIA Framework"><i aria-hidden="true"><b></b><b></b><b></b><b></b></i><span>ProfTecnologIA Framework</span></a><span class="pfnav-sep" aria-hidden="true"></span><button type="button" class="pfnav-b pfnav-fw" data-pan aria-expanded="false" aria-controls="pfnav-pan">Framework<svg class="ch" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button><a href="./catalogo/">Attività</a><a href="./attrezzi/">Strumenti</a><a href="./materiali/">Materiali</a><a href="./normativa/">Normativa</a><a href="./glossario/">Glossario</a><button type="button" class="pfnav-b pfnav-mb" data-pan aria-expanded="false" aria-controls="pfnav-pan" aria-label="Apri il menu"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button></div><a class="pfnav-p" href="./percorso/" title="Il mio percorso"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span>Il mio percorso</span><b></b></a><button type="button" class="pfnav-a" aria-expanded="false" aria-controls="pfnav-tx" title="Dimensione del testo e carattere"><b aria-hidden="true">Aa</b><span>Testo</span></button><div class="pfnav-tx" id="pfnav-tx" hidden role="group" aria-label="Dimensione del testo e carattere"><fieldset><legend>Dimensione del testo</legend><div class="sz"><label><input type="radio" name="pf-sz" value="0"><span style="font-size:14px">A</span>Normale</label><label><input type="radio" name="pf-sz" value="1"><span style="font-size:17px">A</span>Grande</label><label><input type="radio" name="pf-sz" value="2"><span style="font-size:20px">A</span>Molto grande</label></div></fieldset><label class="fn"><input type="checkbox" name="pf-fn"><span>Carattere ad alta leggibilità<small>Atkinson Hyperlegible, pensato per chi legge con difficoltà o ha una vista ridotta</small></span></label><p>La scelta vale per tutte le pagine del sito e resta in questo browser.</p></div><button type="button" class="pfnav-s" aria-label="Cerca nel sito" title="Cerca nel sito (tasto /)"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><span>Cerca</span><kbd>/</kbd></button></div><div class="pfnav-pan" id="pfnav-pan" hidden><div class="pfnav-h pfnav-mo">Framework</div><div class="pfnav-g"><a href="./ailit/" style="--fc:#5B4BC4"><i aria-hidden="true"></i><span><b>AILit</b><small>Alfabetizzazione all'IA degli studenti · OCSE e Commissione europea, 2026</small></span></a><a href="./unesco/" style="--fc:#2A7DB3"><i aria-hidden="true"></i><span><b>UNESCO</b><small>Competenze sull'IA per gli studenti e per i docenti · 2024</small></span></a><a href="./digcomp/" style="--fc:#2E9D6E"><i aria-hidden="true"></i><span><b>DigComp 3.0</b><small>Competenze digitali dei cittadini, IA compresa · Unione europea, 2025</small></span></a><a href="./digcompedu/" style="--fc:#3B73D1"><i aria-hidden="true"></i><span><b>DigCompEdu</b><small>Competenze digitali dei docenti · Unione europea e CNR-ITD</small></span></a><a href="./ai4k12/" style="--fc:#C2552B"><i aria-hidden="true"></i><span><b>AI4K12</b><small>Le cinque grandi idee sull'IA, dall'infanzia alle superiori</small></span></a><a href="./fvg/" style="--fc:#B8325E"><i aria-hidden="true"></i><span><b>Rete FVG</b><small>«Costruire il futuro»: le linee guida sull'IA di 55 scuole</small></span></a><a href="./edeh/" style="--fc:#D2552E"><i aria-hidden="true"></i><span><b>EDEH</b><small>Insegnare per, con e sull'IA: i sette rapporti europei</small></span></a><a href="./edeh/xai/" style="--fc:#2FB5AA"><i aria-hidden="true"></i><span><b>EDEH · IA spiegabile</b><small>L'XAI a scuola: concetti, cinque scenari, competenze dei docenti (2025)</small></span></a><a class="pfnav-cf" href="./confronta/" style="--fc:#FCA311"><i aria-hidden="true"></i><span><b>Confronta i framework</b><small>Tabella di confronto e collegamenti tra le competenze dei diversi quadri</small></span></a></div><div class="pfnav-dk"><div class="pfnav-h">Risorse</div><div class="pfnav-g"><a href="./artefatti/" style="--fc:#C6E35A"><i aria-hidden="true"></i><span><b>Artefatti</b><small>Giochi e strumenti interattivi dalle attività del Catalogo</small></span></a></div></div><div class="pfnav-mo"><div class="pfnav-h">Risorse</div><div class="pfnav-g"><a href="./catalogo/" style="--fc:#C9D6E3"><i aria-hidden="true"></i><span><b>Attività</b><small>Le 180 attività con piano di lezione</small></span></a><a href="./artefatti/" style="--fc:#C6E35A"><i aria-hidden="true"></i><span><b>Artefatti</b><small>Giochi e strumenti interattivi dalle attività del Catalogo</small></span></a><a href="./attrezzi/" style="--fc:#C9D6E3"><i aria-hidden="true"></i><span><b>Strumenti</b><small>Gli strumenti per l'IA sulla ruota AILit × Bloom e UNESCO</small></span></a><a href="./materiali/" style="--fc:#C9D6E3"><i aria-hidden="true"></i><span><b>Materiali</b><small>Presentazioni, dispense, documenti originali</small></span></a><a href="./normativa/" style="--fc:#C9D6E3"><i aria-hidden="true"></i><span><b>Normativa</b><small>Norme, linee guida e documenti sull'IA a scuola, per ruolo</small></span></a><a href="./glossario/" style="--fc:#C9D6E3"><i aria-hidden="true"></i><span><b>Glossario</b><small>I termini di tutti i framework</small></span></a><a href="./percorso/" style="--fc:#C9D6E3"><i aria-hidden="true"></i><span><b>Il mio percorso</b><small>Attività salvate, autovalutazioni, salvataggio dei dati</small></span></a></div></div></div></nav><script id="pfnav-js">(function(){
+/* «Salta al contenuto»: porta il fuoco al contenuto senza cambiare l'indirizzo (molte sezioni usano l'hash per le viste) */
+document.querySelectorAll(".pf-skip").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var m=document.querySelector("main");if(!m)return;if(!m.hasAttribute("tabindex"))m.setAttribute("tabindex","-1");m.focus({preventScroll:true});m.scrollIntoView()})});
+/* schede interne delle sezioni: sfumatura quando ce ne sono altre fuori schermo, scheda corrente visibile */
+function pfTabs(){document.querySelectorAll("header.pfhead nav.tabs").forEach(function(t){function u(){var m=t.scrollWidth-t.clientWidth;t.classList.toggle("more-r",t.scrollLeft<m-4);t.classList.toggle("more-l",t.scrollLeft>4)}
+ t.addEventListener("scroll",u,{passive:true});addEventListener("resize",u);function c(){var a=t.querySelector('[aria-current="page"],[aria-selected="true"]');if(a&&t.scrollWidth>t.clientWidth){var r=a.getBoundingClientRect(),q=t.getBoundingClientRect();if(r.right>q.right-30||r.left<q.left)t.scrollLeft+=r.left-q.left-24}u()}
+ c();setTimeout(c,300);new MutationObserver(c).observe(t,{attributes:true,subtree:true,attributeFilter:["aria-current","aria-selected"]})})}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",pfTabs);else pfTabs();
+/* testata delle stampe: titolo della pagina e data */
+(function(){function f(){var t=document.querySelector(".pf-prh-t");if(t){var n=document.title.replace(/ · ProfTecnologIA Framework$/,"");t.textContent=(n==="ProfTecnologIA Framework"?"":n+" · ")+"stampato il "+new Date().toLocaleDateString("it-IT",{day:"numeric",month:"long",year:"numeric"})}}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",f);else f();addEventListener("beforeprint",f)})();
+/* TESTO: pulsante «Aa» con dimensione del testo e carattere ad alta leggibilità */
+(function(){var b=document.querySelector(".pfnav-a"),p=document.getElementById("pfnav-tx");if(!b||!p)return;var r=document.documentElement;
+function get(k){try{return localStorage.getItem(k)}catch(e){return null}}function put(k,v){try{if(v)localStorage.setItem(k,v);else localStorage.removeItem(k)}catch(e){}}
+function sync(){var t=get("pf-testo")||"0";p.querySelectorAll('[name="pf-sz"]').forEach(function(i){i.checked=i.value===t});p.querySelector('[name="pf-fn"]').checked=get("pf-font")==="1"}
+function apply(){var t=get("pf-testo")||"0";r.classList.remove("pf-t1","pf-t2");if(t!=="0")r.classList.add("pf-t"+t);var f=get("pf-font")==="1";r.classList.toggle("pf-font",f);
+ if(f&&!document.getElementById("pf-font-css")){var l=document.createElement("link");l.rel="stylesheet";l.id="pf-font-css";l.href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap";document.head.appendChild(l)}
+ try{window.dispatchEvent(new Event("resize"))}catch(e){}}
+function set(o){p.hidden=!o;b.setAttribute("aria-expanded",o?"true":"false");if(o){sync();var c=p.querySelector("input:checked")||p.querySelector("input");if(c)c.focus()}}
+b.addEventListener("click",function(e){e.stopPropagation();set(p.hidden)});
+p.addEventListener("change",function(e){var i=e.target;if(i.name==="pf-sz")put("pf-testo",i.value==="0"?"":i.value);if(i.name==="pf-fn")put("pf-font",i.checked?"1":"");apply()});
+document.addEventListener("click",function(e){if(!p.hidden&&!e.target.closest("#pfnav-tx")&&!e.target.closest(".pfnav-a"))set(false)});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!p.hidden){set(false);b.focus()}});
+addEventListener("storage",function(e){if(e.key==="pf-testo"||e.key==="pf-font"){apply();sync()}})})();
+/* pannello «Framework» (computer) e «Menu» (telefono) */
+var pan=document.getElementById("pfnav-pan"),tg=[].slice.call(document.querySelectorAll(".pfnav [data-pan]"));
+function setP(o,b){if(!pan)return;pan.hidden=!o;tg.forEach(function(x){x.setAttribute("aria-expanded",o&&x===b?"true":"false")});if(o){var f=pan.querySelector("a");if(f&&b&&b.dataset.kb)f.focus()}}
+tg.forEach(function(b){b.addEventListener("click",function(e){var o=pan.hidden||b.getAttribute("aria-expanded")!=="true";b.dataset.kb=e.detail===0?"1":"";setP(o,b)})});
+document.addEventListener("click",function(e){if(pan&&!pan.hidden&&!e.target.closest(".pfnav-pan")&&!e.target.closest("[data-pan]"))setP(false)});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&pan&&!pan.hidden){var b=tg.filter(function(x){return x.getAttribute("aria-expanded")==="true"})[0];setP(false);if(b)b.focus()}});
+addEventListener("resize",function(){if(pan&&!pan.hidden)setP(false)});
+var home=document.querySelector(".pfnav-home"),B=home?home.getAttribute("href"):"./",IDX=null,LOAD=null,dlg,inp,res,flt,ft,sel=0,K="",items=[];
+var SYN={bias:["pregiudiz","distorsion"],pregiudizi:["bias"],privacy:["riservatezz","dati personali"],fake:["disinformazion","notizie false"],disinformazione:["fake"],chatbot:["conversazional","chat"],dataset:["insiemi di dati","set di dati","dati di addestramento"],deepfake:["contenuti sintetici","sintetic"],prompt:["istruzion","richiest"],"machine":["apprendimento automatico"],copyright:["diritto d autore","proprieta intellettuale"],ai:["ia"]};
+var KIND={c:"Competenze e concetti",a:"Attività",g:"Glossario",m:"Materiali",p:"Pagine e strumenti",d:"Approfondimenti"},ORD=["c","a","g","m","d","p"];
+var FW={ailit:["AILit","#3B2E8F"],unesco:["UNESCO","#0F3D5E"],digcomp:["DigComp","#1F6F50"],digcompedu:["DigCompEdu","#1D4E9E"],ai4k12:["AI4K12","#7C2D12"],fvg:["Rete FVG","#7A1F3D"],edeh:["EDEH","#A8361B"],xai:["EDEH · XAI","#0B6B66"],catalogo:["Catalogo","#8A5300"],attrezzi:["Strumenti","#7A2E6E"],glossario:["Glossario","#0A6C8C"],artefatti:["Artefatti","#3D5A12"],normativa:["Normativa","#23395B"],sito:["Sito","#33415C"]};
+var norm=function(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[’']/g," ")};
+var esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(m){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]})};
+function load(){if(LOAD)return LOAD;LOAD=fetch(B+"cerca/indice.json").then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){IDX=j.i.map(function(x){return{k:x[0],f:x[1],t:x[2],s:x[3],u:x[4],x:x[5]||"",nt:norm(x[2]),ns:norm(x[3]),n:norm(x[2]+" "+x[3]+" "+(x[5]||""))}});return IDX}).catch(function(){LOAD=null;throw 0});return LOAD}
+function build(){dlg=document.createElement("dialog");dlg.className="pfs";dlg.setAttribute("aria-label","Cerca nel sito");
+dlg.innerHTML='<div class="pfs-h">ICON<input type="search" placeholder="Cerca competenze, attività, termini, materiali…" aria-label="Cerca nel sito" autocomplete="off" spellcheck="false"><button type="button" data-x>Chiudi</button></div><div class="pfs-f" role="group" aria-label="Filtra i risultati"></div><div class="pfs-r" role="listbox" aria-label="Risultati"></div><div class="pfs-ft"><span></span><span>↑ ↓ per scegliere · Invio per aprire · Esc per chiudere</span></div>'.replace("ICON",'<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"6.5\"/><path d=\"M20 20l-4.2-4.2\"/></svg>');
+document.body.appendChild(dlg);inp=dlg.querySelector("input");res=dlg.querySelector(".pfs-r");flt=dlg.querySelector(".pfs-f");ft=dlg.querySelector(".pfs-ft span");
+dlg.querySelector("[data-x]").onclick=function(){dlg.close()};
+dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close();var b=e.target.closest("[data-k]");if(b){K=b.dataset.k;run()}var m=e.target.closest("[data-more]");if(m){K=m.dataset.more;run()}var q=e.target.closest("[data-q]");if(q){inp.value=q.dataset.q;run();inp.focus()}});
+inp.addEventListener("input",function(){K="";run()});
+inp.addEventListener("keydown",function(e){var L=res.querySelectorAll(".pfs-i");if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();if(!L.length)return;sel=(sel+(e.key==="ArrowDown"?1:-1)+L.length)%L.length;mark(L)}else if(e.key==="Enter"){if(L[sel]){e.preventDefault();go(L[sel])}}});
+res.addEventListener("click",function(e){var a=e.target.closest(".pfs-i");if(a){e.preventDefault();go(a)}});
+}
+function mark(L){L.forEach(function(x,i){x.setAttribute("aria-selected",i===sel)});if(L[sel])L[sel].scrollIntoView({block:"nearest"})}
+function go(a){var u=a.getAttribute("href");dlg.close();var here=location.pathname.replace(/index\.html$/,""),t=new URL(u,location.href);if(t.pathname.replace(/index\.html$/,"")===here&&t.hash&&t.search===location.search){if(location.hash===t.hash)window.dispatchEvent(new HashChangeEvent("hashchange"));else location.hash=t.hash}else location.href=u}
+function hl(s,toks){s=esc(s);toks.forEach(function(t){if(t.length<2)return;var re=new RegExp("("+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").split("").map(function(ch){return ch+"[\\u0300-\\u036f]?"}).join("")+")","i");s=s.replace(re,"<mark>$1</mark>")});return s}
+function snip(x,q){if(!x)return"";var nx=norm(x),i=nx.indexOf(q[0]||"");if(i<0)return x.slice(0,140);var a=Math.max(0,i-50);return(a?"…":"")+x.slice(a,a+160)+(a+160<x.length?"…":"")}
+function score(it,q,toks){var s=0;if(it.nt===q)s+=200;if(it.nt.indexOf(q)===0)s+=80;if(it.ns.indexOf(q)>=0)s+=40;toks.forEach(function(t){if(new RegExp("(^|[^a-z0-9])"+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).test(it.nt))s+=30;else if(it.nt.indexOf(t)>=0)s+=12});return s}
+function run(){sel=0;var q=norm(inp.value).trim().replace(/\s+/g," ");
+if(!IDX){res.innerHTML='<div class="pfs-e">Caricamento dell\'indice…</div>';load().then(run,function(){res.innerHTML='<div class="pfs-e">L\'indice di ricerca non è raggiungibile. Riprova tra poco.</div>'});return}
+if(q.length<2){flt.innerHTML="";ft.textContent=IDX.length+" voci nell'indice";res.innerHTML='<div class="pfs-e"><p>Cerca in tutto il sito: competenze dei framework, attività del catalogo, termini del glossario, presentazioni e dispense.</p><div class="sug">'+["bias","dataset","privacy","IA generativa","debate","autovalutazione","AI Act","prompt"].map(function(s){return'<button type="button" data-q="'+s+'">'+s+'</button>'}).join("")+"</div></div>";return}
+var toks=q.split(" "),alts=toks.map(function(t){var a=[t];Object.keys(SYN).forEach(function(k){if(t===k||(t.length>3&&k.indexOf(t)===0))a=a.concat(SYN[k])});return a}),R=[];IDX.forEach(function(it){for(var i=0;i<alts.length;i++){var ok=false;for(var j=0;j<alts[i].length;j++)if(it.n.indexOf(alts[i][j])>=0){ok=true;break}if(!ok)return}R.push([score(it,q,toks),it])});
+R.sort(function(a,b){return b[0]-a[0]});var G={},GS={};R.forEach(function(r){(G[r[1].k]=G[r[1].k]||[]).push(r[1]);if(GS[r[1].k]==null)GS[r[1].k]=r[0]});var OR=ORD.filter(function(k){return G[k]}).sort(function(a,b){return GS[b]-GS[a]||ORD.indexOf(a)-ORD.indexOf(b)});
+flt.innerHTML='<button type="button" data-k="" aria-pressed="'+(K==="")+'">Tutto <small>'+R.length+"</small></button>"+OR.map(function(k){return'<button type="button" data-k="'+k+'" aria-pressed="'+(K===k)+'">'+KIND[k]+" <small>"+G[k].length+"</small></button>"}).join("");
+ft.textContent=R.length?R.length+(R.length===1?" risultato":" risultati"):"Nessun risultato";
+if(!R.length){res.innerHTML='<div class="pfs-e"><p>Nessun risultato per «'+esc(inp.value)+'».</p><p>Prova con una parola sola o senza accenti.</p></div>';return}
+res.innerHTML=OR.filter(function(k){return !K||K===k}).map(function(k){var L=G[k],max=K?60:(k==="c"||k==="a"?6:4);
+return'<div class="pfs-g"><span>'+KIND[k]+" · "+L.length+"</span>"+(!K&&L.length>max?'<button type="button" data-more="'+k+'">Mostra tutti</button>':"")+"</div>"+L.slice(0,max).map(function(it){var f=FW[it.f]||FW.sito;
+return'<a class="pfs-i" role="option" href="'+B+esc(it.u)+'" style="--fc:'+f[1]+'"><span class="b">'+f[0]+'</span><span class="t">'+hl(it.t,toks)+'</span><span class="s">'+hl(it.s+(it.x?" · "+snip(it.x,toks):""),toks)+"</span></a>"}).join("")}).join("");
+mark(res.querySelectorAll(".pfs-i"))}
+function open(q){if(!dlg)build();if(!dlg.open)dlg.showModal();if(q!=null)inp.value=q;inp.focus();inp.select();run();load().catch(function(){})}
+window.pfCerca=open;
+/* raccolta personale «Il mio percorso»: più percorsi, uno corrente; dati solo in questo browser */
+var RK="pf-percorsi-v1";
+function rRead(){var o=null;try{o=JSON.parse(localStorage.getItem(RK)||"null")}catch(e){}if(!o||!o.P||typeof o.P!=="object")o={cur:"p1",P:{}};if(!o.P[o.cur])o.cur=Object.keys(o.P)[0]||"p1";if(!o.P[o.cur])o.P[o.cur]={nome:"Il mio percorso",items:[],upd:0};return o}
+function rWrite(o){try{localStorage.setItem(RK,JSON.stringify(o))}catch(e){}badge();try{window.dispatchEvent(new CustomEvent("pf-raccolta"))}catch(e){}}
+function badge(){var o=rRead(),n=o.P[o.cur].items.length;document.querySelectorAll(".pfnav-p b").forEach(function(b){b.textContent=n?n:""});document.querySelectorAll(".pfnav-p").forEach(function(a){a.title="Il mio percorso"+(n?": "+n+(n===1?" elemento":" elementi")+" in «"+o.P[o.cur].nome+"»":"")})}
+window.pfRaccolta={read:rRead,write:rWrite,
+ has:function(id){var o=rRead();return o.P[o.cur].items.some(function(x){return x.id===id})},
+ toggle:function(it){var o=rRead(),L=o.P[o.cur].items,i=L.findIndex(function(x){return x.id===it.id});if(i>=0)L.splice(i,1);else L.push(Object.assign({note:"",add:Date.now()},it));o.P[o.cur].upd=Date.now();rWrite(o);return i<0},
+ current:function(){var o=rRead();return o.P[o.cur].nome}};
+badge();addEventListener("storage",function(e){if(e.key===RK){badge();try{window.dispatchEvent(new CustomEvent("pf-raccolta"))}catch(_){}}});
+document.querySelectorAll(".pfnav-s").forEach(function(b){b.addEventListener("click",function(){open()})});
+document.addEventListener("keydown",function(e){var t=e.target,typing=t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"||t.tagName==="SELECT"||t.isContentEditable);
+if((e.key==="k"||e.key==="K")&&(e.ctrlKey||e.metaKey)){e.preventDefault();open()}else if(e.key==="/"&&!typing&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!(document.querySelector("dialog[open]"))){e.preventDefault();open()}});
+var m=location.search.match(/[?&]cerca=([^&]*)/);if(m)open(decodeURIComponent(m[1].replace(/\+/g," ")));
+})();</script><p class="pf-prh" aria-hidden="true"><img src="./asset/logo_proftecnologia_framework.svg" alt=""><b>ProfTecnologIA Framework</b><span class="pf-prh-t"></span><span class="pf-prh-u">framework.proftecnologia.it</span></p>
+<header class="hero">
+  <div class="tiles" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="nav"><img src="asset/logo_proftecnologia_framework.svg" alt=""><b>ProfTecnologIA Framework</b>
+      <div class="themes" role="group" aria-label="Tema">
+        <button type="button" data-theme-set="light" aria-label="Tema chiaro"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.4 1.4M14.6 14.6L16 16M4 16l1.4-1.4M14.6 5.4L16 4"/></g></svg></button>
+        <button type="button" data-theme-set="auto" aria-label="Tema automatico"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 2.5a7.5 7.5 0 0 1 0 15z" fill="currentColor"/></svg></button>
+        <button type="button" data-theme-set="dark" aria-label="Tema scuro"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 12.8A7 7 0 0 1 7.2 4.5a7 7 0 1 0 8.3 8.3z" fill="currentColor"/></svg></button>
+      </div>
+    </div>
+    <h1>I quadri di competenza sull'<em>IA</em> per la scuola, in italiano.</h1>
+    <p>I principali framework internazionali su intelligenza artificiale e competenze digitali, navigabili e collegati tra loro, con un catalogo di 180 attività per la classe.</p>
+    <form class="hm-s" role="search" onsubmit="event.preventDefault();if(window.pfCerca)pfCerca(this.q.value)"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input name="q" type="search" placeholder="Cerca un'attività, una competenza, un termine…" aria-label="Cerca nel sito" autocomplete="off"><button type="submit">Cerca</button></form>
+  </div>
+</header>
+<main class="wrap">
+  <section class="needs" aria-labelledby="needs-t">
+    <h2 id="needs-t">Che cosa vuoi preparare?</h2>
+    <div class="need-g">
+    <article class="need n-lez"><div class="need-h"><span class="need-i"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11a3 3 0 0 1 3 3v11H7a3 3 0 0 1-3-3z"/><path d="M8 9h6M8 13h6"/><path d="M18 8h2v11"/></svg></span><h3>Una lezione con la classe</h3></div><p>180 attività con piano di lezione pronto da adattare, per primaria, secondaria di I e II grado.</p>
+      <div class="need-l"><span>Vai a</span><a href="catalogo/">Tutto il catalogo</a><a href="percorso/">Il mio percorso</a><a href="catalogo/?mo=Unplugged">Senza dispositivi</a><a href="catalogo/?du=1">In una lezione</a><a href="catalogo/?o=0">Per la primaria</a></div>
+      <div class="need-a"><a class="btn p" href="catalogo/?prepara=1">Prepara una lezione in 3 domande</a></div></article>
+    <article class="need n-per"><div class="need-h"><span class="need-i"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 6h7M18 8.5v7M7.7 7.7l8.6 8.6"/></svg></span><h3>Un percorso o una progettazione</h3></div><p>Parti da una competenza, leggi obiettivi e livelli, ritrova le corrispondenze negli altri quadri.</p>
+      <div class="need-l"><span>Vai a</span><a href="ailit/">AILit</a><a href="unesco/#studenti">UNESCO studenti</a><a href="digcomp/">DigComp 3.0</a><a href="ai4k12/">AI4K12</a></div>
+      <div class="need-a"><a class="btn p" href="confronta/#collegamenti">Collegamenti tra i framework</a></div></article>
+    <article class="need n-for"><div class="need-h"><span class="need-i"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M8 9l3 2-3 2"/></svg></span><h3>Una formazione per docenti</h3></div><p>Presentazioni con note del relatore da sfogliare o scaricare, per tutti i framework del sito.</p>
+      <div class="need-l"><span>Vai a</span><a href="materiali/">Tutti i materiali</a><a href="ailit/#materiali">AILit (6)</a><a href="unesco/#materiali">UNESCO (2)</a><a href="digcomp/#materiali">DigComp 3.0 (1)</a><a href="ai4k12/#materiali">AI4K12 (2)</a><a href="fvg/#materiali">Rete FVG (3)</a><a href="edeh/#materiali">EDEH (3)</a><a href="edeh/xai/#materiali">IA spiegabile (3)</a><a href="edeh/#competenze">Competenze dei docenti</a></div>
+      <div class="need-a"><a class="btn p" href="materiali/?t=pres">Tutte le 33 presentazioni</a></div></article>
+    <article class="need n-aut"><div class="need-h"><span class="need-i"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v9l7.8 4.5"/><circle cx="12" cy="12" r="9"/></svg></span><h3>Un'autovalutazione</h3></div><p>Il profilo delle competenze in ogni framework, con grafico, CSV e un riepilogo unico con le attività suggerite. Le risposte restano nel tuo browser.</p>
+      <div class="need-l"><span>Vai a</span><a href="ailit/#autovalutazione">AILit</a><a href="digcomp/#autovalutazione">DigComp 3.0</a><a href="unesco/#auto">UNESCO</a><a href="ai4k12/#auto">AI4K12</a><a href="edeh/#autovalutazione">EDEH, per i docenti</a></div>
+      <div class="need-a"><a class="btn p" href="percorso/#autovalutazioni">Riepilogo e attività suggerite</a></div></article>
+    </div>
+  </section>
+
+    <section class="hm-dp" aria-labelledby="dp-t"><!-- HOME-SNELLA -->
+    <div class="hm-dh"><h2 id="dp-t" class="sec">Da provare subito</h2><a href="catalogo/?du=1&mo=Unplugged">Tutte le attività senza dispositivi in una lezione →</a></div>
+    <p class="lead">Tre attività senza dispositivi, in una sola lezione, con piano pronto da adattare.</p>
+    <div class="hm-g"><a class="hm-a" href="catalogo/#s-40" style="--c:#01408D"><span class="num">40</span><span class="hm-b"><b>IA o non IA? Gli oggetti di ogni giorno</b><span class="hm-p">Gli studenti realizzano: cartellone di classe &quot;IA o non IA&quot; con le carte classificate e gli indizi annotati sui post-it.</span><span class="hm-t"><i class="art">+ gioco interattivo</i><i>Gioco e classificazione</i><i class="up">Senza dispositivi</i><i>1 lezione</i><i>1ª-2ª media</i><i class="kit">Kit stampabile</i></span></span></a><a class="hm-a" href="catalogo/#s-118" style="--c:#0B6B5A"><span class="num">118</span><span class="hm-b"><b>Vero, ritoccato o generato? Detective dei deepfake</b><span class="hm-p">Gli studenti realizzano: cartelloni con le carte classificate e gli indizi, più la scheda personale «Prima di condividere».</span><span class="hm-t"><i class="art">+ gioco interattivo</i><i>Gioco e classificazione</i><i class="up">Senza dispositivi</i><i>1 lezione</i><i>2ª-3ª media</i><i class="kit">Kit stampabile</i></span></span></a><a class="hm-a" href="catalogo/#s-74" style="--c:#C13F24"><span class="num">74</span><span class="hm-b"><b>Quattro angoli: IA, umani o insieme?</b><span class="hm-p">Gli studenti realizzano: elenco di criteri condivisi alla lavagna e scheda individuale di riflessione.</span><span class="hm-t"><i>Dibattito e argomentazione</i><i class="up">Senza dispositivi</i><i>1 lezione</i><i>2ª-3ª media</i><i class="kit">Kit stampabile</i></span></span></a></div>
+    <div class="hm-ar"><!-- ART-HOME --><div class="hm-dh"><h3 class="sec3">Da provare subito, anche in digitale: gli artefatti</h3><a href="artefatti/">Tutti gli artefatti →</a></div><p class="lead">Giochi interattivi nati dalle schede del Catalogo: si aprono con un link o un QR code, senza account.</p><div class="hm-gg"><article class="hm-ga"><img src="asset/og/artefatti_ia-o-non-ia_t.webp" alt="" width="480" height="252" loading="lazy"><div><span class="k">Gioco interattivo · scheda 40</span><h3><a href="artefatti/ia-o-non-ia/">IA o non IA?</a></h3><p>Classifica oggetti e servizi quotidiani e motiva ogni scelta con un indizio. Da soli o in sessione di classe, su telefono, tablet o LIM.</p><div class="ac"><a class="btn p" href="artefatti/ia-o-non-ia/">Gioca</a><a class="btn" href="artefatti/ia-o-non-ia/#classe">Sessione di classe</a><a class="btn" href="catalogo/#s-40">Scheda 40</a></div></div></article><article class="hm-ga"><img src="asset/og/artefatti_vero-o-generato_t.webp" alt="" width="480" height="252" loading="lazy"><div><span class="k">Gioco interattivo · schede 171 e 118</span><h3><a href="artefatti/vero-o-generato/">Vero o generato?</a></h3><p>Volti, animali, luoghi e cibi: foto vere o generate con l&#x27;IA? Da soli o in sessione di classe, su telefono, tablet o LIM.</p><div class="ac"><a class="btn p" href="artefatti/vero-o-generato/">Gioca</a><a class="btn" href="artefatti/vero-o-generato/#classe">Sessione di classe</a><a class="btn" href="catalogo/#s-171">Scheda 171</a><a class="btn" href="catalogo/#s-118">Scheda 118</a></div></div></article><article class="hm-ga"><img src="asset/og/artefatti_tavola-delle-storie_t.webp" alt="" width="480" height="252" loading="lazy"><div><span class="k">Artefatto · scheda 174</span><h3><a href="artefatti/tavola-delle-storie/">La tavola delle storie</a></h3><p>64 tropi in otto famiglie: scomponi una storia nota e trova la formula della tua. Da soli o in gruppo, senza account, su telefono, tablet o LIM.</p><div class="ac"><a class="btn p" href="artefatti/tavola-delle-storie/">Apri</a><a class="btn" href="artefatti/tavola-delle-storie/#crea">Crea una storia</a><a class="btn" href="catalogo/#s-174">Scheda 174</a></div></div></article></div><!-- /ART-HOME --></div>
+  </section>
+
+  <section class="hm-inf" aria-labelledby="inf-t"><!-- INFOGRAFICHE --><div class="hm-ih"><h2 id="inf-t" class="sec">Il progetto in dieci infografiche</h2><a href="infografiche/">Tutte le infografiche, in A4 e 16:9 →</a></div><p class="lead">Tavole da proiettare in collegio o in formazione, o da stampare: quale framework scegliere, come arrivare alla lezione, i concetti chiave e gli strumenti del sito.</p><div class="strip"><a href="infografiche/#i-01"><img src="infografiche/img/01_a4_t.webp" alt="" loading="lazy" width="150" height="212"><b>Quale framework mi serve?</b></a><a href="infografiche/#i-02"><img src="infografiche/img/02_a4_t.webp" alt="" loading="lazy" width="150" height="212"><b>Dal bisogno alla lezione</b></a><a href="infografiche/#i-03"><img src="infografiche/img/03_a4_t.webp" alt="" loading="lazy" width="150" height="212"><b>Per, con e sull’IA</b></a><a href="infografiche/#i-04"><img src="infografiche/img/04_a4_t.webp" alt="" loading="lazy" width="150" height="212"><b>AILit in quattro domande</b></a><a href="infografiche/#i-05"><img src="infografiche/img/05_a4_t.webp" alt="" loading="lazy" width="150" height="212"><b>Chi decide nel ciclo dell’IA?</b></a><a href="infografiche/#i-06"><img src="infografiche/img/06_a4_t.webp" alt="" loading="lazy" width="150" height="212"><b>Una risposta fluida è anche affidabile?</b></a><a href="infografiche/#i-07"><img src="infografiche/img/07_a4_t.webp" alt="" loading="lazy" width="150" height="212"><b>Un’attività, più prospettive</b></a><a href="infografiche/#i-08"><img src="infografiche/img/08_a4_t.webp" alt="" loading="lazy" width="150" height="212"><b>DigCompEdu: la pratica del docente</b></a><a href="infografiche/#i-09"><img src="infografiche/img/09_a4_t.webp" alt="" loading="lazy" width="150" height="212"><b>Lo strumento giusto parte dall’obiettivo</b></a><a href="infografiche/#i-10"><img src="infografiche/img/10_a4_t.webp" alt="" loading="lazy" width="150" height="212"><b>Dalle attività al tuo percorso</b></a></div></section>
+    <section class="how2" aria-labelledby="how-t">
+    <div class="how2-h"><h2 id="how-t" class="sec">Come si usa: dal bisogno alla lezione</h2>
+    <p class="lead">Il sito raccoglie i quadri di competenza e li collega a un catalogo di attività. Il percorso tipico, in cinque passi:</p></div>
+    <ol class="flow"><li><span class="st-i"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6"/><path d="M12 17.5h.01"/></svg></span><b><span class="st-n">1</span>Il bisogno</b><p>Che cosa devi preparare: una lezione, un percorso, una formazione o una verifica delle competenze.</p></li><li><span class="st-i"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/></svg></span><b><span class="st-n">2</span>L'attività</b><p>Nel catalogo scegli ordine di scuola e scorciatoie (senza dispositivi, una lezione, educazione civica) o cerca una parola.</p></li><li><span class="st-i"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span><b><span class="st-n">3</span>La scheda</b><p>In breve, preparazione, svolgimento con i tempi, materiali: il piano di lezione da adattare alla classe.</p></li><li><span class="st-i"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></span><b><span class="st-n">4</span>Le competenze</b><p>In «Fonti e framework» trovi le competenze AILit, UNESCO, DigComp e AI4K12 da citare nella progettazione.</p></li><li><span class="st-i"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><b><span class="st-n">5</span>La verifica</b><p>Criteri di valutazione e inclusione nella scheda; l'autovalutazione delle sezioni, riassunta in «Il mio percorso» con le attività suggerite.</p></li></ol>
+    <p class="flow-n">Ogni sezione ha un'autovalutazione salvata solo nel tuo browser e un glossario comune: le parole sottolineate a puntini aprono la definizione. Il pulsante <b>Cerca</b> in alto (tasto /) trova competenze, attività, termini e materiali in tutto il sito; con <b>Salva</b> le attività e i materiali finiscono in <a href="percorso/">Il mio percorso</a>, dove li metti in ordine e li annoti.</p>
+  </section>
+
+  <h2 class="sec" id="framework">I framework</h2>
+  <p class="lead">Ogni quadro è navigabile, con schede delle competenze, materiali e licenza della fonte.</p>
+  <div class="cards">
+    <article class="card c-ailit">
+      <div class="k">OCSE · Commissione europea<span class="badge">Online</span></div>
+      <h2>AILit Framework</h2>
+      <p>Alfabetizzazione all'IA per studenti di primaria e secondaria: quattro ambiti, competenze descritte con conoscenze, abilità e attitudini.</p>
+      <div class="facts"><span>4 ambiti</span><span>19 competenze</span><span>Studenti</span><span>CC BY 4.0</span></div>
+      <div class="acts"><a class="btn p" href="ailit/">Apri la Bussola AILit</a><a class="btn ic" href="ailit/#materiali" aria-label="Materiali: presentazioni, dispense e strumenti" title="Materiali: presentazioni, dispense e strumenti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12H6a2 2 0 0 0-2 2.5Z"/><path d="M6 17a2 2 0 0 0-2 2.5A2 2 0 0 0 6 21h14v-4"/><path d="M9 7h7M9 11h5"/></svg><span>Materiali</span></a><a class="btn ic" href="catalogo/?fo=a" aria-label="Attività: 57 attività AILit nel Catalogo" title="Attività: 57 attività AILit nel Catalogo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m8.5 10.5 1.5 1.5 3-3M8.5 16l1.5 1.5 3-3M15 11h1.5M15 16.5h1.5"/></svg><span>Attività</span></a></div>
+    </article>
+    <article class="card c-unesco">
+      <div class="k">UNESCO · 2024<span class="badge">Online</span></div>
+      <h2>Competenze IA per gli studenti</h2>
+      <p>Quattro aspetti su tre livelli di progressione, con obiettivi curricolari, metodi pedagogici e ambienti di apprendimento.</p>
+      <div class="facts"><span>4 aspetti × 3 livelli</span><span>12 competenze</span><span>CC BY-SA 3.0 IGO</span></div>
+      <div class="acts"><a class="btn p" href="unesco/#studenti">Apri il quadro studenti</a><a class="btn ic" href="unesco/#materiali" aria-label="Materiali: presentazioni, dispense e strumenti" title="Materiali: presentazioni, dispense e strumenti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12H6a2 2 0 0 0-2 2.5Z"/><path d="M6 17a2 2 0 0 0-2 2.5A2 2 0 0 0 6 21h14v-4"/><path d="M9 7h7M9 11h5"/></svg><span>Materiali</span></a><a class="btn ic" href="catalogo/?fo=u" aria-label="Attività: 39 attività UNESCO nel Catalogo" title="Attività: 39 attività UNESCO nel Catalogo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m8.5 10.5 1.5 1.5 3-3M8.5 16l1.5 1.5 3-3M15 11h1.5M15 16.5h1.5"/></svg><span>Attività</span></a></div>
+    </article>
+    <article class="card c-unesco">
+      <div class="k">UNESCO · 2024<span class="badge">Online</span></div>
+      <h2>Competenze IA per i docenti</h2>
+      <p>Cinque aspetti su tre livelli, con obiettivi curricolari, obiettivi di apprendimento e attività contestuali per la formazione.</p>
+      <div class="facts"><span>5 aspetti × 3 livelli</span><span>15 competenze</span><span>CC BY-SA 3.0 IGO</span></div>
+      <div class="acts"><a class="btn p" href="unesco/#docenti">Apri il quadro docenti</a><a class="btn ic" href="unesco/#materiali" aria-label="Materiali: presentazioni, dispense e strumenti" title="Materiali: presentazioni, dispense e strumenti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12H6a2 2 0 0 0-2 2.5Z"/><path d="M6 17a2 2 0 0 0-2 2.5A2 2 0 0 0 6 21h14v-4"/><path d="M9 7h7M9 11h5"/></svg><span>Materiali</span></a></div>
+    </article>
+    <article class="card c-digcomp">
+      <div class="k">Commissione europea · JRC · 2025<span class="badge">Online</span></div>
+      <h2>DigComp 3.0</h2>
+      <p>Il quadro europeo delle competenze digitali dei cittadini, nella traduzione italiana ufficiale: enunciati per livello, risultati di apprendimento ed etichette IA in tutte le 21 competenze.</p>
+      <div class="facts"><span>5 aree</span><span>21 competenze</span><span>4 livelli (8)</span><span>362 enunciati</span><span>522 risultati</span><span>CC BY 4.0 · IT CC BY-SA 4.0</span></div>
+      <div class="acts"><a class="btn p" href="digcomp/">Apri DigComp 3.0</a><a class="btn ic" href="digcomp/#materiali" aria-label="Materiali: presentazioni, dispense e strumenti" title="Materiali: presentazioni, dispense e strumenti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12H6a2 2 0 0 0-2 2.5Z"/><path d="M6 17a2 2 0 0 0-2 2.5A2 2 0 0 0 6 21h14v-4"/><path d="M9 7h7M9 11h5"/></svg><span>Materiali</span></a><a class="btn ic" href="digcomp/#attivita" aria-label="Attività: 28 lesson plan del corso DigComp 3.0" title="Attività: 28 lesson plan del corso DigComp 3.0"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m8.5 10.5 1.5 1.5 3-3M8.5 16l1.5 1.5 3-3M15 11h1.5M15 16.5h1.5"/></svg><span>Attività</span></a></div>
+    </article>
+    <article class="card c-ai4k12">
+      <div class="k">AI4K12 (AAAI · CSTA) · 2020–2025<span class="badge">Nuovo</span></div>
+      <h2>Cinque grandi idee sull'IA</h2>
+      <p>Le linee guida statunitensi AI4K12 per l'IA a scuola: cinque grandi idee e tabelle di progressione per fascia, dall'infanzia alle superiori, con obiettivi, comprensioni durevoli e attività.</p>
+      <div class="facts"><span>5 grandi idee</span><span>44 concetti</span><span>4 fasce (K-12)</span><span>8 attività</span><span>CC BY-NC-SA 4.0</span></div>
+      <div class="acts"><a class="btn p" href="ai4k12/">Apri AI4K12</a><a class="btn ic" href="ai4k12/#materiali" aria-label="Materiali: presentazioni, dispense e strumenti" title="Materiali: presentazioni, dispense e strumenti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12H6a2 2 0 0 0-2 2.5Z"/><path d="M6 17a2 2 0 0 0-2 2.5A2 2 0 0 0 6 21h14v-4"/><path d="M9 7h7M9 11h5"/></svg><span>Materiali</span></a><a class="btn ic" href="ai4k12/#attivita" aria-label="Attività: 8 guide alle attività AI4K12" title="Attività: 8 guide alle attività AI4K12"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m8.5 10.5 1.5 1.5 3-3M8.5 16l1.5 1.5 3-3M15 11h1.5M15 16.5h1.5"/></svg><span>Attività</span></a></div>
+    </article>
+    <article class="card c-fvg">
+      <div class="k">Rete di scuole FVG · 2024<span class="badge">Nuovo</span></div>
+      <h2>Costruire il futuro: linee guida sull'IA a scuola</h2>
+      <p>Le linee guida di 55 scuole del Friuli Venezia Giulia: sei saggi, dodici competenze operative per primaria, I e II grado, didattica conversazionale, regolamento e scala d'uso 0-4, con correzioni e aggiornamenti normativi al 2026.</p>
+      <div class="facts"><span>6 saggi</span><span>12 competenze</span><span>26 schede P · S1 · S2</span><span>3 presentazioni</span><span>sintesi del curatore</span></div>
+      <div class="acts"><a class="btn p" href="fvg/">Apri Rete FVG</a><a class="btn ic" href="fvg/#materiali" aria-label="Materiali: presentazioni, dispense e strumenti" title="Materiali: presentazioni, dispense e strumenti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12H6a2 2 0 0 0-2 2.5Z"/><path d="M6 17a2 2 0 0 0-2 2.5A2 2 0 0 0 6 21h14v-4"/><path d="M9 7h7M9 11h5"/></svg><span>Materiali</span></a><a class="btn ic" href="catalogo/?fo=f" aria-label="Attività: 26 modelli operativi della Rete FVG nel Catalogo" title="Attività: 26 modelli operativi della Rete FVG nel Catalogo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m8.5 10.5 1.5 1.5 3-3M8.5 16l1.5 1.5 3-3M15 11h1.5M15 16.5h1.5"/></svg><span>Attività</span></a></div>
+    </article>
+    <article class="card c-edeh">
+      <div class="k">EDEH (Commissione europea) · INDIRE · 2024<span class="badge">Nuovo</span></div>
+      <h2>Insegnare per, con e sull'IA</h2>
+      <p>I sette rapporti della squadra EDEH sull'IA nell'istruzione, nella versione italiana INDIRE: la triade per/con/sull'IA, le competenze dei docenti, scenari d'uso, governance, rischio ed etica, con correzioni e aggiornamenti al 2026.</p>
+      <div class="facts"><span>7 rapporti</span><span>3 approcci</span><span>81 elementi per i docenti</span><span>10 scenari nel Catalogo</span><span>90 opere verificate</span><span>sintesi del curatore</span></div>
+      <div class="acts"><a class="btn p" href="edeh/">Apri EDEH</a><a class="btn ic" href="edeh/#materiali" aria-label="Materiali: presentazioni, dispense e strumenti" title="Materiali: presentazioni, dispense e strumenti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12H6a2 2 0 0 0-2 2.5Z"/><path d="M6 17a2 2 0 0 0-2 2.5A2 2 0 0 0 6 21h14v-4"/><path d="M9 7h7M9 11h5"/></svg><span>Materiali</span></a><a class="btn ic" href="catalogo/?fo=e" aria-label="Attività: 10 scenari EDEH nel Catalogo" title="Attività: 10 scenari EDEH nel Catalogo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m8.5 10.5 1.5 1.5 3-3M8.5 16l1.5 1.5 3-3M15 11h1.5M15 16.5h1.5"/></svg><span>Attività</span></a></div>
+    </article>
+    <article class="card c-cat">
+      <div class="k">UNESCO · AILit · INDIRE · Rete FVG · EDEH<span class="badge">Aggiornato</span></div>
+      <h2>Catalogo delle attività con gli studenti</h2>
+      <p>Le attività per la classe dei quadri UNESCO e AILit, le esperienze INDIRE, i modelli operativi della Rete FVG e gli scenari d'uso EDEH, con piano di lezione per la secondaria di I grado e variante per il II grado. Classificate secondo AILit, UNESCO, DigComp 3.0, AI4K12 e approccio EDEH e filtrabili per framework, tipologia, livello e modalità.</p>
+      <div class="facts"><span>180 attività</span><span>12 tipologie</span><span>73 senza dispositivi</span><span>4 framework + approccio EDEH</span><span>CC BY-SA 3.0 IGO · schede 143-170 CC BY-NC-SA 4.0</span></div>
+      <div class="acts"><a class="btn p" href="catalogo/">Apri il catalogo</a><a class="btn ic" href="materiali/?f=catalogo" aria-label="Materiali: presentazioni, dispense e strumenti" title="Materiali: presentazioni, dispense e strumenti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12H6a2 2 0 0 0-2 2.5Z"/><path d="M6 17a2 2 0 0 0-2 2.5A2 2 0 0 0 6 21h14v-4"/><path d="M9 7h7M9 11h5"/></svg><span>Materiali</span></a></div>
+    </article>
+    <article class="card c-gl">
+      <div class="k">Tutte le sezioni<span class="badge">Nuovo</span></div>
+      <h2>Glossario unico</h2>
+      <p>Un solo glossario per tutto il sito: i termini dei glossari AILit e DigComp 3.0, con la fonte di ogni definizione. Nelle sezioni le parole chiave sottolineate aprono la definizione.</p>
+      <div class="facts"><span>144 voci</span><span>18 in comune AILit e DigComp</span><span>ricerca e indice A–Z</span></div>
+      <div class="acts"><a class="btn p" href="glossario/">Apri il glossario</a></div>
+    </article>
+    <article class="card c-dce">
+      <div class="k">Commissione europea · JRC · CNR-ITD<span class="badge">Nuovo</span></div>
+      <h2>DigCompEdu</h2>
+      <p>Il quadro europeo sulle competenze digitali dei docenti e dei formatori, nella versione italiana CNR-ITD: le 22 competenze nei sei livelli da Novizio a Pioniere, con autovalutazione, rubrica di progettazione, Piano d'azione 2021-2027 e tutti i materiali del sito CNR.</p>
+      <div class="facts"><span>6 aree</span><span>22 competenze</span><span>6 livelli A1–C2</span><span>228 dichiarazioni</span><span>CC BY-SA 4.0</span></div>
+      <div class="acts"><a class="btn p" href="digcompedu/">Apri DigCompEdu</a><a class="btn ic" href="digcompedu/#materiali" aria-label="Materiali: presentazioni, dispense e strumenti" title="Materiali: presentazioni, dispense e strumenti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12H6a2 2 0 0 0-2 2.5Z"/><path d="M6 17a2 2 0 0 0-2 2.5A2 2 0 0 0 6 21h14v-4"/><path d="M9 7h7M9 11h5"/></svg><span>Materiali</span></a></div>
+    </article>
+  </div>
+
+  <section class="hm-pr" id="presentazioni" aria-labelledby="pr-t"><div><h2 id="pr-t" class="sec">Presentazioni per la formazione</h2><p class="lead">33 presentazioni con note del relatore per tutti i framework, da sfogliare nel sito o scaricare in PowerPoint e PDF. Sono raccolte, con dispense e documenti originali, nella pagina Materiali.</p></div><a class="btn p" href="materiali/?t=pres">Vai alle 33 presentazioni</a></section>
+</main>
+<footer><div class="wrap">
+  <p>A cura di Antonio Scaramuzzino · ProfTecnologIA. Le traduzioni dei quadri UNESCO non sono ufficiali; per il DigComp 3.0 è usata la traduzione italiana ufficiale di Repubblica Digitale; per AI4K12 il poster è nella traduzione italiana pubblicata da AI4K12, mentre tabelle di progressione e attività sono tradotte dal curatore (non ufficiali); le corrispondenze tra quadri sono proposte dell'autore. Ogni sezione riporta fonte e licenza del framework originale.</p>
+</div></footer>
+<script>
+/* ---------- collegamenti tra framework (ProfTecnologIA Framework) ----------
+   XW.init({data, base})          base: prefisso degli URL ("../" nelle sezioni, "./" nel portale, URL assoluto altrove)
+   XW.box(key, {title})           HTML del riquadro "Collegamenti" per un nodo (es. "A:INT-1", "S:4.1.1", "D:1.1", "C:1.2")
+   XW.table(host)                 tabella navigabile di tutti i collegamenti (portale) */
+const XW = (() => {
+  let D = null, B = "./";
+  const Q = { A: "AILit", S: "UNESCO studenti", D: "UNESCO docenti", C: "DigComp 3.0" }, ORD = ["A", "C", "S", "D"];
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]));
+  const css = `
+.xw{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surface)}
+.xw h4{margin:0 0 4px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.xw .xw-n{margin:0 0 8px;font-size:.8rem;color:var(--muted)}
+.xw-g{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;margin-top:6px}
+.xw-g>b{font-size:.8rem;min-width:118px;color:var(--xc)}
+.xw-c{display:inline-flex;gap:6px;align-items:baseline;padding:4px 10px;border-radius:999px;background:var(--xs);color:var(--fg);text-decoration:none;font-size:.86rem;line-height:1.3;border:1px solid transparent;max-width:100%}
+.xw-c:hover,.xw-c:focus-visible{border-color:var(--xc);outline:none}
+.xw-c span{font-weight:800;color:var(--xc);font-size:.78rem;white-space:nowrap}
+.xw-c i{font-style:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:300px}
+.xw-c.s{border-style:dashed;border-color:var(--xc)}
+.xw-A{--xc:#3B2E8F;--xs:#ECE9FB}.xw-S,.xw-D{--xc:#0F3D5E;--xs:#E3EEF4}.xw-C{--xc:#1F6F50;--xs:#E0F2E9}
+:root[data-theme="dark"] .xw-A{--xc:#B9AEFF;--xs:#25204A}:root[data-theme="dark"] .xw-S,:root[data-theme="dark"] .xw-D{--xc:#8FD3E8;--xs:#14303F}:root[data-theme="dark"] .xw-C{--xc:#8FE0BB;--xs:#14301F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .xw-A{--xc:#B9AEFF;--xs:#25204A}:root:not([data-theme="light"]) .xw-S,:root:not([data-theme="light"]) .xw-D{--xc:#8FD3E8;--xs:#14303F}:root:not([data-theme="light"]) .xw-C{--xc:#8FE0BB;--xs:#14301F}}
+.xwt-top{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.xwt-top button{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:6px 12px;font:inherit;font-weight:700;font-size:.88rem;cursor:pointer}
+.xwt-top button[aria-pressed="true"]{background:var(--fg);color:var(--surface);border-color:var(--fg)}
+.xwt{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.xwt table{border-collapse:collapse;width:100%;min-width:900px}
+.xwt th,.xwt td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:.9rem}
+.xwt thead th{background:var(--surface-2);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+.xwt td .xw-c{margin:0 4px 4px 0}
+.xwt td.src a{color:var(--fg);font-weight:700;text-decoration:none}.xwt td.src a:hover{text-decoration:underline}
+.xwt td.src span{display:block;font-size:.78rem;font-weight:800;color:var(--xc)}
+@media (max-width:640px){.xw-g>b{min-width:0;flex-basis:100%}.xw-c i{max-width:210px}}`;
+  function init(o) { D = o.data; B = o.base || "./"; const st = document.createElement("style"); st.textContent = css; document.head.appendChild(st); }
+  const chip = k => { const n = D.n[k], f = k[0]; return `<a class="xw-c xw-${f}" href="${B}${n.u}" title="${esc(Q[f] + " " + n.c + ": " + n.t)}"><span>${esc(n.c)}</span><i>${esc(n.t)}</i></a>`; };
+  function box(key, o = {}) {
+    if (!D || !D.l[key]) return "";
+    const L = D.l[key], f0 = key[0];
+    const groups = ORD.filter(f => f !== f0).map(f => [f, L.filter(([k]) => k[0] === f)]).filter(([, l]) => l.length);
+    if (!groups.length) return "";
+    return `<div class="xw"><h4>${esc(o.title || "Collegamenti con gli altri framework")}</h4><p class="xw-n">Corrispondenze tematiche proposte dall'autore, non equivalenze ufficiali: i livelli dei quadri non coincidono.${L.some(x => x[1] === "s") ? " Il bordo tratteggiato indica lo stesso aspetto e lo stesso livello nei due quadri UNESCO." : ""}</p>
+      ${groups.map(([f, l]) => `<div class="xw-g xw-${f}"><b>${Q[f]}</b>${l.map(([k, t]) => chip(k).replace('class="xw-c', `class="xw-c${t === "s" ? " s" : ""}`)).join("")}</div>`).join("")}</div>`;
+  }
+  let piv = "C";
+  function table(h) {
+    const draw = () => {
+      const rows = Object.keys(D.n).filter(k => k[0] === piv), cols = ORD.filter(f => f !== piv);
+      h.innerHTML = `<div class="xwt-top" role="group" aria-label="Parti da">${ORD.map(f => `<button type="button" data-p="${f}" aria-pressed="${f === piv}">Parti da ${Q[f]}</button>`).join("")}</div>
+        <div class="xwt"><table><thead><tr><th>${Q[piv]}</th>${cols.map(f => `<th>${Q[f]}</th>`).join("")}</tr></thead><tbody>${rows.map(k => {
+          const n = D.n[k], L = D.l[k] || [];
+          return `<tr><td class="src xw-${piv}"><span>${esc(n.c)}</span><a href="${B}${n.u}">${esc(n.t)}</a></td>${cols.map(f => `<td>${L.filter(([x]) => x[0] === f).map(([x, t]) => chip(x).replace('class="xw-c', `class="xw-c${t === "s" ? " s" : ""}`)).join("") || '<span style="color:var(--muted)">–</span>'}</td>`).join("")}</tr>`;
+        }).join("")}</tbody></table></div>`;
+      h.querySelectorAll("[data-p]").forEach(b => b.onclick = () => { piv = b.dataset.p; draw(); });
+    };
+    draw();
+  }
+  return { init, box, table };
+})();
+
+const XWD={"n":{"A:INT-1":{"t":"Riconoscere il ruolo e l'influenza dell'IA in diversi contesti.","u":"ailit/#INT-1","q":"AILit","c":"INT-1"},"A:INT-2":{"t":"Descrivere il modo in cui i sistemi IA svolgono le attività, utilizzando un linguaggio che analizzi e chiarisca le convinzioni errate più comuni.","u":"ailit/#INT-2","q":"AILit","c":"INT-2"},"A:INT-3":{"t":"Valutare se gli output dell'IA debbano essere accettati, modificati o rifiutati.","u":"ailit/#INT-3","q":"AILit","c":"INT-3"},"A:INT-4":{"t":"Analizzare in che modo i sistemi di IA predittiva forniscono raccomandazioni che possono orientare o limitare le prospettive.","u":"ailit/#INT-4","q":"AILit","c":"INT-4"},"A:INT-5":{"t":"Confrontare i modi in cui i sistemi IA consumano energia e risorse naturali.","u":"ailit/#INT-5","q":"AILit","c":"INT-5"},"A:INT-6":{"t":"Spiegare in che modo l'IA potrebbe essere utilizzata per amplificare i pregiudizi sociali.","u":"ailit/#INT-6","q":"AILit","c":"INT-6"},"A:INT-7":{"t":"Analizzare in che misura l'uso di un sistema IA è in linea con i principi etici e i valori umani.","u":"ailit/#INT-7","q":"AILit","c":"INT-7"},"A:CRE-1":{"t":"Utilizzare i sistemi IA per trovare nuovi punti di vista e approcci basati su idee originali.","u":"ailit/#CRE-1","q":"AILit","c":"CRE-1"},"A:CRE-2":{"t":"Visualizzare, creare prototipi e combinare idee utilizzando diversi tipi di sistemi IA.","u":"ailit/#CRE-2","q":"AILit","c":"CRE-2"},"A:CRE-3":{"t":"Indirizzare i sistemi di IA generativa per ottenere feedback, perfezionare i risultati e favorire la riflessione.","u":"ailit/#CRE-3","q":"AILit","c":"CRE-3"},"A:CRE-4":{"t":"Analizzare in che modo l'IA può salvaguardare o violare l'autenticità dei contenuti e la proprietà intellettuale.","u":"ailit/#CRE-4","q":"AILit","c":"CRE-4"},"A:GES-1":{"t":"Decidere se utilizzare i sistemi IA in base alla natura dell'attività.","u":"ailit/#GES-1","q":"AILit","c":"GES-1"},"A:GES-2":{"t":"Scegliere un approccio all'intelligenza artificiale appropriato per una determinata attività facendo un confronto tra il modo in cui funzionano i diversi sistemi IA e ciò per cui sono più adatti.","u":"ailit/#GES-2","q":"AILit","c":"GES-2"},"A:GES-3":{"t":"Scomporre un problema per determinare quando e in che modo i sistemi IA debbano essere utilizzati per automatizzare o potenziare lo svolgimento delle attività.","u":"ailit/#GES-3","q":"AILit","c":"GES-3"},"A:GES-4":{"t":"Monitorare e valutare l'uso dell'IA durante un processo di risoluzione dei problemi.","u":"ailit/#GES-4","q":"AILit","c":"GES-4"},"A:PLA-1":{"t":"Indagare sul modo in cui un sistema IA è destinato a funzionare, sugli utenti per cui è stato progettato e sui suoi limiti.","u":"ailit/#PLA-1","q":"AILit","c":"PLA-1"},"A:PLA-2":{"t":"Valutare i sistemi IA utilizzando criteri definiti, risultati attesi, casi prova e feedback degli utenti.","u":"ailit/#PLA-2","q":"AILit","c":"PLA-2"},"A:PLA-3":{"t":"Progettare sistemi IA prestando attenzione al modo in cui le fonti e la selezione di dati, nonché il flusso di informazioni, influenzano il comportamento e gli output.","u":"ailit/#PLA-3","q":"AILit","c":"PLA-3"},"A:PLA-4":{"t":"Migliorare i sistemi IA per affrontare e promuovere il benessere delle persone e i benefici per la società.","u":"ailit/#PLA-4","q":"AILit","c":"PLA-4"},"S:4.1.1":{"t":"Agentività umana","u":"unesco/#s-4.1.1","q":"UNESCO studenti","c":"4.1.1"},"S:4.1.2":{"t":"Etica interiorizzata","u":"unesco/#s-4.1.2","q":"UNESCO studenti","c":"4.1.2"},"S:4.1.3":{"t":"Fondamenti dell'IA","u":"unesco/#s-4.1.3","q":"UNESCO studenti","c":"4.1.3"},"S:4.1.4":{"t":"Definizione del problema","u":"unesco/#s-4.1.4","q":"UNESCO studenti","c":"4.1.4"},"S:4.2.1":{"t":"Responsabilità umana","u":"unesco/#s-4.2.1","q":"UNESCO studenti","c":"4.2.1"},"S:4.2.2":{"t":"Uso sicuro e responsabile","u":"unesco/#s-4.2.2","q":"UNESCO studenti","c":"4.2.2"},"S:4.2.3":{"t":"Competenze applicative","u":"unesco/#s-4.2.3","q":"UNESCO studenti","c":"4.2.3"},"S:4.2.4":{"t":"Progettazione dell'architettura","u":"unesco/#s-4.2.4","q":"UNESCO studenti","c":"4.2.4"},"S:4.3.1":{"t":"Cittadinanza nell'era dell'IA","u":"unesco/#s-4.3.1","q":"UNESCO studenti","c":"4.3.1"},"S:4.3.2":{"t":"Etica fin dalla progettazione","u":"unesco/#s-4.3.2","q":"UNESCO studenti","c":"4.3.2"},"S:4.3.3":{"t":"Creazione di strumenti di IA","u":"unesco/#s-4.3.3","q":"UNESCO studenti","c":"4.3.3"},"S:4.3.4":{"t":"Iterazione e cicli di feedback","u":"unesco/#s-4.3.4","q":"UNESCO studenti","c":"4.3.4"},"D:1.1":{"t":"Agentività umana","u":"unesco/#d-1.1","q":"UNESCO docenti","c":"1.1"},"D:2.1":{"t":"Principi etici","u":"unesco/#d-2.1","q":"UNESCO docenti","c":"2.1"},"D:3.1":{"t":"Tecniche e applicazioni di base dell'IA","u":"unesco/#d-3.1","q":"UNESCO docenti","c":"3.1"},"D:4.1":{"t":"Insegnamento assistito dall'IA","u":"unesco/#d-4.1","q":"UNESCO docenti","c":"4.1"},"D:5.1":{"t":"IA per l'apprendimento professionale permanente","u":"unesco/#d-5.1","q":"UNESCO docenti","c":"5.1"},"D:1.2":{"t":"Responsabilità umana","u":"unesco/#d-1.2","q":"UNESCO docenti","c":"1.2"},"D:2.2":{"t":"Uso sicuro e responsabile","u":"unesco/#d-2.2","q":"UNESCO docenti","c":"2.2"},"D:3.2":{"t":"Competenze applicative","u":"unesco/#d-3.2","q":"UNESCO docenti","c":"3.2"},"D:4.2":{"t":"Integrazione tra IA e pedagogia","u":"unesco/#d-4.2","q":"UNESCO docenti","c":"4.2"},"D:5.2":{"t":"IA per potenziare l'apprendimento organizzativo","u":"unesco/#d-5.2","q":"UNESCO docenti","c":"5.2"},"D:1.3":{"t":"Responsabilità sociale","u":"unesco/#d-1.3","q":"UNESCO docenti","c":"1.3"},"D:2.3":{"t":"Co-creazione di regole etiche","u":"unesco/#d-2.3","q":"UNESCO docenti","c":"2.3"},"D:3.3":{"t":"Creare con l'IA","u":"unesco/#d-3.3","q":"UNESCO docenti","c":"3.3"},"D:4.3":{"t":"Trasformazione pedagogica potenziata dall'IA","u":"unesco/#d-4.3","q":"UNESCO docenti","c":"4.3"},"D:5.3":{"t":"IA a supporto della trasformazione professionale","u":"unesco/#d-5.3","q":"UNESCO docenti","c":"5.3"},"C:1.1":{"t":"Navigare, ricercare e filtrare le informazioni","u":"digcomp/#c-1.1","q":"DigComp 3.0","c":"1.1"},"C:1.2":{"t":"Valutare le informazioni","u":"digcomp/#c-1.2","q":"DigComp 3.0","c":"1.2"},"C:1.3":{"t":"Gestire le informazioni","u":"digcomp/#c-1.3","q":"DigComp 3.0","c":"1.3"},"C:2.1":{"t":"Interagire attraverso e con le tecnologie digitali","u":"digcomp/#c-2.1","q":"DigComp 3.0","c":"2.1"},"C:2.2":{"t":"Condividere attraverso le tecnologie digitali","u":"digcomp/#c-2.2","q":"DigComp 3.0","c":"2.2"},"C:2.3":{"t":"Esercitare la cittadinanza attraverso le tecnologie digitali","u":"digcomp/#c-2.3","q":"DigComp 3.0","c":"2.3"},"C:2.4":{"t":"Collaborare attraverso le tecnologie digitali","u":"digcomp/#c-2.4","q":"DigComp 3.0","c":"2.4"},"C:2.5":{"t":"Comportamento digitale","u":"digcomp/#c-2.5","q":"DigComp 3.0","c":"2.5"},"C:2.6":{"t":"Gestire l'identità digitale","u":"digcomp/#c-2.6","q":"DigComp 3.0","c":"2.6"},"C:3.1":{"t":"Sviluppare contenuti digitali","u":"digcomp/#c-3.1","q":"DigComp 3.0","c":"3.1"},"C:3.2":{"t":"Integrare e rielaborare contenuti digitali","u":"digcomp/#c-3.2","q":"DigComp 3.0","c":"3.2"},"C:3.3":{"t":"Copyright e licenze","u":"digcomp/#c-3.3","q":"DigComp 3.0","c":"3.3"},"C:3.4":{"t":"Pensiero computazionale e programmazione","u":"digcomp/#c-3.4","q":"DigComp 3.0","c":"3.4"},"C:4.1":{"t":"Proteggere i dispositivi","u":"digcomp/#c-4.1","q":"DigComp 3.0","c":"4.1"},"C:4.2":{"t":"Proteggere i dati personali e la privacy","u":"digcomp/#c-4.2","q":"DigComp 3.0","c":"4.2"},"C:4.3":{"t":"Supportare il benessere","u":"digcomp/#c-4.3","q":"DigComp 3.0","c":"4.3"},"C:4.4":{"t":"Impatti ambientali delle tecnologie digitali","u":"digcomp/#c-4.4","q":"DigComp 3.0","c":"4.4"},"C:5.1":{"t":"Identificare e risolvere problemi tecnici","u":"digcomp/#c-5.1","q":"DigComp 3.0","c":"5.1"},"C:5.2":{"t":"Identificare bisogni e risposte tecnologiche digitali","u":"digcomp/#c-5.2","q":"DigComp 3.0","c":"5.2"},"C:5.3":{"t":"Identificare soluzioni creative utilizzando le tecnologie digitali","u":"digcomp/#c-5.3","q":"DigComp 3.0","c":"5.3"},"C:5.4":{"t":"Identificare e rispondere ai bisogni di competenza digitale","u":"digcomp/#c-5.4","q":"DigComp 3.0","c":"5.4"}},"l":{"A:INT-1":[["C:2.1","p"],["C:2.3","p"],["S:4.1.1","p"]],"C:2.1":[["A:INT-1","p"],["A:CRE-3","p"],["D:3.2","p"]],"C:2.3":[["A:INT-1","p"],["A:INT-4","p"],["A:INT-6","p"],["A:INT-7","p"],["A:PLA-4","p"],["S:4.1.1","p"],["S:4.1.2","p"],["S:4.2.1","p"],["S:4.3.1","p"],["D:1.1","p"],["D:1.2","p"],["D:1.3","p"],["D:2.3","p"]],"A:INT-2":[["C:3.4","p"],["C:1.2","p"],["S:4.1.1","p"],["S:4.1.3","p"]],"C:3.4":[["A:INT-2","p"],["A:GES-2","p"],["A:GES-3","p"],["A:PLA-1","p"],["A:PLA-3","p"],["S:4.1.3","p"],["S:4.1.4","p"],["S:4.2.3","p"],["S:4.2.4","p"],["S:4.3.3","p"],["D:3.1","p"]],"C:1.2":[["A:INT-2","p"],["A:INT-3","p"],["A:INT-4","p"],["A:INT-6","p"],["A:PLA-1","p"],["A:PLA-2","p"],["S:4.1.1","p"],["D:3.1","p"],["D:4.3","p"]],"A:INT-3":[["C:1.2","p"],["C:3.2","p"],["S:4.2.1","p"],["S:4.2.2","p"]],"C:3.2":[["A:INT-3","p"],["A:CRE-2","p"],["A:CRE-3","p"],["A:CRE-4","p"],["D:3.2","p"],["D:5.3","p"]],"A:INT-4":[["C:1.1","p"],["C:1.2","p"],["C:2.3","p"],["C:2.6","p"],["S:4.1.3","p"],["S:4.3.1","p"]],"C:1.1":[["A:INT-4","p"]],"C:2.6":[["A:INT-4","p"],["S:4.2.2","p"]],"A:INT-5":[["C:4.4","p"],["S:4.1.2","p"]],"C:4.4":[["A:INT-5","p"],["S:4.3.1","p"],["D:1.3","p"]],"A:INT-6":[["C:1.2","p"],["C:2.3","p"],["S:4.1.2","p"],["S:4.3.1","p"]],"A:INT-7":[["C:2.3","p"],["C:2.5","p"],["C:4.2","p"],["S:4.1.2","p"],["S:4.2.2","p"]],"C:2.5":[["A:INT-7","p"],["S:4.1.2","p"],["D:2.1","p"]],"C:4.2":[["A:INT-7","p"],["A:PLA-3","p"],["S:4.1.2","p"],["S:4.2.1","p"],["S:4.2.2","p"],["S:4.3.2","p"],["D:1.2","p"],["D:2.1","p"],["D:2.2","p"]],"A:CRE-1":[["C:5.3","p"],["C:3.1","p"],["S:4.2.3","p"]],"C:5.3":[["A:CRE-1","p"],["A:CRE-2","p"],["A:GES-3","p"],["A:PLA-4","p"],["S:4.2.4","p"],["S:4.3.2","p"],["S:4.3.4","p"],["D:3.3","p"],["D:4.2","p"],["D:4.3","p"]],"C:3.1":[["A:CRE-1","p"],["A:CRE-2","p"],["A:GES-1","p"],["S:4.3.3","p"],["D:3.3","p"],["D:4.1","p"]],"A:CRE-2":[["C:3.1","p"],["C:3.2","p"],["C:5.3","p"],["S:4.2.3","p"],["S:4.3.3","p"]],"A:CRE-3":[["C:2.1","p"],["C:3.2","p"],["S:4.2.3","p"]],"A:CRE-4":[["C:3.3","p"],["C:3.2","p"],["C:2.2","p"],["S:4.2.2","p"],["S:4.3.2","p"]],"C:3.3":[["A:CRE-4","p"],["D:2.2","p"]],"C:2.2":[["A:CRE-4","p"],["D:5.2","p"]],"A:GES-1":[["C:5.2","p"],["C:3.1","p"],["S:4.1.1","p"],["S:4.1.4","p"]],"C:5.2":[["A:GES-1","p"],["A:GES-2","p"],["A:PLA-2","p"],["S:4.1.4","p"],["D:3.2","p"],["D:4.1","p"]],"A:GES-2":[["C:5.2","p"],["C:3.4","p"],["S:4.1.3","p"],["S:4.2.3","p"]],"A:GES-3":[["C:3.4","p"],["C:5.3","p"],["S:4.1.4","p"],["S:4.2.4","p"]],"A:GES-4":[["C:5.1","p"],["C:5.4","p"],["C:2.4","p"],["S:4.2.1","p"],["S:4.3.4","p"]],"C:5.1":[["A:GES-4","p"],["S:4.3.4","p"]],"C:5.4":[["A:GES-4","p"],["D:5.1","p"],["D:5.2","p"],["D:5.3","p"]],"C:2.4":[["A:GES-4","p"],["D:2.3","p"],["D:4.2","p"],["D:5.2","p"]],"A:PLA-1":[["C:3.4","p"],["C:1.2","p"],["S:4.1.4","p"]],"A:PLA-2":[["C:1.2","p"],["C:5.2","p"],["S:4.3.4","p"]],"A:PLA-3":[["C:3.4","p"],["C:1.3","p"],["C:4.2","p"],["S:4.2.4","p"],["S:4.3.2","p"],["S:4.3.3","p"]],"C:1.3":[["A:PLA-3","p"],["S:4.1.3","p"],["S:4.2.3","p"]],"A:PLA-4":[["C:4.3","p"],["C:2.3","p"],["C:5.3","p"],["S:4.3.1","p"],["S:4.3.2","p"]],"C:4.3":[["A:PLA-4","p"],["S:4.2.2","p"]],"S:4.1.1":[["A:INT-1","p"],["A:INT-2","p"],["A:GES-1","p"],["C:2.3","p"],["C:1.2","p"],["D:1.1","s"]],"S:4.1.2":[["A:INT-6","p"],["A:INT-7","p"],["A:INT-5","p"],["C:2.3","p"],["C:2.5","p"],["C:4.2","p"],["D:2.1","s"]],"S:4.1.3":[["A:INT-2","p"],["A:INT-4","p"],["A:GES-2","p"],["C:3.4","p"],["C:1.3","p"],["D:3.1","s"]],"S:4.1.4":[["A:GES-1","p"],["A:GES-3","p"],["A:PLA-1","p"],["C:5.2","p"],["C:3.4","p"]],"S:4.2.1":[["A:INT-3","p"],["A:GES-4","p"],["C:2.3","p"],["C:4.2","p"],["D:1.2","s"]],"S:4.2.2":[["A:INT-3","p"],["A:CRE-4","p"],["A:INT-7","p"],["C:4.2","p"],["C:4.1","p"],["C:4.3","p"],["C:2.6","p"],["D:2.2","s"]],"S:4.2.3":[["A:CRE-1","p"],["A:CRE-2","p"],["A:CRE-3","p"],["A:GES-2","p"],["C:3.4","p"],["C:1.3","p"],["D:3.2","s"]],"S:4.2.4":[["A:PLA-3","p"],["A:GES-3","p"],["C:3.4","p"],["C:5.3","p"]],"S:4.3.1":[["A:INT-4","p"],["A:PLA-4","p"],["A:INT-6","p"],["C:2.3","p"],["C:4.4","p"],["D:1.3","s"]],"S:4.3.2":[["A:PLA-4","p"],["A:PLA-3","p"],["A:CRE-4","p"],["C:4.2","p"],["C:5.3","p"],["D:2.3","s"]],"S:4.3.3":[["A:PLA-3","p"],["A:CRE-2","p"],["C:3.4","p"],["C:3.1","p"],["D:3.3","s"]],"S:4.3.4":[["A:PLA-2","p"],["A:GES-4","p"],["C:5.1","p"],["C:5.3","p"]],"C:4.1":[["S:4.2.2","p"],["D:2.2","p"]],"D:1.1":[["C:2.3","p"],["S:4.1.1","s"]],"D:1.2":[["C:2.3","p"],["C:4.2","p"],["S:4.2.1","s"]],"D:1.3":[["C:2.3","p"],["C:4.4","p"],["S:4.3.1","s"]],"D:2.1":[["C:2.5","p"],["C:4.2","p"],["S:4.1.2","s"]],"D:2.2":[["C:4.2","p"],["C:4.1","p"],["C:3.3","p"],["S:4.2.2","s"]],"D:2.3":[["C:2.3","p"],["C:2.4","p"],["S:4.3.2","s"]],"D:3.1":[["C:3.4","p"],["C:1.2","p"],["S:4.1.3","s"]],"D:3.2":[["C:2.1","p"],["C:3.2","p"],["C:5.2","p"],["S:4.2.3","s"]],"D:3.3":[["C:3.1","p"],["C:5.3","p"],["S:4.3.3","s"]],"D:4.1":[["C:3.1","p"],["C:5.2","p"]],"D:4.2":[["C:2.4","p"],["C:5.3","p"]],"D:4.3":[["C:5.3","p"],["C:1.2","p"]],"D:5.1":[["C:5.4","p"]],"D:5.2":[["C:2.4","p"],["C:2.2","p"],["C:5.4","p"]],"D:5.3":[["C:5.4","p"],["C:3.2","p"]]}};
+
+if(document.getElementById("xwt")){XW.init({data:XWD,base:"./"});XW.table(document.getElementById("xwt"))}
+const R=document.documentElement;
+function ap(t){if(t==="light"||t==="dark")R.setAttribute("data-theme",t);else R.removeAttribute("data-theme");document.querySelectorAll("[data-theme-set]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.themeSet===t))}
+let t="auto";try{t=localStorage.getItem("pf-tema")||"auto"}catch(e){}ap(t);
+document.querySelectorAll("[data-theme-set]").forEach(b=>b.onclick=()=>{t=b.dataset.themeSet;ap(t);try{localStorage.setItem("pf-tema",t)}catch(e){}});
+</script>
+<script id="pf-tema-sync">(function(){function ap(){var t="auto";try{t=localStorage.getItem("pf-tema")||"auto"}catch(e){}var R=document.documentElement;if(t==="light"||t==="dark")R.setAttribute("data-theme",t);else R.removeAttribute("data-theme");document.querySelectorAll("[data-theme-set]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.themeSet===t)})}addEventListener("storage",function(e){if(e.key==="pf-tema")ap()});addEventListener("pageshow",function(e){if(e.persisted)ap()})})()</script><!-- PORTALE-F1 -->
+<script>/* PRESENTAZIONI-F1 */(function(){var f=document.querySelector(".pr-f");if(!f)return;f.onclick=function(e){var b=e.target.closest("[data-f]");if(!b)return;var v=b.dataset.f;f.querySelectorAll("[data-f]").forEach(function(x){x.setAttribute("aria-pressed",x===b)});document.querySelectorAll(".pr").forEach(function(c){c.hidden=!!v&&c.dataset.a!==v})}})()</script>
+<!-- PRESENTAZIONI-F1 -->
+<!-- PORTALE-F2 -->
+<!-- PORTALE-F3 -->
+</body>
+</html>

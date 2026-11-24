@@ -1,0 +1,22 @@
+{
+ "name": "ProfTecnologIA Framework",
+ "short_name": "ProfTecnologIA",
+ "lang": "it",
+ "description": "I quadri di competenza sull'IA per la scuola, in italiano, con attività e materiali.",
+ "start_url": "/",
+ "display": "browser",
+ "background_color": "#0B1B2B",
+ "theme_color": "#14213D",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}
